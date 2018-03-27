@@ -1,0 +1,241 @@
+
+@font-face {font-family: 'ColdstyleI';src: url('webfonts/34DDB5_0_0.eot');src: url('webfonts/34DDB5_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/34DDB5_0_0.woff2') format('woff2'),url('webfonts/34DDB5_0_0.woff') format('woff'),url('webfonts/34DDB5_0_0.ttf') format('truetype');}
+@font-face {font-family: 'Coldstyle';src: url('webfonts/34DDB5_1_0.eot');src: url('webfonts/34DDB5_1_0.eot?#iefix') format('embedded-opentype'),url('webfonts/34DDB5_1_0.woff2') format('woff2'),url('webfonts/34DDB5_1_0.woff') format('woff'),url('webfonts/34DDB5_1_0.ttf') format('truetype');}
+@font-face {font-family: 'ColdstyleSC';src: url('webfonts/34DDB5_2_0.eot');src: url('webfonts/34DDB5_2_0.eot?#iefix') format('embedded-opentype'),url('webfonts/34DDB5_2_0.woff2') format('woff2'),url('webfonts/34DDB5_2_0.woff') format('woff'),url('webfonts/34DDB5_2_0.ttf') format('truetype');}
+
+
+body
+{
+    background-color: #fefefe;
+    color: #000000;
+    font-family:  'Georgia', serif;
+    font-size: 100%;
+    margin: 0;
+}
+.number {
+    font-family:  'Georgia', serif;
+}
+
+a, a:visited
+{
+    color: #e20003;
+    text-decoration: none;
+    font-weight:bold;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+
+p {
+    text-align: left;
+}
+.red {
+    color:#e20003;
+}
+
+.div_main
+{
+    width: 56.5em;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 5em;
+}
+
+.header {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.crumbs {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 1em;
+    font-family: 'ColdstyleSC', serif;
+}
+.crumbs > div {
+    display: inline-block;
+}
+.crumbs .current {
+    font-size: 2.5em;
+
+}
+
+
+
+
+.center, .left-margin {
+    display: inline-block;
+    height: auto;
+    vertical-align: top;
+}
+.left-margin {
+    width: 15.5em;
+    text-align: left;
+}
+.left-margin > a > img {
+    width:14em;
+    margin-bottom: 1em;
+}
+
+.center
+{
+    text-align: left;
+    width: 41em;
+}
+.super-title {
+    font-size: 1.666em;
+    text-align: center;
+    font-family: 'Coldstyle';
+    color:#e20003;
+    letter-spacing: 0.09em;
+}
+.title {
+    font-size: 5em;
+    text-align: center;
+    font-family: 'ColdstyleSC';
+}
+
+.description {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 1.2em;
+}
+.description-item {
+    margin-bottom: 0.3em;
+}
+
+.groupTitle {
+    font-size: 1.5em;
+}
+.groupSubtitle {
+    font-size: 1em;
+    padding-left: 2em;
+}
+
+.content-items {
+    margin-left: 2em;
+}
+.content-item {
+    margin-top: 0.5em;
+}
+.content-item > div {
+    display: inline-block;
+}
+.content-item .pub {
+    width:5em;
+    text-align: left;
+    font-size: 0.8em;
+}
+.content-item .number {
+    width:2.5em;
+    text-align: right;
+    font-size: 0.8em;
+    margin-right: 1em;
+}
+.content-item .item-title {
+    font-size: 1em;
+    max-width: 28em;
+}
+.content-item .download-links {
+    font-size: 0.6em;
+    margin-left: 1em;
+}
+.content-item .item-subtitle {
+    display: block;
+    margin-left: 7.5em;
+}
+.content-item .item-subtitle > span {
+    font-size: 0.8em;
+}
+
+
+
+
+
+.content-item-back {
+    margin-top: 0.6em;
+    display: inline-block;
+    width:246px;
+    text-align: center;
+}
+.item img {
+    height: 160px;
+    border: solid #808080 1px;
+}
+
+
+.donationInfo {
+    width:40em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5em;
+}
+.donateButton {
+    width: 12em;
+    cursor: pointer;
+}
+
+.donate-section {
+    margin-top: 2em;
+}
+
+form {
+    margin: 0;
+}
+table td {
+    vertical-align: top;
+}
+.paypal-note {
+    color: grey;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.filter {
+
+}
+.filter-section {
+    display: inline-block;
+}
+.filter-row {
+    margin-bottom: 0.5em;
+}
+.filter-button {
+    display: inline-block;
+    background-color: #eee;
+    border: 0.065em solid #888;
+    margin-right: 0.19em;
+    padding: 0.2em 0.23em;
+    border-radius: 0.5em;
+    cursor: pointer;
+    height: 1.2em;
+}
+.filter-item {
+    float:right;
+    height: 1.2em;
+    border: 0.065em solid #fff;
+    padding: 0.2em 0.23em;
+
+}
+.filter-button.selected {
+    background-color: #e20003;
+    border-color: #800002;
+}
+
+.filter-button.small .filter-text {
+    font-size: 0.8em;
+}
+
+.scarlet { color: #e64b0c; }
+.light-blue {color:#7799d3}
