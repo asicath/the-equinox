@@ -18,7 +18,7 @@ const lines = [], linesLow = [], merge = [];
 data.books.forEach(book => {
     const bookTitle = `The Equinox ${book.folder} (${book.pubLocation}: ${book.pubName}, ${book.pubYear})`;
 
-    if (book.folder !== '1.4') return;
+    //if (book.folder !== '1.4') return;
 
     book.contents.forEach(item => {
 
@@ -96,26 +96,31 @@ data.books.forEach(book => {
         linesLow.push(cmdLow);
 
 
-
+        /* -- FROM GOOGLE DRIVE
         let creditPdf = '../scans/credits/pdf-600dpi/credits.pdf';
         let creditPdfLow = '../scans/credits/pdf-150dpi/credits.pdf';
         let creditMerged = `./${book.folder}/${filename}.pdf`;
         let creditMergedLow = `./${book.folder}/${filename}_low.pdf`;
+        */
 
-        let cmdMerge = `java -jar pdfbox-app-2.0.8.jar PDFMerger ${pdfName} ${creditPdf} ${creditMerged}`;
+        let creditPdf = 'F:/googledrive/The Equinox/scans/credits/pdf-600dpi/credits.pdf';
+        let creditPdfLow = 'F:/googledrive/The Equinox/scans/credits/pdf-150dpi/credits.pdf';
+        let creditMerged = `./${book.folder}/${filename}.pdf`;
+        let creditMergedLow = `./${book.folder}/${filename}_low.pdf`;
+
+        let cmdMerge = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfName.replace("../", "F:/googledrive/The Equinox/")}" "${creditPdf}" ${creditMerged}`;
         merge.push(cmdMerge);
 
         let pdfNameLow = pdfName.replace(/600dpi/g, '150dpi').replace(/\.pdf/, '_low.pdf');
-        let cmdMergeLow = `java -jar pdfbox-app-2.0.8.jar PDFMerger ${pdfNameLow} ${creditPdfLow} ${creditMergedLow}`;
+        let cmdMergeLow = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfNameLow.replace("../", "F:/googledrive/The Equinox/")}" "${creditPdfLow}" ${creditMergedLow}`;
         merge.push(cmdMergeLow);
 
         console.log(cmd);
     });
 
-    fs.writeFileSync('make-pdfs.cmd', lines.join('\n'));
-    fs.writeFileSync('make-pdfs_low.cmd', linesLow.join('\n'));
-
-    fs.writeFileSync('join-pdfs.cmd', merge.join('\n'));
+    fs.writeFileSync('pdfs/make-pdfs.cmd', lines.join('\n'));
+    fs.writeFileSync('pdfs/make-pdfs_low.cmd', linesLow.join('\n'));
+    fs.writeFileSync('pdfs/join-pdfs.cmd', merge.join('\n'));
 
     // java -jar pdfbox-app-x.y.z.jar PDFMerger <Source PDF files (2 ..n)> <Target PDF file>
     //sejda-console merge -f ../scans/1.2/pdf-150dpi/advertisements_low.pdf ../scans/credits/pdf-150dpi/credits.pdf -o ./1.2/advertisements_low.pdf

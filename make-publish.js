@@ -95,4 +95,4 @@ let pdfName = '710-equinox-1.1.pdf';
 
 const cmd = `naps2.console -i ${imagesCmd} -n 0 -o ${pdfName} --disableocr --force`;
 
-fs.writeFileSync('make-710.cmd', cmd);
+fs.writeFileSync('pdfs/make-710.cmd', cmd);

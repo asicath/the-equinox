@@ -1,2 +1,0 @@
-naps2.console -i ../scans/credits/600dpi/credits.png -n 0 -o ../scans/credits/pdf-600dpi/credits.pdf --enableocr --ocrlang "eng" --force
-naps2.console -i ../scans/credits/150dpi/credits.png -n 0 -o ../scans/credits/pdf-150dpi/credits.pdf --enableocr --ocrlang "eng" --force

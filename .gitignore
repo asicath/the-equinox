@@ -1,3 +1,5 @@
 .idea
 node_modules
 bundle.js
+pdfs/*.cmd
+*.pdf
