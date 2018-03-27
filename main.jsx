@@ -232,8 +232,8 @@ class Index extends React.Component {
                 <div className="description-item">
                     1.4 and 3.1 are complete, 1.5-10 are in the works and will be released as they are completed.
                 </div>
-                <div className="description-item">
-                    "low" = 150 dpi, suitable for reading, "high" = 600 dpi, suitable for printing.
+                <div>
+                    <a href="https://groups.google.com/forum/#!forum/keepsilence/join">Join our announcement only email list</a> or <a href="https://groups.google.com/forum/feed/keepsilence/msgs/rss.xml?num=15">subscribe to the rss feed</a> to be notified when new content is available or when new print versions are released.
                 </div>
             </div>
 
@@ -275,6 +275,9 @@ class Index extends React.Component {
                         </div>
                     </div>
 
+                </div>
+                <div className="resolution-note">
+                    <span className="fake-link">low</span> = 150 dpi, suitable for reading, <span className="fake-link">high</span> = 600 dpi, suitable for printing.
                 </div>
 
 
