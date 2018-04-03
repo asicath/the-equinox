@@ -118,9 +118,13 @@ p {
 .content-items {
     margin-left: 2em;
 }
+.content-items .content-item:nth-child(odd) {
+    background-color: #f8f8f8;
+}
 .content-item {
     margin-top: 0.5em;
 }
+
 .content-item > div {
     display: inline-block;
 }

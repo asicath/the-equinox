@@ -18,7 +18,7 @@ const lines = [], linesLow = [], merge = [];
 data.books.forEach(book => {
     const bookTitle = `The Equinox ${book.folder} (${book.pubLocation}: ${book.pubName}, ${book.pubYear})`;
 
-    //if (book.folder !== '1.4') return;
+    if (book.folder !== '777') return;
 
     book.contents.forEach(item => {
 

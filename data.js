@@ -65,7 +65,7 @@
  LIBER LXXXIV. VEL CHANOKH.
  LIBER DXXXVI. BATRACHOPHRENOBOOCOSMOMACHIA.
  LIBER D. SEPHER SEPHIROTH.
- LIBER DCCLXXVII. VEL PROLEGOMENA SYMBOLICA AD Systemam Sceptico—Mysticae Viæ Explicandae
+ LIBER DCCLXXVII. VEL PROLEGOMENA SYMBOLICA AD Systemam Sceptico—Mysticae Viæ Explicandae 777
  LIBER LXVII. THE SWORD OF SONG.
 
 
@@ -105,6 +105,37 @@
 
 const data = {
     books: [
+        {
+            title: '777',
+            pubName: 'Walter Scott Publishing Co., Ltd.',
+            pubLocation: 'London and Felling-on-Tyne.',
+            pubYear: '1909',
+            folder: '777',
+            contents: [
+                {
+                    title: '777',
+                    subtitle: 'PROLEGOMENA SYMBOLICA AD SYSTEMAM SCEPTICO-MYSTICAE VIAE EXPLICANDAE FUNDAMENTUM HIEROGLYPHICUM SANCTISSIMORUM SCIENTIAE SUMMAE',
+                    pageStart: 1,
+                    pageEnd: 57,
+                    addPage: [
+                        {filename: '_000.jpg'},
+                        {filename: '_001.png'},
+                        {filename: '_002.png'},
+                        {filename: '_003.png'},
+                        {filename: '_004.png'},
+                        {filename: '_005.png'},
+                        {filename: '_006.png'},
+                        {filename: '_007.png'},
+                        {filename: '_008.png'},
+                        {filename: '_009.png'},
+                        {filename: '_010.png'},
+                        {filename: '_011.png'},
+                        {filename: 'back.jpg', after: '057.png'},
+                        ],
+                    filename: '777'
+                }
+            ]
+        },
         {
             title: 'Volume I Number I',
             pubName: 'Simpkin, Marshall, Hamilton, Kent & CO. LTD.',
@@ -1236,7 +1267,7 @@ data.authors = [
 if (typeof exports !== 'undefined') exports.data = data;
 
 //exports.data = data;
-export default data;
+//export default data;
 
 /*
 
