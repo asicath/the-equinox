@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import data from './data.js';
+import {data} from './data.js';
 
 function main() {
 
@@ -36,7 +36,79 @@ var filterOptions = {
 };
 
 
+class ContentItem extends React.Component {
+    render() {
+        let book = this.props.book;
+        let item = this.props.item;
+        let authorLU = this.props.authors;
 
+        let pub = "";
+        if (item.pub === 'aa') pub = 'A∴A∴';
+        else if (item.pub === 'oto') pub = 'O.T.O.';
+        if (item.hasOwnProperty('pubClass')) pub += " " + item.pubClass.toUpperCase();
+
+        let sub = "";
+        if (item.hasOwnProperty('subtitle')) sub = <div className="item-subtitle"><span>{item.subtitle}</span></div>;
+
+        let aTxt = "";
+
+        let filename = item.filename.replace(/\s/g, '-');
+        let pdfName = `${book.folder}/${filename}.pdf`;
+        let pdfLowName = pdfName.replace(/\.pdf/, '_low.pdf');
+
+        let aHigh = <a href={pdfName}>high</a>;
+        let aLow = <a href={pdfLowName}>low</a>;
+        if (item.hasText) aTxt = <a href=".">txt</a>;
+
+        // turn into array
+        let authors = "";
+        if (item.hasOwnProperty('author')) {
+            if (!Array.isArray(item.author)) item.author = [item.author];
+
+            //if (item.author)
+            let prevRole = '';
+
+            authors = item.author.map((o, i) => {
+                let name = (typeof o === 'string') ? o : o.name;
+                let role = (typeof o === 'string') ? 'author' : o.role;
+                if (!authorLU.hasOwnProperty(name)) return 'INVALID AUTHOR';
+                let author = authorLU[name];
+
+                let fullname = `${author.other} ${author.last}`;
+
+                if (role === prevRole) return ` & ${fullname}`;
+
+                prevRole = role;
+
+
+                let value = null;
+
+                if (role === 'author') value = `by ${fullname}`;
+                else if (role === 'reviser') value = `revised by ${fullname}`;
+                else if (role === 'editor') value = `edited by ${fullname}`;
+                else if (role === 'illustrator') value = `illustrations by ${fullname}`;
+                else if (role === 'translator') value = `translation by ${fullname}`;
+                else if (role === 'preface') value = `preface by ${fullname}`;
+                else if (role === 'documents') value = `documents provided by ${fullname}`;
+                else if (role === 'commentator') value = `commentary by ${fullname}`;
+                else value = `${role}: ${fullname}`;
+
+                return (i > 0) ? ', ' + value : value;
+            }).join('');
+
+            authors = <div className="item-subtitle"><span>{authors}</span></div>;
+        }
+
+        return <div className="content-item">
+            <div className="number">{item.number}</div>
+            <div className="pub">{pub}</div>
+            <div className="item-title">{item.titleWeb || item.title}</div>
+            <div className="download-links">{aLow} | {aHigh}</div>
+            {sub}
+            {authors}
+        </div>;
+    }
+}
 
 class Index extends React.Component {
 
@@ -126,82 +198,22 @@ class Index extends React.Component {
 
                 }
 
-                let pub = "";
-                if (item.pub === 'aa') pub = 'A∴A∴';
-                else if (item.pub === 'oto') pub = 'O.T.O.';
-                if (item.hasOwnProperty('pubClass')) pub += " " + item.pubClass.toUpperCase();
 
-                let sub = "";
-                if (item.hasOwnProperty('subtitle')) sub = <div className="item-subtitle"><span>{item.subtitle}</span></div>;
-
-                let aTxt = "";
-
-                let filename = item.filename.replace(/\s/g, '-');
-                let pdfName = `${book.folder}/${filename}.pdf`;
-                let pdfLowName = pdfName.replace(/\.pdf/, '_low.pdf');
-
-                let aHigh = <a href={pdfName}>high</a>;
-                let aLow = <a href={pdfLowName}>low</a>;
-                if (item.hasText) aTxt = <a href=".">txt</a>;
-
-                // turn into array
-                let authors = "";
-                if (item.hasOwnProperty('author')) {
-                    if (!Array.isArray(item.author)) item.author = [item.author];
-
-                    //if (item.author)
-                    let prevRole = '';
-                    let authorLU = this.authors;
-                    authors = item.author.map((o, i) => {
-                        let name = (typeof o === 'string') ? o : o.name;
-                        let role = (typeof o === 'string') ? 'author' : o.role;
-                        if (!authorLU.hasOwnProperty(name)) return 'INVALID AUTHOR';
-                        let author = authorLU[name];
-
-                        let fullname = `${author.other} ${author.last}`;
-
-                        if (role === prevRole) return ` & ${fullname}`;
-
-                        prevRole = role;
-
-
-                        let value = null;
-
-                        if (role === 'author') value = `by ${fullname}`;
-                        else if (role === 'reviser') value = `revised by ${fullname}`;
-                        else if (role === 'editor') value = `edited by ${fullname}`;
-                        else if (role === 'illustrator') value = `illustrations by ${fullname}`;
-                        else if (role === 'translator') value = `translation by ${fullname}`;
-                        else if (role === 'preface') value = `preface by ${fullname}`;
-                        else if (role === 'documents') value = `documents provided by ${fullname}`;
-                        else if (role === 'commentator') value = `commentary by ${fullname}`;
-                        else value = `${role}: ${fullname}`;
-
-                        return (i > 0) ? ', ' + value : value;
-                    }).join('');
-
-                    authors = <div className="item-subtitle"><span>{authors}</span></div>;
-                }
-
-
+                // INSERT **************
                 let key = "item-" + i + "-" + j;
-                html.push(<div className="content-item" key={key}>
-                    <div className="number">{item.number}</div>
-                    <div className="pub">{pub}</div>
-                    <div className="item-title">{item.titleWeb || item.title}</div>
-                    <div className="download-links">{aLow} | {aHigh}</div>
-                    {sub}
-                    {authors}
-                </div>);
+                html.push(<ContentItem key={key} book={book} item={item} authors={this.authors}/>);
             }
 
-            book.subtitle = <span>({book.pubLocation}: {book.pubName}, <span className="number">{book.pubYear}</span>)</span>;
+            let publisher = <span>({book.pubLocation}: {book.pubName}, <span className="number">{book.pubYear}</span>)</span>;
+            let subtitle = book.hasOwnProperty('subtitle') ? <div className="groupSubtitle">{book.subtitle}</div> : null;
 
             if (html.length > 0) {
                 let key = "group-" + i;
+
                 groups.push(<div className="content-group" key={key}>
                     <div className="groupTitle">{book.title}</div>
-                    <div className="groupSubtitle">{book.subtitle}</div>
+                    {subtitle}
+                    <div className="groupSubtitle">{publisher}</div>
                     <div className="content-items">{html}</div>
                 </div>);
             }
@@ -221,7 +233,7 @@ class Index extends React.Component {
 
             <div className="description">
                 <div className="description-item">
-                    All original scans from first editions of The Equinox, <a href="process.html">learn about the process here</a>.
+                    All original scans from first editions of The Equinox and other related works, <a href="process.html">learn about the process here</a>.
                 </div>
                 <div className="description-item">
                     Please consider supporting this project by either <a href="donate.html">donating directly</a> or <a href="merch.html">buying merchandise created from the scans</a>.
@@ -230,7 +242,7 @@ class Index extends React.Component {
                     Print edition now available at most major online book retailers! <a href="https://www.barnesandnoble.com/w/the-equinox-aleister-crowley/1128251976?ean=9781642556858">Barnes & Noble</a> | <a href="https://www.amazon.com/dp/1642556858/">Amazon</a>
                 </div>
                 <div className="description-item">
-                    1.4 and 3.1 are complete, 1.5-10 are in the works and will be released as they are completed.
+                    1.1-4, 3.1, and 777 are complete, 1.5-10 are in the works and will be released as they are completed.
                 </div>
                 <div>
                     <a href="https://groups.google.com/forum/#!forum/keepsilence/join">Join our announcement only email list</a> or <a href="https://groups.google.com/forum/feed/keepsilence/msgs/rss.xml?num=15">subscribe to the rss feed</a> to be notified when new content is available or when new print versions are released.

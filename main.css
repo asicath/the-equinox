@@ -107,22 +107,28 @@ p {
     margin-bottom: 0.3em;
 }
 
+.content-group {
+    margin-top: 0.5em;
+}
+
 .groupTitle {
-    font-size: 1.5em;
+    font-size: 1.4em;
 }
 .groupSubtitle {
-    font-size: 1em;
+    font-size: 0.9em;
     padding-left: 2em;
 }
 
 .content-items {
     margin-left: 2em;
+    margin-top: 0.25em;
 }
 .content-items .content-item:nth-child(odd) {
     background-color: #f8f8f8;
 }
 .content-item {
-    margin-top: 0.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
 }
 
 .content-item > div {

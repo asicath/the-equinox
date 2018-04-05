@@ -65,7 +65,6 @@
  LIBER LXXXIV. VEL CHANOKH.
  LIBER DXXXVI. BATRACHOPHRENOBOOCOSMOMACHIA.
  LIBER D. SEPHER SEPHIROTH.
- LIBER DCCLXXVII. VEL PROLEGOMENA SYMBOLICA AD Systemam Sceptico—Mysticae Viæ Explicandae 777
  LIBER LXVII. THE SWORD OF SONG.
 
 
@@ -107,32 +106,79 @@ const data = {
     books: [
         {
             title: '777',
+            subtitle: 'PROLEGOMENA SYMBOLICA AD SYSTEMAM SCEPTICO-MYSTICAE VIAE EXPLICANDAE FUNDAMENTUM HIEROGLYPHICUM SANCTISSIMORUM SCIENTIAE SUMMAE',
             pubName: 'Walter Scott Publishing Co., Ltd.',
-            pubLocation: 'London and Felling-on-Tyne.',
+            pubLocation: 'London and Felling-on-Tyne',
             pubYear: '1909',
             folder: '777',
+            creditFilename: 'credits-777.pdf',
             contents: [
+
                 {
-                    title: '777',
-                    subtitle: 'PROLEGOMENA SYMBOLICA AD SYSTEMAM SCEPTICO-MYSTICAE VIAE EXPLICANDAE FUNDAMENTUM HIEROGLYPHICUM SANCTISSIMORUM SCIENTIAE SUMMAE',
+                    title: 'COVER AND TITLE',
                     pageStart: 1,
-                    pageEnd: 57,
+                    pageEnd: 5,
+                    prefix: '_',
                     addPage: [
                         {filename: '_000.jpg'},
-                        {filename: '_001.png'},
-                        {filename: '_002.png'},
-                        {filename: '_003.png'},
-                        {filename: '_004.png'},
-                        {filename: '_005.png'},
-                        {filename: '_006.png'},
-                        {filename: '_007.png'},
-                        {filename: '_008.png'},
-                        {filename: '_009.png'},
-                        {filename: '_010.png'},
-                        {filename: '_011.png'},
-                        {filename: 'back.jpg', after: '057.png'},
-                        ],
-                    filename: '777'
+                        {filename: '055.png', after: '_005.png'},
+                        {filename: 'back.jpg', after: '_005.png'},
+                    ],
+                    filename: 'cover and title'
+                },
+                {
+                    title: 'INTRODUCTION',
+                    pageStart: 6,
+                    pageEnd: 10,
+                    prefix: '_',
+                    filename: 'introduction'
+                },
+                {
+                    title: 'ERRATA',
+                    pageStart: 11,
+                    pageEnd: 11,
+                    prefix: '_',
+                    pub: 'aa',
+                    pubClass: 'b',
+                    number: 777,
+                    grade: 3,
+                    filename: 'errata'
+                },
+                {
+                    title: 'TABLE OF CORRESPONDENCES',
+                    pageStart: 1,
+                    pageEnd: 36,
+                    pub: 'aa',
+                    pubClass: 'b',
+                    number: 777,
+                    grade: 3,
+                    filename: 'table of correspondences'
+                },
+                {
+                    title: 'NOTES TO TABLE OF CORRESPONDENCES',
+                    pageStart: 37,
+                    pageEnd: 45,
+                    pub: 'aa',
+                    pubClass: 'b',
+                    number: 777,
+                    grade: 3,
+                    filename: 'notes to table of correspondences'
+                },
+                {
+                    title: 'APPENDIX I: THE TRIGRAMS',
+                    pageStart: 46,
+                    pageEnd: 54,
+                    pub: 'aa',
+                    pubClass: 'b',
+                    number: 777,
+                    grade: 3,
+                    filename: 'appendix 1 the trigrams'
+                },
+                {
+                    title: 'THE EQUINOX: ADVERTISEMENT AND SUBSCRIPTION FORM',
+                    pageStart: 56,
+                    pageEnd: 57,
+                    filename: 'equinox advertisement'
                 }
             ]
         },

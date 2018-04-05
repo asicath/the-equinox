@@ -10,8 +10,12 @@ function filenameFromPageNumber(n) {
     return filename;
 }
 
+
+let baseFolder = 'F:/googledrive/The Equinox';
+//baseFolder = '..';
+
 function pathFromFilename(book, filename) {
-    return `../scans/${book.folder}/600dpi/${filename}`;
+    return baseFolder + `/scans/${book.folder}/600dpi/${filename}`;
 }
 
 const lines = [], linesLow = [], merge = [];
@@ -78,6 +82,7 @@ data.books.forEach(book => {
 
         }
 
+
         // finally add the credit
         //images.push('../scans/credits/600dpi/_credits.png');
 
@@ -85,41 +90,38 @@ data.books.forEach(book => {
         //let pdfName = `./${book.folder}/${item.filename}.pdf`;
 
         let filename = item.filename.replace(/\s/g, '-');
-        let pdfName = `../scans/${book.folder}/pdf-600dpi/${filename}.pdf`;
+        let pdfName = baseFolder + `/scans/${book.folder}/pdf-600dpi/${filename}.pdf`;
         let pdfTitle = `${item.title}. ${bookTitle}, ${pageInfo}.`;
         pdfTitle = pdfTitle.replace(/∴/g, "").replace(/Æ/g, "AE");
 
-        const cmd = `naps2.console -i ${imagesCmd} -n 0 -o ${pdfName} --enableocr --ocrlang "eng+lat+grc+heb" --pdftitle "${pdfTitle}" --force`;
+        const cmd = `naps2.console -i "${imagesCmd}" -n 0 -o "${pdfName}" --enableocr --ocrlang "eng+lat+grc+heb" --pdftitle "${pdfTitle}" --force`;
         lines.push(cmd);
 
         let cmdLow = cmd.replace(/600dpi/g, '150dpi').replace(/\.pdf/, '_low.pdf');
         linesLow.push(cmdLow);
 
+        let creditFilename = 'credits.pdf';
+        if (book.hasOwnProperty('creditFilename')) creditFilename = book.creditFilename;
 
-        /* -- FROM GOOGLE DRIVE
-        let creditPdf = '../scans/credits/pdf-600dpi/credits.pdf';
-        let creditPdfLow = '../scans/credits/pdf-150dpi/credits.pdf';
-        let creditMerged = `./${book.folder}/${filename}.pdf`;
-        let creditMergedLow = `./${book.folder}/${filename}_low.pdf`;
-        */
-
-        let creditPdf = 'F:/googledrive/The Equinox/scans/credits/pdf-600dpi/credits.pdf';
-        let creditPdfLow = 'F:/googledrive/The Equinox/scans/credits/pdf-150dpi/credits.pdf';
+        let creditPdf = baseFolder + '/scans/credits/pdf-600dpi/' + creditFilename;
+        let creditPdfLow = baseFolder + '/scans/credits/pdf-150dpi/' + creditFilename;
         let creditMerged = `./${book.folder}/${filename}.pdf`;
         let creditMergedLow = `./${book.folder}/${filename}_low.pdf`;
 
-        let cmdMerge = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfName.replace("../", "F:/googledrive/The Equinox/")}" "${creditPdf}" ${creditMerged}`;
+        let cmdMerge = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfName}" "${creditPdf}" ${creditMerged}`;
         merge.push(cmdMerge);
 
         let pdfNameLow = pdfName.replace(/600dpi/g, '150dpi').replace(/\.pdf/, '_low.pdf');
-        let cmdMergeLow = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfNameLow.replace("../", "F:/googledrive/The Equinox/")}" "${creditPdfLow}" ${creditMergedLow}`;
+        let cmdMergeLow = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfNameLow}" "${creditPdfLow}" ${creditMergedLow}`;
         merge.push(cmdMergeLow);
 
         console.log(cmd);
     });
 
-    fs.writeFileSync('pdfs/make-pdfs.cmd', lines.join('\n'));
+    fs.writeFileSync('pdfs/make-pdfs_high.cmd', lines.join('\n'));
     fs.writeFileSync('pdfs/make-pdfs_low.cmd', linesLow.join('\n'));
+    fs.writeFileSync('pdfs/make-pdfs.cmd', lines.join('\n') + '\n' + linesLow.join('\n'));
+
     fs.writeFileSync('pdfs/join-pdfs.cmd', merge.join('\n'));
 
     // java -jar pdfbox-app-x.y.z.jar PDFMerger <Source PDF files (2 ..n)> <Target PDF file>
