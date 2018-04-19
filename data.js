@@ -51,7 +51,6 @@
  LIBER XXXVI. THE STAR SAPPHIRE.
  LIBER CLXXXV. LIBER COLLEGII SANCTI.
  LIBER CCVI. LIBER R V VEL SPIRITUS.
- LIBER CCCLXI. LIBER HHH.
  LIBER CCCXXXIII. THE BOOK OF LIEs
  LIBER DCCCXI. ENERGIZED ENTHUSIASM.
 
@@ -60,7 +59,6 @@
  LIBER XXVII. LIBER TRIGRAMMATON
  LIBER CCXXXI. LIBER ARCANORUM
  LIBER CD. LIBER TAV VEL KABBAL/E TRIUM LITERARUM Sub Figura CD.
- LIBER LVIII. This is an article on the Qabalah in the Temple of Solomon the King, EQUINOX V.
  LIBER LXIV. LIBER ISRAFEL, formerly called ANUBIS.
  LIBER LXXXIV. VEL CHANOKH.
  LIBER DXXXVI. BATRACHOPHRENOBOOCOSMOMACHIA.
@@ -1054,6 +1052,122 @@ const data = {
                     pageInfo: 'ads 1-7'
                 }
 
+            ]
+        },
+
+        {
+            title: 'Volume I Number V',
+            pubName: 'Self-Published',
+            pubLocation: 'London',
+            pubYear: '1910',
+            folder: '1.4',
+            contents: [
+                {
+                    title: 'COVER, TITLE, AND TABLE OF CONTENTS',
+                    pageStart: 5,
+                    pageEnd: 10,
+                    addPage: [{filename: '_cover.jpg'}],
+                    prefix: '_',
+                    filename: 'cover-title-and-contents'
+                },
+                {
+                    title: 'EDITORIAL',
+                    author: 'crowley',
+                    pageStart: 1,
+                    pageEnd: 3
+                },
+                {
+                    title: 'LIBER HHH',
+                    subtitle: 'SVB FIGURVÂ CCCXLI',
+                    author: 'crowley',
+                    pageStart: 5,
+                    pageEnd: 14,
+                    pub: 'aa',
+                    pubClass: 'd',
+                    number: 341,
+                    grade: [2]
+                },
+                {
+                    title: 'THE BLIND PROPHET',
+                    author: 'crowley',
+                    pageStart: 15,
+                    pageEnd: 27,
+                    skip:[16]
+                },
+                {
+                    title: 'THE TRAINING OF THE MIND',
+                    author: 'bennett',
+                    pageStart: 28,
+                    pageEnd: 59
+                },
+                {
+                    title: 'THE SABBATH',
+                    author: 'crowley',
+                    pageStart: 60,
+                    pageEnd: 64
+                },
+                {
+                    title: 'THE TEMPLE OF SOLOMON THE KING',
+                    subtitle: 'BOOK V',
+                    author: 'crowley',
+                    pageStart: 65,
+                    pageEnd: 120,
+                    pub: 'aa',
+                    pubClass: 'b',
+                    number: 58,
+                    grade: [3],
+                    filename: 'the-temple-of-solomon-the-king-part-5'
+                },
+                {
+                    title: 'A NOCTURNE',
+                    author: 'neuburg',
+                    pageStart: 121,
+                    pageEnd: 124
+                },
+                {
+                    title: 'THE VIXEN',
+                    author: 'crowley',
+                    pageStart: 125,
+                    pageEnd: 129
+                },
+                {
+                    title: 'THE PILGRIM',
+                    author: 'crowley',
+                    pageStart: 130,
+                    pageEnd: 132
+                },
+                {
+                    title: 'MY CRAPULOUS CONTEMPORARIES, NO. IV',
+                    subtitle: 'WISDOM WHILE YOU WAITE',
+                    author: 'crowley',
+                    pageStart: 133,
+                    pageEnd: 142,
+                    skip:[134]
+                },
+                {
+                    title: 'X-RAYS ON EX-PROBATIONERS',
+                    author: 'crowley',
+                    pageStart: 142,
+                    pageEnd: 142
+                },
+                {
+                    title: 'THE VAMPIRE',
+                    author: 'archer',
+                    pageStart: 143,
+                    pageEnd: 143
+                },
+                {
+                    title: 'THE BIG STICK',
+                    //author: 'crowley',
+                    pageStart: 144,
+                    pageEnd: 157
+                },
+                {
+                    title: 'CORRESPONDENCE',
+                    //author: 'crowley',
+                    pageStart: 158,
+                    pageEnd: 158
+                },
             ]
         },
 
