@@ -10,25 +10,36 @@ function filenameFromPageNumber(n) {
     return filename;
 }
 
+let goToFolder = false;
 
-let baseFolder = 'F:/googledrive/The Equinox';
-//baseFolder = '..';
+let googleFolder = 'F:/googledrive/The Equinox';
+let baseFolder = googleFolder;
+if (goToFolder) baseFolder = '.';
 
 function pathFromFilename(book, filename) {
     return baseFolder + `/scans/${book.folder}/600dpi/${filename}`;
 }
 
 const lines = [], linesLow = [], merge = [];
+
+if (goToFolder) {
+    lines.push('cd ' + googleFolder);
+    lines.push('F:');
+}
+
+
 data.books.forEach(book => {
     const bookTitle = `The Equinox ${book.folder} (${book.pubLocation}: ${book.pubName}, ${book.pubYear})`;
 
-    if (book.folder !== '777') return;
+    if (book.folder !== '1.5') return;
 
     book.contents.forEach(item => {
 
-        if (!item.hasOwnProperty('filename')) return;
+        //if (!item.hasOwnProperty('filename')) return;
 
-        //if (item.title !== 'THE TEMPLE OF SOLOMON THE KING') return;
+        //if (item.title !== 'LIBER XXX AERUM') return;
+        if (item.prefix !== 's') return;
+
 
         // compile images
         let images = [];
@@ -89,6 +100,9 @@ data.books.forEach(book => {
         let imagesCmd = images.join(';');
         //let pdfName = `./${book.folder}/${item.filename}.pdf`;
 
+        if (!item.hasOwnProperty('filename')) {
+            item.filename = item.title.toLowerCase().replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE");;
+        }
         let filename = item.filename.replace(/\s/g, '-');
         let pdfName = baseFolder + `/scans/${book.folder}/pdf-600dpi/${filename}.pdf`;
         let pdfTitle = `${item.title}. ${bookTitle}, ${pageInfo}.`;

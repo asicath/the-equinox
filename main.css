@@ -239,6 +239,10 @@ table td {
     cursor: pointer;
     height: 1.2em;
 }
+.filter-right {
+    float:right;
+}
+
 .filter-item {
     float:right;
     height: 1.2em;

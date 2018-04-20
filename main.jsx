@@ -32,7 +32,15 @@ var filterOptions = {
     'grade6': {grade:6},
 
     'oto': {pub: 'oto'},
-    'other': {isOther:true}
+    'other': {isOther:true},
+
+    '777': {folder:'777'},
+    '1.1': {folder:'1.1'},
+    '1.2': {folder:'1.2'},
+    '1.3': {folder:'1.3'},
+    '1.4': {folder:'1.4'},
+    '1.5': {folder:'1.5'},
+    '3.1': {folder:'3.1'}
 };
 
 
@@ -52,6 +60,9 @@ class ContentItem extends React.Component {
 
         let aTxt = "";
 
+        if (!item.hasOwnProperty('filename')) {
+            item.filename = item.title.toLowerCase().replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE");;
+        }
         let filename = item.filename.replace(/\s/g, '-');
         let pdfName = `${book.folder}/${filename}.pdf`;
         let pdfLowName = pdfName.replace(/\.pdf/, '_low.pdf');
@@ -160,6 +171,9 @@ class Index extends React.Component {
 
                 // filter
                 if (selectedOption !== null) {
+
+                    if (selectedOption.hasOwnProperty('folder') && book.folder !== selectedOption.folder) continue;
+
                     if (selectedOption.hasOwnProperty('pub') && item.pub !== selectedOption.pub) continue;
                     if (selectedOption.hasOwnProperty('pubClass') && (!item.hasOwnProperty('pubClass') || item.pubClass.indexOf(selectedOption.pubClass) === -1)) continue;
 
@@ -264,10 +278,19 @@ class Index extends React.Component {
                             <div className={"filter-button noselect " + (this.state.selected==='aa' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'aa')}><span className="filter-text">A∴A∴</span></div>
                             <div className={"filter-button noselect " + (this.state.selected==='oto' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'oto')}><span className="filter-text">O.T.O.</span></div>
                             <div className={"filter-button noselect " + (this.state.selected==='other' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'other')}><span className="filter-text">Other</span></div>
-                            <div className="filter-item">Author: <select onChange={this.onPersonChange}>
-                                <option value=""></option>
-                                {authorOptions}
-                            </select></div>
+
+
+                            <div className="filter-right">
+                                <div className={"filter-button noselect " + (this.state.selected==='1.1' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '1.1')}><span className="filter-text">1.1</span></div>
+                                <div className={"filter-button noselect " + (this.state.selected==='1.2' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '1.2')}><span className="filter-text">1.2</span></div>
+                                <div className={"filter-button noselect " + (this.state.selected==='1.3' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '1.3')}><span className="filter-text">1.3</span></div>
+                                <div className={"filter-button noselect " + (this.state.selected==='1.4' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '1.4')}><span className="filter-text">1.4</span></div>
+                                <div className={"filter-button noselect " + (this.state.selected==='1.5' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '1.5')}><span className="filter-text">1.5</span></div>
+                                <div className={"filter-button noselect " + (this.state.selected==='3.1' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '3.1')}><span className="filter-text">3.1</span></div>
+                                <div className={"filter-button noselect " + (this.state.selected==='777' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '777')}><span className="filter-text">777</span></div>
+                            </div>
+                            <div className="filter-item">Book:</div>
+
                         </div>
                         <div className="filter-row">
                             <div className={"filter-button noselect " + (this.state.selected==='class-a' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'class-a')}><span className="filter-text">Class A</span></div>
@@ -275,6 +298,10 @@ class Index extends React.Component {
                             <div className={"filter-button noselect " + (this.state.selected==='class-c' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'class-c')}><span className="filter-text">Class C</span></div>
                             <div className={"filter-button noselect " + (this.state.selected==='class-d' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'class-d')}><span className="filter-text">Class D</span></div>
                             <div className={"filter-button noselect " + (this.state.selected==='class-e' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'class-e')}><span className="filter-text">Class E</span></div>
+                            <div className="filter-item">Author: <select onChange={this.onPersonChange}>
+                                <option value=""></option>
+                                {authorOptions}
+                            </select></div>
                         </div>
                         <div className="filter-row">
                             <div className={"filter-button noselect " + (this.state.selected==='grade0' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'grade0')}><span className="filter-text">Probationer</span></div>

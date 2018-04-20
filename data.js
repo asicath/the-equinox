@@ -30,7 +30,6 @@
  LIBER CXL (ALEPH) THE BOOK OF WISDOM OR FOLLY.
  LIBER X. LIBER PORTA LUCIs.
  LIBER XC. LIBER TZADDI VEL HAMUS HERMETICUS, Sub Figura XC.
- LIBER CCCCXVIII. LIBER XXX AERUM VEL SACULI.
  LIBER XXV.
  LIBER CC.
  LIBER CCC. A SPECIAL INSTRUCTION for the Promulgation of the Law.
@@ -78,7 +77,6 @@
  5 COURSE VII Dominus Liminis
  LIBER CCXX. LIBER L VEL LEGIS Sub Figura CCXX.
  LIBER XCV. THE WAKE WORLD (in Konx Om Pax).
- LIBER VIII. See CCCCXVIII (418).
  LIBER XI. LIBER NV. An instruction for attaining Nuit.
  LIBER DLV. LIBER HAD. An instruction for attaining Hadit.
  LIBER DCCCXXXI. LIBER IOD, formerly called VESTA.
@@ -1059,14 +1057,15 @@ const data = {
             title: 'Volume I Number V',
             pubName: 'Self-Published',
             pubLocation: 'London',
-            pubYear: '1910',
-            folder: '1.4',
+            pubYear: '1911',
+            folder: '1.5',
             contents: [
                 {
                     title: 'COVER, TITLE, AND TABLE OF CONTENTS',
                     pageStart: 5,
                     pageEnd: 10,
                     addPage: [{filename: '_cover.jpg'}],
+                    skip:[9],
                     prefix: '_',
                     filename: 'cover-title-and-contents'
                 },
@@ -1168,6 +1167,69 @@ const data = {
                     pageStart: 158,
                     pageEnd: 158
                 },
+                {
+                    title: 'LIBER XXX AERUM',
+                    subtitle: 'VEL SAECVLI SVB FIGURÂ CCCCXVIII - BEING OF THE ANGELS OF THE 30 AETHYRS - THE VISION AND THE VOICE',
+                    author: 'crowley',
+                    prefix: 's',
+                    pageStart: 1,
+                    pageEnd: 176,
+                    addPage: [{filename: 's047image.png', after:'s046.png'}],
+                    pub: 'aa',
+                    pubClass: 'a-b',
+                    number: 418,
+                    grade: [0] // ALSO 5 as LIBER VIII. See CCCCXVIII (418).
+                },
+                {
+                    title: 'LIBER VIII',
+                    subtitle: 'THE CRY OF THE 8TH AETHYR, WHICH IS CALLED ZID',
+                    author: 'crowley',
+                    prefix: 's',
+                    pageStart: 109,
+                    pageEnd: 116,
+                    pub: 'aa',
+                    pubClass: 'd',
+                    number: 8,
+                    grade: [5] // ALSO 5 as LIBER VIII. See CCCCXVIII (418).
+                },
+                //the same remarks apply to the account of the proper method of invoking AEthyrs given in the 18th AEthyr
+                {
+                    title: 'THE PROPER METHOD OF INVOKING AETHYRS',
+                    subtitle: 'THE CRY OF THE 18TH AETHYR, WHICH IS CALLED ZEN',
+                    author: 'crowley',
+                    prefix: 's',
+                    pageStart: 51,
+                    pageEnd: 56,
+                    pub: 'aa',
+                    pubClass: 'd',
+                    //number: 18,
+                    //grade: [5]
+                },
+                {
+                    title: 'STOP PRESS REVIEWS',
+                    //author: 'crowley',
+                    pageStart: 177,
+                    pageEnd: 178,
+                    prefix: 's'
+                },
+                {
+                    title: 'ADVERTISEMENTS',
+                    filename: 'advertisements',
+                    pageStart: 1,
+                    pageEnd: 10,
+                    addPage: [
+                        {filename: '_001.png'},
+                        {filename: '_002.png'},
+                        {filename: '_003.png'},
+                        {filename: '_004.png'},
+                        {
+                            filename: 'xad011.jpg',
+                            after: 'xad010.png'
+                        }
+                    ],
+                    prefix: 'xad',
+                    pageInfo: 'ads'
+                }
             ]
         },
 
