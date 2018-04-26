@@ -863,7 +863,7 @@ const data = {
                     author: 'crowley',
                     pageStart: 199,
                     pageEnd: 200,
-                    addPage: [{filename: '199image.png'}],
+                    addPage: [{filename: '199image.jpg'}],
                     filename: 'the-interpreter'
                 },
                 {
