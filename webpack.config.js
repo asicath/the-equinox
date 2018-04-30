@@ -8,10 +8,13 @@ var APP_DIR = path.resolve(__dirname, '');
 var BUILD_DIR = APP_DIR;
 
 var config = {
-    entry: APP_DIR + '/main.jsx',
+    entry: {
+        main: './main.jsx',
+        illustrations: './illustrations.jsx'
+    },
     output: {
         path: BUILD_DIR,
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
     module : {
         loaders : [

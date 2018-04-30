@@ -261,3 +261,11 @@ table td {
 
 .scarlet { color: #e64b0c; }
 .light-blue {color:#7799d3}
+
+.illustration-header {
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    width: 14em;
+    margin-bottom: .5em;
+}
