@@ -245,7 +245,7 @@ class Index extends React.Component {
             <Description />
 
             <div className="left-margin">
-                <div className="illustration-header"><a href="illustrations.html">Illustrations</a></div>
+                <div className="illustration-header">Illustrations</div>
                 <a href="https://imgur.com/Fi9qR1Y"><img src="img/_cover-3.1.jpg"/></a>
                 <a href="donate.html"><img src="img/donate.png"/></a>
                 <a href="https://imgur.com/mN4eUoF"><img src="img/_cover-1.jpg"/></a>

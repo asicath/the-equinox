@@ -269,3 +269,18 @@ table td {
     width: 14em;
     margin-bottom: .5em;
 }
+
+.buy-links {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 2em;
+}
+.buy-site {
+    width: 7.5em;
+    text-align: right;
+    margin-right: 0.5em;
+    display: inline-block;
+}
+.inline {
+    display: inline-block;
+}
