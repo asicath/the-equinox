@@ -28,10 +28,7 @@
  0 PROBATIONER
  LIBER CCXX. LIBER L VEL LEGIS SUB FIGURA CCXX.
  LIBER CXL (ALEPH) THE BOOK OF WISDOM OR FOLLY.
- LIBER X. LIBER PORTA LUCIs.
- LIBER XC. LIBER TZADDI VEL HAMUS HERMETICUS, Sub Figura XC.
  LIBER XXV.
- LIBER CC.
  LIBER CCC. A SPECIAL INSTRUCTION for the Promulgation of the Law.
  LIBER ABA (Book 4).
  LIBER CCVII. SYLLABUS. An enumeration of the Official Publications of the AA, with a brief description of the contents of each book.
@@ -64,13 +61,11 @@
  LIBER D. SEPHER SEPHIROTH.
  LIBER LXVII. THE SWORD OF SONG.
 
-
  4 COURSE VI - Philosophus
  LIBER CCXX. LIBER L VEL LEGIS Sub Figura CCXX.
  LIBER DCCCXIII. VEL ARARITA Sub Figura DLXX.
  LIBER LIX. ACROSS THE GULE.
  LIBER CCCXXXV. ADONIS.
- LIBER XVI. LIBER TURRIs VEL DOMUS DEI.
  LIBER CLXXV. ASTARTE VEL LIBER BERvLLI.
  LIBER XLVI. THE KEY OF THE MYSTERIES.
 
@@ -81,18 +76,15 @@
  LIBER DLV. LIBER HAD. An instruction for attaining Hadit.
  LIBER DCCCXXXI. LIBER IOD, formerly called VESTA.
 
-
  6 COURSE VIII - Major Adept
  LIBER CCXX. LIBER L VEL LEGIS Sub Figura CCXX.
  LIBER I. LIBER B VEL MAGI. This is an account of the
  LIBER LXVI. LIBER STELLE RUBEE.
- LIBER CLVI. LIBER CHETH VEL VALLUM ABIEGNI Sub Figura CLVI.
  LIBER XLIV. THE MASS OF THE PHCENIX. A Ritual of the Law.
  LIBER XLI. THIEN TAO. An Essay on Attainment by the Way of Equilibrium.
  LIBER DCCCLXVIII. LIBER VIARUM VIE.
 
- The Exempt Adept will possess a thorough knowledge of
- all these courses, and present a thesis of his own, as a general
+ The Exempt Adept will possess a thorough knowledge of all these courses, and present a thesis of his own, as a general
  Epitome of his own Attainment as reflected in the
  sphere of the Mind.
 
@@ -1232,6 +1224,160 @@ const data = {
                 }
             ]
         },
+
+
+        {
+            title: 'Volume I Number VI',
+            pubName: 'Self-Published',
+            pubLocation: 'London',
+            pubYear: '1911',
+            folder: '1.6',
+            contents: [
+                {
+                    title: 'COVER, TITLE, AND TABLE OF CONTENTS',
+                    pageStart: 6,
+                    pageEnd: 11,
+                    addPage: [{filename: '_cover.jpg'}],
+                    skip:[9],
+                    prefix: '_',
+                    filename: 'cover-title-and-contents'
+                },
+                {
+                    title: 'EDITORIAL',
+                    author: 'crowley',
+                    pageStart: 1,
+                    pageEnd: 2
+                },
+                {
+                    title: 'LIBER PORTA LVCIS',
+                    subtitle: 'SVB FIGVRÂ X',
+                    author: 'crowley',
+                    pageStart: 3,
+                    pageEnd: 7,
+                    pub: 'aa',
+                    pubClass: 'a',
+                    number: 10,
+                    grade: [0]
+                },
+                {
+                    title: 'LIBER TVRRIS',
+                    subtitle: 'VEL DOMVS DEI SVB FIGVRÂ XVI',
+                    author: 'crowley',
+                    pageStart: 9,
+                    pageEnd: 15,
+                    pub: 'aa',
+                    pubClass: 'b',
+                    number: 16,
+                    grade: [4]
+                },
+                {
+                    title: 'LIBER TZADDI',
+                    subtitle: 'VEL HAMVS HERMETICVS SVB FIGVRÂ XC',
+                    author: 'crowley',
+                    pageStart: 17,
+                    pageEnd: 22,
+                    pub: 'aa',
+                    pubClass: 'a',
+                    number: 90,
+                    grade: [0]
+                },
+                {
+                    title: 'LIBER CHETH',
+                    subtitle: 'VEL VALLVM ABIEGNI SVB FIGVRÂ CLVI',
+                    author: 'crowley',
+                    pageStart: 23,
+                    pageEnd: 27,
+                    pub: 'aa',
+                    pubClass: 'a',
+                    number: 90,
+                    grade: [6]
+                },
+                {
+                    title: 'LIBER RESH',
+                    subtitle: 'VEL HELIOS SVB FIGVRÂ CC',
+                    author: 'crowley',
+                    pageStart: 29,
+                    pageEnd: 32,
+                    pub: 'aa',
+                    pubClass: 'd',
+                    number: 200,
+                    grade: [0]
+                },
+                {
+                    title: "LIBER A'ASH",
+                    subtitle: 'VEL CAPRICORNI PNEVMATICI SVB FIGVRÂ CCCLXX',
+                    author: 'crowley',
+                    pageStart: 33,
+                    pageEnd: 39,
+                    pub: 'aa',
+                    pubClass: 'a',
+                    number: 370,
+                    grade: []
+                },
+
+                {
+                    title: 'THREE POEMS FOR JANE CHÉRON',
+                    author: 'crowley',
+                    pageStart: 41,
+                    pageEnd: 51,
+                    skip:[42]
+                },
+                {
+                    title: 'CIRCE',
+                    author: 'archer',
+                    pageStart: 52,
+                    pageEnd: 52
+                },
+                {
+                    title: 'THE ELECTRIC SILENCE',
+                    subtitle: 'A synopsis of The Temple of Solomon the King',
+                    //author: 'crowley',
+                    pageStart: 53,
+                    pageEnd: 65,
+                    skip:[54]
+                },
+                {
+                    title: 'SONG',
+                    author: 'archer',
+                    pageStart: 66,
+                    pageEnd: 66
+                },
+                {
+                    title: 'THE SCORPION',
+                    author: 'crowley',
+                    pageStart: 67,
+                    pageEnd: 00
+                },
+                {
+                    title: '',
+                    //author: 'crowley',
+                    pageStart: 00,
+                    pageEnd: 00
+                },
+
+
+
+                {
+                    title: 'ADVERTISEMENTS',
+                    filename: 'advertisements',
+                    pageStart: 1,
+                    pageEnd: 10,
+                    addPage: [
+                        {filename: '_001.png'},
+                        {filename: '_002.png'},
+                        {filename: '_003.png'},
+                        {filename: '_004.png'},
+                        {
+                            filename: 'xad011.jpg',
+                            after: 'xad010.png'
+                        }
+                    ],
+                    prefix: 'xad',
+                    pageInfo: 'ads'
+                }
+            ]
+        },
+
 
         {
             title: 'Volume III Number I',
