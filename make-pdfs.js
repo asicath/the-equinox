@@ -31,14 +31,14 @@ if (goToFolder) {
 data.books.forEach(book => {
     const bookTitle = `The Equinox ${book.folder} (${book.pubLocation}: ${book.pubName}, ${book.pubYear})`;
 
-    if (book.folder !== '1.4') return;
+    if (book.folder !== '1.6') return;
 
     book.contents.forEach(item => {
 
         //if (!item.hasOwnProperty('filename')) return;
 
         //if (item.title !== 'LIBER XXX AERUM') return;
-        if (item.pageStart !== 199) return;
+        //if (item.pageStart !== 41) return;
 
 
         // compile images
@@ -101,12 +101,12 @@ data.books.forEach(book => {
         //let pdfName = `./${book.folder}/${item.filename}.pdf`;
 
         if (!item.hasOwnProperty('filename')) {
-            item.filename = item.title.toLowerCase().replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE");;
+            item.filename = item.title.replace(/É/g, 'E').toLowerCase().replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE");
         }
         let filename = item.filename.replace(/\s/g, '-');
         let pdfName = baseFolder + `/scans/${book.folder}/pdf-600dpi/${filename}.pdf`;
         let pdfTitle = `${item.title}. ${bookTitle}, ${pageInfo}.`;
-        pdfTitle = pdfTitle.replace(/∴/g, "").replace(/Æ/g, "AE");
+        pdfTitle = pdfTitle.replace(/∴/g, "").replace(/Æ/g, "AE").replace(/É/g, 'E');
 
         const cmd = `naps2.console -i "${imagesCmd}" -n 0 -o "${pdfName}" --enableocr --ocrlang "eng+lat+grc+heb" --pdftitle "${pdfTitle}" --force`;
         lines.push(cmd);

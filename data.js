@@ -1228,7 +1228,7 @@ const data = {
 
         {
             title: 'Volume I Number VI',
-            pubName: 'Self-Published',
+            pubName: 'Wieland & Co.',
             pubLocation: 'London',
             pubYear: '1911',
             folder: '1.6',
@@ -1237,7 +1237,7 @@ const data = {
                     title: 'COVER, TITLE, AND TABLE OF CONTENTS',
                     pageStart: 6,
                     pageEnd: 11,
-                    addPage: [{filename: '_cover.jpg'}],
+                    addPage: [{filename: '_001.jpg'}],
                     skip:[9],
                     prefix: '_',
                     filename: 'cover-title-and-contents'
@@ -1289,7 +1289,7 @@ const data = {
                     pageEnd: 27,
                     pub: 'aa',
                     pubClass: 'a',
-                    number: 90,
+                    number: 156,
                     grade: [6]
                 },
                 {
@@ -1312,11 +1312,12 @@ const data = {
                     pub: 'aa',
                     pubClass: 'a',
                     number: 370,
-                    grade: []
+                    grade: [5]
                 },
 
                 {
                     title: 'THREE POEMS FOR JANE CHÉRON',
+                    //filename: 'three-poems-for-jane-cheron',
                     author: 'crowley',
                     pageStart: 41,
                     pageEnd: 51,
@@ -1331,13 +1332,14 @@ const data = {
                 {
                     title: 'THE ELECTRIC SILENCE',
                     subtitle: 'A synopsis of The Temple of Solomon the King',
-                    //author: 'crowley',
+                    author: 'crowley',
                     pageStart: 53,
                     pageEnd: 65,
                     skip:[54]
                 },
                 {
                     title: 'SONG',
+                    subtitle: 'COME, LOVE, AWAKEN!',
                     author: 'archer',
                     pageStart: 66,
                     pageEnd: 66
@@ -1346,31 +1348,70 @@ const data = {
                     title: 'THE SCORPION',
                     author: 'crowley',
                     pageStart: 67,
-                    pageEnd: 00
+                    pageEnd: 107
                 },
                 {
-                    title: '',
-                    //author: 'crowley',
-                    pageStart: 00,
-                    pageEnd: 00
+                    title: 'THE EARTH',
+                    author: 'crowley',
+                    pageStart: 108,
+                    pageEnd: 111
                 },
-
-
-
+                {
+                    title: 'SLEEP',
+                    author: 'archer',
+                    pageStart: 112,
+                    pageEnd: 112
+                },
+                {
+                    title: 'THE ORDEAL OF IDA PENDRAGON',
+                    author: 'crowley',
+                    pageStart: 113,
+                    pageEnd: 148,
+                    skip:[114]
+                },
+                {
+                    title: 'THE AUTUMN WOODS',
+                    author: 'neuburg',
+                    pageStart: 149,
+                    pageEnd: 152
+                },
+                {
+                    title: 'THE DANGERS OF MYSTICISM',
+                    author: 'crowley',
+                    pageStart: 153,
+                    pageEnd: 158
+                },
+                {
+                    title: 'REVIEWS',
+                    pageStart: 159,
+                    pageEnd: 170
+                },
+                {
+                    title: 'THE RITES OF ELEUSIS',
+                    subtitle: 'AS PERFORMED AT CAXTON HALL WESTMINSTER IN OCTOBER AND NOVEMBER 1910 BY MISS LEILA WADDEL AND MR ALEISTER CROWLEY WITH DISTINGUISHED ASSISTANCE',
+                    author: ['crowley', 'raffalovich'],
+                    prefix: 's',
+                    pageStart: 1,
+                    pageEnd: 124,
+                    skip:[2,4,20,22,44,46,48,64,66,80,82,92,94,96,110,112],
+                    addPage: [
+                        {filename: 's_001.png'},
+                        {filename: 's_003.png'},
+                        {filename: 's_005.png'},
+                        {filename: 's_006.png'}
+                        ]
+                },
                 {
                     title: 'ADVERTISEMENTS',
                     filename: 'advertisements',
                     pageStart: 1,
-                    pageEnd: 10,
+                    pageEnd: 11,
+                    skip:[10],
                     addPage: [
-                        {filename: '_001.png'},
                         {filename: '_002.png'},
                         {filename: '_003.png'},
                         {filename: '_004.png'},
-                        {
-                            filename: 'xad011.jpg',
-                            after: 'xad010.png'
-                        }
+                        {filename: '_005.png'}
                     ],
                     prefix: 'xad',
                     pageInfo: 'ads'
