@@ -38,7 +38,7 @@ data.books.forEach(book => {
         //if (!item.hasOwnProperty('filename')) return;
 
         //if (item.title !== 'LIBER XXX AERUM') return;
-        if (item.pageStart !== 41) return;
+        if (item.pageStart !== 199) return;
 
 
         // compile images
@@ -116,6 +116,7 @@ data.books.forEach(book => {
 
         let creditFilename = 'credits.pdf';
         if (book.hasOwnProperty('creditFilename')) creditFilename = book.creditFilename;
+        if (item.hasOwnProperty('creditFilename')) creditFilename = item.creditFilename;
 
         let creditPdf = baseFolder + '/scans/credits/pdf-600dpi/' + creditFilename;
         let creditPdfLow = baseFolder + '/scans/credits/pdf-150dpi/' + creditFilename;

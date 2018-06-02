@@ -856,7 +856,8 @@ const data = {
                     pageStart: 199,
                     pageEnd: 200,
                     addPage: [{filename: '199image.jpg'}],
-                    filename: 'the-interpreter'
+                    filename: 'the-interpreter',
+                    creditFilename: 'credits-interpreter.pdf'
                 },
                 {
                     title: 'THE DAUGHTER OF THE HORSELEECH',
@@ -1200,8 +1201,8 @@ const data = {
                 {
                     title: 'STOP PRESS REVIEWS',
                     //author: 'crowley',
-                    pageStart: 177,
-                    pageEnd: 178,
+                    pageStart: 178,
+                    pageEnd: 179,
                     prefix: 's'
                 },
                 {
