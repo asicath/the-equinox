@@ -1422,6 +1422,41 @@ const data = {
 
 
         {
+            title: 'Volume I Number VII',
+            pubName: 'Wieland & Co.',
+            pubLocation: 'London',
+            pubYear: '1912',
+            folder: '1.7',
+            contents: [
+                {
+                    title: 'COVER, TITLE, AND TABLE OF CONTENTS',
+                    pageStart: 6,
+                    pageEnd: 11,
+                    addPage: [{filename: '_001.jpg'}],
+                    prefix: '_',
+                    filename: 'cover-title-and-contents'
+                },
+                {
+                    title: 'EDITORIAL',
+                    author: 'crowley',
+                    pageStart: 1,
+                    pageEnd: 2
+                },
+                {
+                    title: 'LIBER PORTA LVCIS',
+                    subtitle: 'SVB FIGVRÂ X',
+                    author: 'crowley',
+                    pageStart: 3,
+                    pageEnd: 7,
+                    pub: 'aa',
+                    pubClass: 'a',
+                    number: 10,
+                    grade: [0]
+                }
+            ]
+        },
+
+        {
             title: 'Volume III Number I',
             pubName: 'Universal Publishing Company',
             pubLocation: 'Detroit',
