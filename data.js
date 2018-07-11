@@ -1523,7 +1523,30 @@ const data = {
                     number: 206,
                     grade: [2]
                 },
+                // Liber CCXXXI, (XXII Domarum et XXII Carcerorum)
+                // LIBER CCXXXI
+                // LIBER ARCANORUM τών ATV τού TAHVTI QUAS VIDIT ASAR IN AMENNTI SVB FIGVRÂ CCXXXI
+                // LIBER CARCERORVM τών QLIPHOTH CVM SUIS GENIIS
+                // ADDVNTVR SIGILLA ET NOMINA EORVM
 
+                // LIBER XXII DOMARUM MERCURII CUM SUIS GENIIS
+                // LIBER XXII CARCERORUM QLIPHOTH CUM SUIS GENIIS
+
+
+
+                // LIBER CCXXXI. LIBER ARCANORUM τών ATV τού TAHVTI QVAS VIDIT ASAR IN AMENNTI Sub Figura CCXXXI. Liber Carcerorum τών QLIPHOTH cum suis Geniis. Adduntur Sigilla et Nomina Eorum.
+                {
+                    title: 'LIBER CCXXXI',
+                    subtitle: 'VEL SPIRITV̂S SVB FIGVRÂ CCVI',
+                    author: 'crowley',
+                    pageStart: 59,
+                    pageEnd: 67,
+                    addPage: [{filename: '062image.jpg', after: '062.png'}],
+                    pub: 'aa',
+                    pubClass: 'A',
+                    number: 231,
+                    grade: [3]
+                },
             ]
         },
 
