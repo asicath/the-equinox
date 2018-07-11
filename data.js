@@ -1430,29 +1430,100 @@ const data = {
             contents: [
                 {
                     title: 'COVER, TITLE, AND TABLE OF CONTENTS',
-                    pageStart: 6,
-                    pageEnd: 11,
-                    addPage: [{filename: '_001.jpg'}],
+                    pageStart: 5,
+                    pageEnd: 8,
+                    addPage: [
+                        {filename: '_cover.jpg'},
+                        // Table of contents is within numbered pages this time
+                        {filename: '001.png', after:'_008.png'},
+                        {filename: '002.png', after:'_008.png'}
+                        ],
                     prefix: '_',
                     filename: 'cover-title-and-contents'
                 },
                 {
-                    title: 'EDITORIAL',
-                    author: 'crowley',
-                    pageStart: 1,
-                    pageEnd: 2
+                    title: 'LIBER E. SUPPLEMENTARY INSTRUCTION IN ASANA IMAGES',
+                    subtitle: 'PRONOUNCEMENT BY THE CHANCELLOR OF THE AA',
+                    pageStart: 3,
+                    pageEnd: 4,
+                    addPage: [{filename: '_e1image.jpg'}, {filename: '_e2image.jpg'}],
+                    prefix: '_',
+                    filename: 'liber-e-supplement'
                 },
                 {
-                    title: 'LIBER PORTA LVCIS',
-                    subtitle: 'SVB FIGVRÂ X',
-                    author: 'crowley',
+                    title: 'EDITORIAL, NO VII',
+                    author: 'sturges',
                     pageStart: 3,
-                    pageEnd: 7,
+                    pageEnd: 4
+                },
+                {
+                    title: 'LIBER B',
+                    subtitle: 'VEL MAGI SVB FIGVRÂ I',
+                    author: 'crowley',
+                    pageStart: 5,
+                    pageEnd: 9,
                     pub: 'aa',
                     pubClass: 'a',
-                    number: 10,
-                    grade: [0]
-                }
+                    number: 1,
+                    grade: [6]
+                },
+                {
+                    title: 'LIBER NV',
+                    subtitle: 'SVB FIGVRÂ XI',
+                    author: 'crowley',
+                    pageStart: 11,
+                    pageEnd: 20,
+                    pub: 'aa',
+                    pubClass: 'd',
+                    number: 11,
+                    grade: [5]
+                },
+                {
+                    title: 'LIBER ISRAFEL',
+                    subtitle: 'SVB FIGVRÂ LXIV. FORMERLY CALLED "ANUBIS"',
+                    author: 'crowley',
+                    pageStart: 21,
+                    pageEnd: 27,
+                    pub: 'aa',
+                    pubClass: 'b',
+                    number: 64,
+                    grade: [3]
+                },
+                {
+                    title: 'LIBER STELLÆ RUBEÆ',
+                    subtitle: 'A secret ritual of Apep, the Heart of IAO-OAI, delivered unto V.V.V.V.V. for his use in a certain matter of Liber Legis, and written down under the figure LXVI',
+                    author: 'crowley',
+                    pageStart: 29,
+                    pageEnd: 36,
+                    pub: 'aa',
+                    pubClass: 'a',
+                    number: 66,
+                    grade: [6]
+                },
+                {
+                    title: 'ASTARTÉ',
+                    subtitle: 'VEL LIBER BERYLLI SVB FIGVRÂ CLXXV',
+                    author: 'crowley',
+                    pageStart: 37,
+                    pageEnd: 58,
+                    pub: 'aa',
+                    pubClass: 'd',
+                    number: 175,
+                    grade: [4]
+                },
+                {
+                    title: 'LIBER RV',
+                    subtitle: 'VEL SPIRITV̂S SVB FIGVRÂ CCVI',
+                    author: 'crowley',
+                    pageStart: 59,
+                    pageEnd: 67,
+                    addPage: [{filename: '062image.jpg', after: '062.png'}],
+                    pub: 'aa',
+                    pubClass: 'd',
+                    number: 206,
+                    grade: [2]
+                },
+
             ]
         },
 

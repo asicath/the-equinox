@@ -273,7 +273,7 @@ table td {
 .buy-links {
     display: inline-block;
     vertical-align: top;
-    margin-left: 2em;
+    margin-left: 0.5em;
 }
 .buy-site {
     width: 7.5em;
