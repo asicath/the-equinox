@@ -270,6 +270,15 @@ table td {
     margin-bottom: .5em;
 }
 
+.retail-section {
+    background-color: #f8f8f8;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+.retail-desc {
+    width: 39em;
+    font-size: 0.8em;
+}
 .buy-links {
     display: inline-block;
     vertical-align: top;
