@@ -31,14 +31,14 @@ if (goToFolder) {
 data.books.forEach(book => {
     const bookTitle = `The Equinox ${book.folder} (${book.pubLocation}: ${book.pubName}, ${book.pubYear})`;
 
-    if (book.folder !== '1.4') return;
+    if (book.folder !== '1.7') return;
 
     book.contents.forEach(item => {
 
         //if (!item.hasOwnProperty('filename')) return;
 
         //if (item.title !== 'LIBER XXX AERUM') return;
-        if (item.pageStart !== 199) return;
+        if (item.pageStart !== 69) return;
 
 
         // compile images
@@ -103,7 +103,7 @@ data.books.forEach(book => {
         if (!item.hasOwnProperty('filename')) {
             item.filename = item.title.replace(/É/g, 'E').toLowerCase().replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE");
         }
-        let filename = item.filename.replace(/\s/g, '-');
+        let filename = item.filename.replace(/\s/g, '-').replace(/[.!?]/g, '');
         let pdfName = baseFolder + `/scans/${book.folder}/pdf-600dpi/${filename}.pdf`;
         let pdfTitle = `${item.title}. ${bookTitle}, ${pageInfo}.`;
         pdfTitle = pdfTitle.replace(/∴/g, "").replace(/Æ/g, "AE").replace(/É/g, 'E');

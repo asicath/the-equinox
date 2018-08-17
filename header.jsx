@@ -19,7 +19,7 @@ export class Description extends React.Component {
                 All original scans from first editions of The Equinox and other related works, <a href="process.html">learn about the process here</a>.
             </div>
             <div className="description-item">
-                1.1-6, 3.1, and 777 are complete, 1.7-10 are in the works and will be released as they are completed.
+                1.1-7, 3.1, and 777 are complete, 1.8-10 are in the works and will be released as they are completed.
             </div>
             <div className="description-item">
                 Please consider supporting this project by either <a href="donate.html">donating directly</a> or <a href="merch.html">buying merchandise created from the scans</a>.
