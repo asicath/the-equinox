@@ -224,26 +224,31 @@ exports.eq1_6 = [
     {file:'_007.png'},
     {file:'_008.png'},
     {file:'_009.png'},
-    {file:'copyright.png'},
-    {file:'_010.png'},
+    {file:'copyright.png'}, // need to incorporate the original publishing note #10
+    {file:'_011.png'},
     {},
     {
         start:1,
-        end:158,
+        end:170,
         insert: []
     },
     {},
     {},
     {
         start:1,
-        end:179,
+        end:6,
+        prefix:'s_',
+        insert: []
+    },
+    {
+        start:1,
+        end:124,
         prefix:'s',
         insert: []
     },
-    {},
     {
         start:1,
-        end:10,
+        end:11,
         prefix:'xad'
     },
     {} // not real, just used as placeholder to fill the last left page

@@ -31,14 +31,14 @@ if (goToFolder) {
 data.books.forEach(book => {
     const bookTitle = `The Equinox ${book.folder} (${book.pubLocation}: ${book.pubName}, ${book.pubYear})`;
 
-    if (book.folder !== '1.7') return;
+    //if (book.folder !== 'book4') return;
 
     book.contents.forEach(item => {
 
         //if (!item.hasOwnProperty('filename')) return;
 
         //if (item.title !== 'LIBER XXX AERUM') return;
-        if (item.pageStart !== 69) return;
+        //if (item.pageStart !== 1) return;
 
 
         // compile images

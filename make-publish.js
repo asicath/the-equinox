@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 let intructions = require('./publish-instructions');
-let target = intructions.eq1_5;
+let target = intructions.eq1_6;
 
 function filenameFromPageNumber(n) {
     let filename = n.toString();
@@ -15,7 +15,7 @@ function filenameFromPageNumber(n) {
 
 
 
-let root = path.resolve(__dirname, '710/1.5/');
+let root = path.resolve(__dirname, '710/1.6/');
 let folder = 'img/';
 let blank = 'blank.png';
 
@@ -68,4 +68,4 @@ let pdfName = 'publish.pdf';
 
 const cmd = `naps2.console -i ${imagesCmd} -n 0 -o ${pdfName} --disableocr --force`;
 
-fs.writeFileSync('710/1.5/make-710.cmd', cmd);
+fs.writeFileSync('710/1.6/make-710.cmd', cmd);

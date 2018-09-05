@@ -36,6 +36,7 @@ var filterOptions = {
     'other': {isOther:true},
 
     '777': {folder:'777'},
+    'book4': {folder:'book4'},
     '1.1': {folder:'1.1'},
     '1.2': {folder:'1.2'},
     '1.3': {folder:'1.3'},
@@ -277,6 +278,7 @@ class Index extends React.Component {
                                 <div className={"filter-button noselect " + (this.state.selected==='1.7' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '1.7')}><span className="filter-text">1.7</span></div>
                                 <div className={"filter-button noselect " + (this.state.selected==='3.1' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '3.1')}><span className="filter-text">3.1</span></div>
                                 <div className={"filter-button noselect " + (this.state.selected==='777' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '777')}><span className="filter-text">777</span></div>
+                                <div className={"filter-button noselect " + (this.state.selected==='book4' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'book4')}><span className="filter-text">BOOK 4</span></div>
                             </div>
                             <div className="filter-item">Book:</div>
 
