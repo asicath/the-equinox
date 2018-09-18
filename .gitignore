@@ -1,6 +1,7 @@
 .idea
 node_modules
-bundle.js
 pdfs/*.cmd
 *.pdf
 /710
+main.js
+illustrations.js
