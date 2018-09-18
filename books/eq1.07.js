@@ -235,7 +235,7 @@ exports.data = {
         {
             title: 'A BRIEF ABSTRACT OF THE SYMBOLIC REPRESENTATION OF THE UNIVERSE',
             subtitle: 'DERIVED BY DOCTOR JOHN DEE THROUGH THE SKRYING OF SIR EDWARD KELLY. (LIBER LXXXIV VEL CHANOKH). PART I.',
-            author: 'crowley',
+            author: {name: 'crowley', role:'editor'},
             pageStart: 229,
             pageEnd: 243,
             filename: 'a-brief-abstract-of-the-symbolic-representation-of-the-universe-part-1',
@@ -292,7 +292,12 @@ exports.data = {
             author: 'crowley',
             pageStart: 293,
             pageEnd: 354,
-            skip:[294]
+            skip:[294],
+
+            pub: 'aa',
+            pubClass: 'c',
+            number: 59,
+            grade: [4]
         },
         {
             title: 'THE TEMPLE OF SOLOMON THE KING',

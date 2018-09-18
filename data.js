@@ -1,92 +1,40 @@
 /*
- Aleister Crowley
- Frank Harris
- J.F.C. Fuller
- E. Whineray, M.P.S.
- Victor B. Neuburg
- G.H.S. Pinsent
- Allen Bennett
- Lord Dunsany
- Norman Roe
- George Raffalovich
- Chas. Baudelaire
- Arthur F. Grimble
- Ethel Archer
- H.G. Ludlow
- Edward Storer
- Mary d'Este Sturges
- S.H. Perry
- Katharine Susannah Prichard
- Herbert Close
- Mrs. Bey
- D. Hamish Jenkins
- Laylah Waddell
- L. E. Kennedy
 
- need to add photos/paintings
+ ALL GRADES:
+ LIBER CCXX. LIBER L VEL LEGIS SUB FIGURA CCXX.
 
  0 PROBATIONER
- LIBER CCXX. LIBER L VEL LEGIS SUB FIGURA CCXX.
  LIBER CXL (ALEPH) THE BOOK OF WISDOM OR FOLLY.
- LIBER XXV.
- LIBER CCC. A SPECIAL INSTRUCTION for the Promulgation of the Law.
- LIBER ABA (Book 4).
+ LIBER XXV. (THE STAR RUBY)
  LIBER CCVII. SYLLABUS. An enumeration of the Official Publications of the AA, with a brief description of the contents of each book.
 
  1 Neophyte
- LIBER CCXX. LIBER L VEL LEGIS Sub Figura CCXX.
  LIBER VII. LIBER LIBERI VEL LAPIDIS LAZULI
- LIBER LXXVIII.
- LIBER CDLXXIV. LIBER Os ABySMI VEL DAATH.
  LIBER DCCCXI. ENERGIZED ENTHUSIASM.
 
  2 COURSE IV - Zelator
- LIBER CCXX. LIBER L VEL LEGIS Sub Figura CCXX.
- LIBER CMXIII. LIBER VIA:
- LIBER XVII. LIBER I.A.O.
+ LIBER XVII. LIBER I.A.O. (This book has not been published.)
  LIBER XXXVI. THE STAR SAPPHIRE.
- LIBER CLXXXV. LIBER COLLEGII SANCTI.
- LIBER CCVI. LIBER R V VEL SPIRITUS.
+ LIBER CLXXXV. LIBER COLLEGII SANCTI. Being the tasks of the Grades and their Oaths proper to Liber XIII.  This is the official Paper of the various grades.  It includes the Task and Oath of a Probationer.
  LIBER CCCXXXIII. THE BOOK OF LIEs
  LIBER DCCCXI. ENERGIZED ENTHUSIASM.
 
  3 COURSE V - Practicus
- LIBER CCXX. LIBER L VEL LEGIS Sub Figura CCXX.
  LIBER XXVII. LIBER TRIGRAMMATON
- LIBER CCXXXI. LIBER ARCANORUM
- LIBER CD. LIBER TAV VEL KABBAL/E TRIUM LITERARUM Sub Figura CD.
- LIBER LXIV. LIBER ISRAFEL, formerly called ANUBIS.
- LIBER LXXXIV. VEL CHANOKH.
  LIBER DXXXVI. BATRACHOPHRENOBOOCOSMOMACHIA.
- LIBER D. SEPHER SEPHIROTH.
  LIBER LXVII. THE SWORD OF SONG.
 
  4 COURSE VI - Philosophus
- LIBER CCXX. LIBER L VEL LEGIS Sub Figura CCXX.
  LIBER DCCCXIII. VEL ARARITA Sub Figura DLXX.
- LIBER LIX. ACROSS THE GULE.
- LIBER CCCXXXV. ADONIS.
- LIBER CLXXV. ASTARTE VEL LIBER BERvLLI.
+ LIBER CCCXXXV. ADONIS. (This gives an account in poetic language of the struggle of the human and divine elements in the consciousness of man, giving their harmony following upon the victory of the latter.)
  LIBER XLVI. THE KEY OF THE MYSTERIES.
 
  5 COURSE VII Dominus Liminis
- LIBER CCXX. LIBER L VEL LEGIS Sub Figura CCXX.
  LIBER XCV. THE WAKE WORLD (in Konx Om Pax).
- LIBER XI. LIBER NV. An instruction for attaining Nuit.
- LIBER DLV. LIBER HAD. An instruction for attaining Hadit.
- LIBER DCCCXXXI. LIBER IOD, formerly called VESTA.
 
  6 COURSE VIII - Major Adept
- LIBER CCXX. LIBER L VEL LEGIS Sub Figura CCXX.
- LIBER I. LIBER B VEL MAGI. This is an account of the
- LIBER LXVI. LIBER STELLE RUBEE.
  LIBER XLIV. THE MASS OF THE PHCENIX. A Ritual of the Law.
  LIBER XLI. THIEN TAO. An Essay on Attainment by the Way of Equilibrium.
- LIBER DCCCLXVIII. LIBER VIARUM VIE.
-
- The Exempt Adept will possess a thorough knowledge of all these courses, and present a thesis of his own, as a general
- Epitome of his own Attainment as reflected in the
- sphere of the Mind.
 
  */
 
@@ -118,7 +66,7 @@ data.authors = [
     {last:'Grimble', other:'Arthur F.'},
     {last:'Harris', other:'Frank'},
     {last:'Honorius', other:'Pope'},
-    {last:'Jenkins', other:'D. Hamish'},
+    {last:'Jenkins', other:'David Hamish'},
     {last:'John', other:'Augustus'},
     {last:'Jones', other:'Charles Stansfeld'},
     {last:'Kennedy', other:'Leon Engers'},

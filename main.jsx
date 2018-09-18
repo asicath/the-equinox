@@ -86,11 +86,16 @@ class ContentItem extends React.Component {
             //if (item.author)
             let prevRole = '';
 
+            let
             authors = item.author.map((o, i) => {
                 let name = (typeof o === 'string') ? o : o.name;
                 let role = (typeof o === 'string') ? 'author' : o.role;
-                if (!authorLU.hasOwnProperty(name)) return 'INVALID AUTHOR';
+
+                if (name === 'others') {}
+                else if (!authorLU.hasOwnProperty(name)) return 'INVALID AUTHOR';
+
                 let author = authorLU[name];
+                if (name === 'others') author = {last:'', other:'Others'};
 
                 let fullname = `${author.other} ${author.last}`;
 
