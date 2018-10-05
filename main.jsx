@@ -44,6 +44,7 @@ var filterOptions = {
     '1.5': {folder:'1.5'},
     '1.6': {folder:'1.6'},
     '1.7': {folder:'1.7'},
+    '1.8': {folder:'1.8'},
     '3.1': {folder:'3.1'}
 };
 
@@ -86,7 +87,7 @@ class ContentItem extends React.Component {
             //if (item.author)
             let prevRole = '';
 
-            let
+
             authors = item.author.map((o, i) => {
                 let name = (typeof o === 'string') ? o : o.name;
                 let role = (typeof o === 'string') ? 'author' : o.role;
@@ -281,6 +282,7 @@ class Index extends React.Component {
                                 <div className={"filter-button noselect " + (this.state.selected==='1.5' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '1.5')}><span className="filter-text">1.5</span></div>
                                 <div className={"filter-button noselect " + (this.state.selected==='1.6' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '1.6')}><span className="filter-text">1.6</span></div>
                                 <div className={"filter-button noselect " + (this.state.selected==='1.7' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '1.7')}><span className="filter-text">1.7</span></div>
+                                <div className={"filter-button noselect " + (this.state.selected==='1.8' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '1.8')}><span className="filter-text">1.8</span></div>
                                 <div className={"filter-button noselect " + (this.state.selected==='3.1' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '3.1')}><span className="filter-text">3.1</span></div>
                                 <div className={"filter-button noselect " + (this.state.selected==='777' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, '777')}><span className="filter-text">777</span></div>
                                 <div className={"filter-button noselect " + (this.state.selected==='book4' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'book4')}><span className="filter-text">BOOK 4</span></div>

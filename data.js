@@ -26,7 +26,7 @@
 
  4 COURSE VI - Philosophus
  LIBER DCCCXIII. VEL ARARITA Sub Figura DLXX.
- LIBER CCCXXXV. ADONIS. (This gives an account in poetic language of the struggle of the human and divine elements in the consciousness of man, giving their harmony following upon the victory of the latter.)
+ - In no7?? LIBER CCCXXXV. ADONIS. (This gives an account in poetic language of the struggle of the human and divine elements in the consciousness of man, giving their harmony following upon the victory of the latter.)
  LIBER XLVI. THE KEY OF THE MYSTERIES.
 
  5 COURSE VII Dominus Liminis
@@ -34,7 +34,7 @@
 
  6 COURSE VIII - Major Adept
  LIBER XLIV. THE MASS OF THE PHCENIX. A Ritual of the Law.
- LIBER XLI. THIEN TAO. An Essay on Attainment by the Way of Equilibrium.
+ LIBER XLI. THIEN TAO. An Essay on Attainment by the Way of Equilibrium.  (in Konx Om Pax).
 
  */
 
