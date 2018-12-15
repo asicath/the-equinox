@@ -290,6 +290,9 @@ table td {
     margin-right: 0.5em;
     display: inline-block;
 }
+.retailer > span, .retailer > div {
+    white-space: nowrap;
+}
 .inline {
     display: inline-block;
 }
