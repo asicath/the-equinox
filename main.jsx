@@ -77,8 +77,8 @@ class ContentItem extends React.Component {
         let pdfLowName = pdfName.replace(/\.pdf/, '_low.pdf');
 
 
-        let aHigh = <a href={pdfName}>high</a>;
-        let aLow = <a href={pdfLowName}>low</a>;
+        let aHigh = <a target="_blank" href={pdfName}>high</a>;
+        let aLow = <a target="_blank" href={pdfLowName}>low</a>;
         if (item.hasText) aTxt = <a href=".">txt</a>;
 
         // turn into array
