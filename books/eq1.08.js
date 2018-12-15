@@ -265,7 +265,7 @@ exports.data = {
             addPage: [
                 {
                     filename: '_back.jpg',
-                    after: 'xad022.png'
+                    after: 'z022.png'
                 }
             ],
             prefix: 'z',

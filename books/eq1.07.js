@@ -201,7 +201,10 @@ exports.data = {
             subtitle: 'AN ALLEGORY',
             author: 'crowley',
             pageStart: 117,
-            pageEnd: 157
+            pageEnd: 157,
+            pub: 'aa',
+            number: 335,
+            grade: 4
         },
         {
             title: 'THE GHOULS',
