@@ -253,3 +253,66 @@ exports.eq1_6 = [
     },
     {} // not real, just used as placeholder to fill the last left page
 ];
+
+
+exports.eq1_7 = [
+    {}, // not real, just used as placeholder so that 000 faces right because we can't print on the other side of the cover
+    {file:'_002.png'}, // actually the inside cover
+
+    {},
+    {file:'_e2image.png'},
+
+    {},
+    {file:'_e1image.png'},
+
+    {file:'_003.png'},
+    {file:'_004.png'},
+
+    {file:'_005.png'},
+    {file:'_006.png'},
+
+    {file:'_007.png'},
+    {file:'copyright.png'}, // need to incorporate the original publishing note #8
+
+    {
+        start:1,
+        end:424,
+        insert: [
+            {file:'frontispiece.jpg', after:2, blank:'before'},
+            {file:'frontispiece_desc.png', after:2, blank:'before'},
+            // need to insert the caption w/ blank before
+            {file:'062image.png', after:62, blank:'after'},
+
+            {file:'070image.png', after:70, blank:'after'},
+            {file:'076image.png', after:76, blank:'after'},
+
+
+            {file:'230image.png', after:230, blank:'after'},
+            {file:'232image.png', after:232, blank:'after'},
+            {file:'234image-1.png', after:234, blank:'after'},
+            {file:'234image-2.png', after:234, blank:'after'},
+            {file:'234image-3.png', after:234, blank:'after'},
+            {file:'234image-4.png', after:234, blank:'after'},
+            {file:'234image-5.png', after:234, blank:'after'},
+            {file:'234image-6.png', after:234, blank:'after'},
+
+            {file:'238image.png', after:238, blank:'after'},
+            {file:'242image.png', after:242, blank:'after'},
+
+            {file:'368image.jpg', after:368},
+            {file:'368image-back.png', after:368},
+            {file:'369image-back.png', after:368},
+            {file:'369image.jpg', after:368},
+
+            {file:'386image-1.png', after:386, blank:'after'},
+            {file:'386image-2.png', after:386, blank:'after'},
+            {file:'386image-3.png', after:386, blank:'after'}
+        ]
+    },
+    {
+        start:1,
+        end:15,
+        prefix:'xad'
+    },
+    {} // not real, just used as placeholder to fill the last left page
+];
