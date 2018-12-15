@@ -29,11 +29,11 @@ if (goToFolder) {
 
 
 data.books.forEach(book => {
-    const bookTitle = `The Equinox ${book.folder} (${book.pubLocation}: ${book.pubName}, ${book.pubYear})`;
-
-    //if (book.folder !== '1.8') return;
 
     book.contents.forEach(item => {
+
+        if (book.folder === '1.9' && item.pageStart===23) {}
+        else return;
 
         //if (!item.hasOwnProperty('filename')) return;
 
@@ -105,7 +105,19 @@ data.books.forEach(book => {
         }
         let filename = item.filename.replace(/\s/g, '-').replace(/[.!?]/g, '');
         let pdfName = baseFolder + `/scans/${book.folder}/pdf-600dpi/${filename}.pdf`;
-        let pdfTitle = `${item.title}. ${bookTitle}, ${pageInfo}.`;
+
+
+        let pubTitle = 'The Equinox ' + book.folder;
+        if (book.hasOwnProperty('pubTitle')) {
+            pubTitle = book.pubTitle;
+        }
+
+        //let bookTitle = `The Equinox ${book.folder} (${book.pubLocation}: ${book.pubName}, ${book.pubYear})`;
+        //let pdfTitle = `${item.title}. ${bookTitle}, ${pageInfo}.`;
+
+        //MLA: Crowley, Aleister. "LIBER O." The Equinox 1.2 (1909): 11-30.
+        let pdfTitle = `""${item.title}."" ${pubTitle} (${book.pubYear}): ${pageInfo}.`;
+
         pdfTitle = pdfTitle.replace(/∴/g, "").replace(/Æ/g, "AE").replace(/É/g, 'E');
 
         const cmd = `naps2.console -i "${imagesCmd}" -n 0 -o "${pdfName}" --enableocr --ocrlang "eng+lat+grc+heb" --pdftitle "${pdfTitle}" --force`;
@@ -133,8 +145,8 @@ data.books.forEach(book => {
         console.log(cmd);
     });
 
-    fs.writeFileSync('pdfs/make-pdfs_high.cmd', lines.join('\n'));
-    fs.writeFileSync('pdfs/make-pdfs_low.cmd', linesLow.join('\n'));
+    //fs.writeFileSync('pdfs/make-pdfs_high.cmd', lines.join('\n'));
+    //fs.writeFileSync('pdfs/make-pdfs_low.cmd', linesLow.join('\n'));
     fs.writeFileSync('pdfs/make-pdfs.cmd', lines.join('\n') + '\n' + linesLow.join('\n'));
 
     fs.writeFileSync('pdfs/join-pdfs.cmd', merge.join('\n'));

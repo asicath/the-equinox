@@ -1,32 +1,21 @@
 /*
 
- ALL GRADES:
- LIBER CCXX. LIBER L VEL LEGIS SUB FIGURA CCXX.
-
  0 PROBATIONER
  LIBER CXL (ALEPH) THE BOOK OF WISDOM OR FOLLY.
  LIBER XXV. (THE STAR RUBY)
  LIBER CCVII. SYLLABUS. An enumeration of the Official Publications of the AA, with a brief description of the contents of each book.
-
- 1 Neophyte
- LIBER VII. LIBER LIBERI VEL LAPIDIS LAZULI
- LIBER DCCCXI. ENERGIZED ENTHUSIASM.
 
  2 COURSE IV - Zelator
  LIBER XVII. LIBER I.A.O. (This book has not been published.)
  LIBER XXXVI. THE STAR SAPPHIRE.
  LIBER CLXXXV. LIBER COLLEGII SANCTI. Being the tasks of the Grades and their Oaths proper to Liber XIII.  This is the official Paper of the various grades.  It includes the Task and Oath of a Probationer.
  LIBER CCCXXXIII. THE BOOK OF LIEs
- LIBER DCCCXI. ENERGIZED ENTHUSIASM.
 
  3 COURSE V - Practicus
- LIBER XXVII. LIBER TRIGRAMMATON
  LIBER DXXXVI. BATRACHOPHRENOBOOCOSMOMACHIA.
  LIBER LXVII. THE SWORD OF SONG.
 
  4 COURSE VI - Philosophus
- LIBER DCCCXIII. VEL ARARITA Sub Figura DLXX.
- - In no7?? LIBER CCCXXXV. ADONIS. (This gives an account in poetic language of the struggle of the human and divine elements in the consciousness of man, giving their harmony following upon the victory of the latter.)
  LIBER XLVI. THE KEY OF THE MYSTERIES.
 
  5 COURSE VII Dominus Liminis
@@ -41,6 +30,7 @@
 const data = {
     books: [
         require('./books/777').data,
+        require('./books/thelema').data,
         require('./books/eq1.01').data,
         require('./books/eq1.02').data,
         require('./books/eq1.03').data,
@@ -49,6 +39,7 @@ const data = {
         require('./books/eq1.06').data,
         require('./books/eq1.07').data,
         require('./books/eq1.08').data,
+        require('./books/eq1.09').data,
         require('./books/book4.1').data,
         require('./books/eq3.01').data
     ]
