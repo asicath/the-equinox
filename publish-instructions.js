@@ -316,3 +316,79 @@ exports.eq1_7 = [
     },
     {} // not real, just used as placeholder to fill the last left page
 ];
+
+
+exports.eq1_8 = [
+    {}, // not real, just used as placeholder so that 000 faces right because we can't print on the other side of the cover
+    {
+        start:2,
+        end:40,
+        prefix:'_',
+        replace: {
+            20: 'copyright.png', // copyright replaces 20, need to incorporate the original publishing note
+            32: '_032image.jpg'
+        }
+    },
+
+    {
+        start:1,
+        end:252,
+        insert: [
+            {file:'032image.jpg', after:32, blank:'after'},
+            {file:'145image.png', after:144, blank:'before'}
+        ]
+    },
+    {
+        start:1,
+        end:16,
+        prefix:'s_'
+    },
+    {
+        start:1,
+        end:100,
+        prefix:'s',
+        blankEveryOther: true, // all the backs are blank, for notes?
+    },
+    // last page does not have a blank after, just followed by 102
+    {file:'s101.png'},
+    {file:'s102.png'},
+
+    {},
+    {},
+    {
+        start:253,
+        end:257
+    },
+
+    {
+        start:1,
+        end:22,
+        prefix:'z'
+    },
+    {} // not real, just used as placeholder to fill the last left page
+];
+
+
+exports.eq1_9 = [
+    {}, // not real, just used as placeholder so that 000 faces right because we can't print on the other side of the cover
+    {
+        start:2,
+        end:25,
+        prefix:'_',
+        replace: {
+            20: 'copyright.png' // copyright replaces 20, need to incorporate the original publishing note
+        }
+    },
+    {},
+    {
+        start:1,
+        end:314
+    },
+    {
+        start:1,
+        end:21,
+        prefix:'x'
+    },
+    {} // not real, just used as placeholder to fill the last left page
+];
+

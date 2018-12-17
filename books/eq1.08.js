@@ -74,7 +74,7 @@ exports.data = {
             pageEnd: 48,
             skip: [6],
             addPage: [
-                {filename: '032.jpg', after: '032.png'}
+                {filename: '032image.jpg', after: '032.png'}
             ],
             pub: 'aa',
             pubClass: 'b',
