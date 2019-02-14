@@ -12,7 +12,7 @@ function filenameFromPageNumber(n) {
 
 let goToFolder = false; // set to true if there are too many pages for command line, CMD must be copied to the google drive folder
 
-let googleFolder = 'F:/googledrive/The Equinox';
+let googleFolder = 'D:/googledrive/The Equinox';
 let baseFolder = googleFolder;
 if (goToFolder) baseFolder = '.';
 
@@ -24,7 +24,7 @@ const lines = [], linesLow = [], merge = [];
 
 if (goToFolder) {
     lines.push('cd ' + googleFolder);
-    lines.push('F:');
+    lines.push('D:');
 }
 
 
@@ -32,8 +32,8 @@ data.books.forEach(book => {
 
     book.contents.forEach(item => {
 
-        if (book.folder === '1.9' && item.pageStart===23) {}
-        else return;
+        //if (book.folder === '1.9' && item.pageStart===23) {}
+        //else return;
 
         //if (!item.hasOwnProperty('filename')) return;
 
