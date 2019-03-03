@@ -149,7 +149,8 @@ exports.data = {
             author: 'crowley',
             pageStart: 117,
             pageEnd: 136,
-            skip: [118]
+            skip: [118],
+            related: [{url: 'http://www.oto-hu.org/documents/publication/english/Liber_CCCXXV.html'}]
         },
         {
             title: 'THE TESTAMENT OF MAGDALEN BLAIR',
