@@ -11,7 +11,6 @@ exports.data = {
             pageEnd: 3,
             addPage: [{filename: '_cover.jpg'}],
             skip:[2],
-            prefix: '_',
             filename: 'cover-title-and-contents'
         },
         {
@@ -223,6 +222,7 @@ exports.data = {
             filename: 'advertisements',
             pageStart: 1,
             pageEnd: 23,
+            addPage: [{filename: '_back.jpg', after:'x023.png'}],
             prefix: 'x',
             pageInfo: 'ads'
         }

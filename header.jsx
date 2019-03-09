@@ -107,7 +107,10 @@ export class Description extends React.Component {
                 All original scans from first editions of The Equinox and other related works, <a href="process.html">learn about the process here</a>.
             </div>
             <div className="description-item">
-                1.1-9, 3.1, and 777 are complete, 1.10 is in the works and will be released as it is completed.
+                <a href="https://groups.google.com/forum/#!forum/keepsilence/join">Join our announcement only email list</a> or <a href="https://groups.google.com/forum/feed/keepsilence/msgs/rss.xml?num=15">subscribe to the rss feed</a> to be notified when new content is available or when new print versions are released.
+            </div>
+            <div className="description-item">
+                1.1-10, 3.1, 777, and ΘΕΛΗΜΑ are complete. Collected Works, Book 4 Part II, and The Book of Lies are in the works and will be released as they are completed.
             </div>
             <div className="description-item">
                 Please consider supporting this project by either <a href="donate.html">donating directly</a> or <a href="merch.html">buying merchandise created from the scans</a>.
@@ -123,9 +126,7 @@ export class Description extends React.Component {
                     {buyLinks}
                 </div>
             </div>
-            <div>
-                <a href="https://groups.google.com/forum/#!forum/keepsilence/join">Join our announcement only email list</a> or <a href="https://groups.google.com/forum/feed/keepsilence/msgs/rss.xml?num=15">subscribe to the rss feed</a> to be notified when new content is available or when new print versions are released.
-            </div>
+
         </div>;
     }
 

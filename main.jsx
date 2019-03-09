@@ -47,6 +47,7 @@ var filterOptions = {
     '1.7': {folder:'1.7'},
     '1.8': {folder:'1.8'},
     '1.9': {folder:'1.9'},
+    '1.10': {folder:'1.10'},
     '3.1': {folder:'3.1'}
 };
 
@@ -287,11 +288,10 @@ class Index extends React.Component {
 
                 <div className="filter">
                     <div className="filter-section">
-                        <div className="filter-row">
-                            <div className={"filter-button noselect " + (this.state.selected==='aa' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'aa')}><span className="filter-text">A∴A∴</span></div>
-                            <div className={"filter-button noselect " + (this.state.selected==='oto' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'oto')}><span className="filter-text">O.T.O.</span></div>
 
-                            <div className="filter-right">
+
+                        <div className="filter-row">
+
                                 <FilterButton text="1.1" value="1.1" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                                 <FilterButton text="1.2" value="1.2" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                                 <FilterButton text="1.3" value="1.3" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
@@ -301,25 +301,38 @@ class Index extends React.Component {
                                 <FilterButton text="1.7" value="1.7" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                                 <FilterButton text="1.8" value="1.8" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                                 <FilterButton text="1.9" value="1.9" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                                <FilterButton text="1.10" value="1.10" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                                 <FilterButton text="3.1" value="3.1" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                                 <FilterButton text="ΘΕΛΗΜΑ" value="thelema" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                                 <FilterButton text="777" value="777" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                                 <FilterButton text="BOOK 4" value="book4" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            </div>
-
 
                         </div>
+
+
+
                         <div className="filter-row">
+
+                            <div className={"filter-button noselect " + (this.state.selected==='oto' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'oto')}><span className="filter-text">O.T.O.</span></div>
+                            <div className={"filter-button noselect " + (this.state.selected==='aa' ? 'selected' : 'not-selected')} style={{marginRight:'0.7em'}} onClick={this.onClick.bind(this, 'aa')}><span className="filter-text">A∴A∴</span></div>
+
+
                             <FilterButton text="Class A" value="class-a" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                             <FilterButton text="Class B" value="class-b" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                             <FilterButton text="Class C" value="class-c" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                             <FilterButton text="Class D" value="class-d" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                             <FilterButton text="Class E" value="class-e" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <div className="filter-item">Author: <select onChange={this.onPersonChange}>
-                                <option value=""></option>
-                                {authorOptions}
-                            </select></div>
+
+                            <div className="filter-right">
+                                <div className="filter-item"><select style={{textAlignLast: 'center'}} onChange={this.onPersonChange}>
+                                    <option value="">--- Author ---</option>
+                                    {authorOptions}
+                                </select></div>
+                            </div>
+
                         </div>
+
+
                         <div className="filter-row">
                             <FilterButton text="Probationer" value="grade0" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                             <FilterButton text="Neophyte" value="grade1" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
@@ -329,6 +342,8 @@ class Index extends React.Component {
                             <FilterButton text="Dominus Liminis" value="grade5" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                             <FilterButton text="Major Adept" value="grade6" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                         </div>
+
+
                     </div>
 
                 </div>
