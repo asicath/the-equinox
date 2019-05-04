@@ -1,12 +1,12 @@
 const fs = require('fs');
 
-let path = `G:\\scan\\collected works\\out`;
+let path = `G:\\the-equinox\\collected works\\3out`;
 
 let filenames = fs.readdirSync(path);
 
 let files = [];
 //CW_DO_054_2R
-let re = /CW_DO_(\d\d\d)_(\d)[RL]/;
+let re = /CW_DO_Vol_III_(\d\d\d)_(\d)[RL]/;
 filenames.forEach(filename => {
     //console.log(filename);
 
@@ -36,9 +36,10 @@ files.sort((a, b) => {
 
 
 
-let pageNumber = 75;
+let pageNumber = 1;
 
-files.forEach(file => {
+for (let i = 0; i < files.length; i++) {
+    let file = files[i];
 
     let page = pageNumber.toString();
     if (page.length < 3) page = "0" + page;
@@ -51,6 +52,7 @@ files.forEach(file => {
     fs.renameSync(path + "\\" + file.filename, path + "\\" + file.renameTo);
 
     pageNumber++;
-});
 
+    if (pageNumber === 92) pageNumber = 94;
+}
 
