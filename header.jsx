@@ -32,8 +32,8 @@ export class Description extends React.Component {
             '164316158X', // 5
             '1643161598', // 6
             '1644673568', // 7
-            '', // 8
-            '', // 9
+            '1644673576', // 8
+            '1644673584', // 9
             '', // 10
         ];
 
@@ -49,8 +49,8 @@ export class Description extends React.Component {
                     '1129261507', // 5
                     '1129551990', // 6
                     '1129958292', // 7
-                    '', // 8
-                    '', // 9
+                    '1130791429', // 8
+                    '1130791440', // 9
                     '', // 10
                 ]
             },
@@ -80,8 +80,8 @@ export class Description extends React.Component {
                     '9781643161587', // 5
                     '9781643161594', // 6
                     '9781644673560', // 7
-                    '', // 8
-                    '', // 9
+                    '9781644673577', // 8
+                    '9781644673584', // 9
                     '', // 10
                 ]
             },
@@ -110,15 +110,18 @@ export class Description extends React.Component {
                 <a href="https://groups.google.com/forum/#!forum/keepsilence/join">Join our announcement only email list</a> or <a href="https://groups.google.com/forum/feed/keepsilence/msgs/rss.xml?num=15">subscribe to the rss feed</a> to be notified when new content is available or when new print versions are released.
             </div>
             <div className="description-item">
-                1.1-10, 3.1, 777, and ΘΕΛΗΜΑ are complete. Collected Works, Book 4 Part II, and The Book of Lies are in the works and will be released as they are completed.
+                1.1-10, 3.1, 777, ΘΕΛΗΜΑ, and Book 4 Part I are complete. Collected Works, Book 4 Part II, and The Book of Lies are in the works and will be released as they are completed.
             </div>
             <div className="description-item">
                 Please consider supporting this project by either <a href="donate.html">donating directly</a> or <a href="merch.html">buying merchandise created from the scans</a>.
             </div>
             <div className="description-item retail-section">
 
+                <div className="retail-desc-top">
+                    Print editions of Vol 1. No 1-9. now available at most major online book retailers!
+                </div>
+
                 <div className="inline retail-desc">
-                    Print editions of Vol 1. No 1-7. now available at most major online book retailers!
                     Note that due to the print on demand nature process, sometimes these retailers indicate out of stock, but if you order they generally process the order quickly.
                     U.S. customers should never pay more than $30 including shipping, from amazon.com you might need to look in the list of new sellers to buy directly from amazon.com.
                 </div>
