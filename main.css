@@ -276,13 +276,17 @@ table td {
     border-radius: 0.5em;
 }
 .retail-desc {
-    width: 31em;
+    width: 21.5em;
+    font-size: 0.8em;
+}
+.retail-desc-top {
     font-size: 0.8em;
 }
 .buy-links {
     display: inline-block;
     vertical-align: top;
-    margin-left: 0.5em;
+    margin-left: 1em;
+    margin-top: 0.3em;
 }
 .buy-site {
     width: 7.5em;
