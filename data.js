@@ -11,7 +11,7 @@
  LIBER CCCXXXIII. THE BOOK OF LIES
 
  3 COURSE V - Practicus
- LIBER LXVII. THE SWORD OF SONG.
+ LIBER LXVII. THE SWORD OF SONG. (In collected works vol 2)
 
  5 COURSE VII Dominus Liminis
  LIBER XCV. THE WAKE WORLD (in Konx Om Pax).
@@ -20,10 +20,15 @@
  LIBER XLIV. THE MASS OF THE PHCENIX. A Ritual of the Law.
  LIBER XLI. THIEN TAO. An Essay on Attainment by the Way of Equilibrium.  (in Konx Om Pax).
 
+
+ TANNHÄUSER, by A. Crowley. An allegorical drama concerning the Progress of the Soul; the Tannhäuser story slightly remodelled.
+
  */
 
 const data = {
     books: [
+        require('./books/collectedworks1').data,
+        require('./books/collectedworks2').data,
         require('./books/777').data,
         require('./books/thelema').data,
         require('./books/eq1.01').data,

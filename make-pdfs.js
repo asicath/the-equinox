@@ -32,12 +32,13 @@ data.books.forEach(book => {
 
     book.contents.forEach(item => {
 
-        if (book.folder !== '1.10') return;
+        if (book.folder !== 'collectedworks/1') return;
+
         //else return;
 
         //if (!item.hasOwnProperty('filename')) return;
 
-        if (item.title !== 'ADVERTISEMENTS' && item.title !== 'COVER, TITLE, AND TABLE OF CONTENTS') return;
+        if (item.title !== 'EPILOGUE') return;
         //if (item.pageStart !== 211) return;
 
 
@@ -100,8 +101,11 @@ data.books.forEach(book => {
         let imagesCmd = images.join(';');
         //let pdfName = `./${book.folder}/${item.filename}.pdf`;
 
+        let title = item.altTitle || item.title;
+        title = title.replace(/—/g, "-");
+
         if (!item.hasOwnProperty('filename')) {
-            item.filename = item.title.replace(/É/g, 'E').toLowerCase().replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE").replace(/—/g, "-");
+            item.filename = title.replace(/É/g, 'E').replace(/Ä/g, 'A').toLowerCase().replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE").replace(/—/g, "-").replace(/:/g, "");
         }
         let filename = item.filename.replace(/\s/g, '-').replace(/[.!?]/g, '');
         let pdfName = baseFolder + `/scans/${book.folder}/pdf-600dpi/${filename}.pdf`;
@@ -112,15 +116,10 @@ data.books.forEach(book => {
             pubTitle = book.pubTitle;
         }
 
-        //let bookTitle = `The Equinox ${book.folder} (${book.pubLocation}: ${book.pubName}, ${book.pubYear})`;
-        //let pdfTitle = `${item.title}. ${bookTitle}, ${pageInfo}.`;
-        let title = item.title;
-        title = title.replace(/—/g, "-");
-
         //MLA: Crowley, Aleister. "LIBER O." The Equinox 1.2 (1909): 11-30.
         let pdfTitle = `""${title}."" ${pubTitle} (${book.pubYear}): ${pageInfo}.`;
 
-        pdfTitle = pdfTitle.replace(/∴/g, "").replace(/Æ/g, "AE").replace(/É/g, 'E');
+        pdfTitle = pdfTitle.replace(/∴/g, "").replace(/Æ/g, "AE").replace(/É/g, 'E').replace(/Ä/g, 'A');
 
         const cmd = `naps2.console -i "${imagesCmd}" -n 0 -o "${pdfName}" --enableocr --ocrlang "eng+lat+grc+heb" --pdftitle "${pdfTitle}" --force`;
         lines.push(cmd);
