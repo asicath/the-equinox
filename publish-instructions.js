@@ -403,7 +403,7 @@ exports.eq1_10 = [
         start:1,
         end:224,
         insert: [
-            {file:'001image.png', blank:'before'},
+            {file:'001image.jpg', before:1, blank:'before'},
             {file:'095image.png', after:94, blank:'before'}
         ],
         replace: {
@@ -430,4 +430,43 @@ exports.eq1_10 = [
         prefix:'x'
     },
     {} // not real, just used as placeholder to fill the last left page
+];
+
+exports.thelema = [
+
+    // they all start with three blank pages
+    {},
+    {},
+
+    {},
+    {},
+
+    {},
+    {},
+
+    {
+        start:1,
+        end:64,
+        prefix:'1/'
+    },
+    {
+        start:1,
+        end:44,
+        prefix:'2/'
+    },
+    {
+        start:1,
+        end:66,
+        prefix:'3/'
+    },
+
+    // three blank pages at the end
+    {},
+    {},
+
+    {},
+    {},
+
+    {},
+    {},
 ];

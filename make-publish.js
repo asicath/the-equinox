@@ -3,8 +3,11 @@ const path = require('path');
 
 let intructions = require('./publish-instructions');
 
-let dir = '1.8';
+let dir = '1.10';
 let target = intructions['eq' + dir.replace('.', '_')];
+
+//let dir = 'thelema';
+//let target = intructions[dir];
 
 function filenameFromPageNumber(n) {
     let filename = n.toString();
@@ -12,6 +15,7 @@ function filenameFromPageNumber(n) {
         filename = "0" + filename;
     }
     filename += '.png';
+    //filename += '.jpg';
     return filename;
 }
 
@@ -34,12 +38,21 @@ target.forEach(instruction => {
         if (instruction.hasOwnProperty('insert')) {
             instruction.insert.forEach(o => {
 
-                if (!insert.hasOwnProperty(o.after)) {
-                    insert[o.after] = [];
+                let index = o.after || 'BEFORE';
+                if (!insert.hasOwnProperty(index)) {
+                    insert[index] = [];
                 }
-
-                insert[o.after].push(o);
+                insert[index].push(o);
             });
+        }
+
+        // add all the befores
+        if (insert.hasOwnProperty('BEFORE')) {
+            insert['BEFORE'].forEach(o => {
+                if (o.hasOwnProperty('blank') && o.blank === 'before') images.push(folder + blank);
+                images.push(folder + o.file);
+                if (o.hasOwnProperty('blank') && o.blank === 'after') images.push(folder + blank);
+            })
         }
 
         // go through each page
