@@ -161,5 +161,56 @@ exports.data = {
             prefix: 'ad',
             pageInfo: 'ads 1-8'
         }
-    ]
+    ],
+    publish: {
+        instructions: [
+
+            {}, // not real, just used as placeholder so that 000 faces right because we can't print on the other side of the cover
+            {file:'_001.png'}, // actually the inside cover
+            {file:'_002.png'},
+            {file:'_003.png'},
+            {file:'_004.png'},
+            {file:'_005.png'},
+            {file:'_006.png'},
+            {file:'_007.png'},
+            {file:'_008.png'},
+            {file:'_009.png'},
+            {file:'_010.png'},
+            {file:'copyright.png'},
+            {file:'_012.png'},
+            {},
+            {file:'_014.png'},
+            {},
+            {
+                start:1,
+                end:331,
+                insert: [
+                    {file:'004image.png', after:4, blank:'after'},
+                    {file:'010image.jpg', after:10, blank:'after'},
+                    {file:'210image.png', after:210, blank:'after'},
+                    {file:'212image.png', after:212, blank:'after'},
+                    {file:'218image.png', after:218, blank:'after'},
+                    {file:'222image.png', after:222, blank:'after'}
+                ]
+            },
+            {},
+            {
+                start:1,
+                end:76,
+                prefix:'s',
+                insert: [
+                    {file:'s004image.png', after:4, blank:'after'},
+                    {file:'s074image.png', after:74, blank:'after'}
+                ]
+            },
+            {
+                start:1,
+                end:7,
+                prefix:'ad'
+            },
+
+            {} // not real, just used as placeholderto fill the last left page
+
+        ]
+    }
 };

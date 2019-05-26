@@ -88,5 +88,8 @@ exports.data = {
             pageEnd: 283
         }
 
-    ]
+    ],
+    publish: {
+        instructions:[]
+    }
 };

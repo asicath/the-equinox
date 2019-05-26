@@ -215,6 +215,8 @@ exports.data = {
             prefix: 'ad',
             pageInfo: 'ads 1-11'
         }
-    ]
-
+    ],
+    publish: {
+        instructions:[]
+    }
 };

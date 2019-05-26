@@ -73,5 +73,8 @@ exports.data = {
             pageEnd: 57,
             filename: 'equinox advertisement'
         }
-    ]
+    ],
+    publish: {
+        instructions:[]
+    }
 };

@@ -1,21 +1,23 @@
 const fs = require('fs');
 const path = require('path');
+const data = require('./data').data;
 
-let intructions = require('./publish-instructions');
+const book = data.books.find(book => {
+    if (book.folder === 'thelema') return true;
+});
 
-let dir = '1.10';
-let target = intructions['eq' + dir.replace('.', '_')];
+const instructions = book.publish.instructions;
 
-//let dir = 'thelema';
-//let target = intructions[dir];
+let dir = book.folder;
+
+let extension = book.publish.extension || '.png';
 
 function filenameFromPageNumber(n) {
     let filename = n.toString();
     while (filename.length < 3) {
         filename = "0" + filename;
     }
-    filename += '.png';
-    //filename += '.jpg';
+    filename += extension;
     return filename;
 }
 
@@ -23,10 +25,10 @@ function filenameFromPageNumber(n) {
 
 let root = path.resolve(__dirname, `710/${dir}/`);
 let folder = 'img/';
-let blank = 'blank.png';
+let blank = 'blank' + extension;
 
 let images = [];
-target.forEach(instruction => {
+instructions.forEach(instruction => {
 
     if (instruction.hasOwnProperty('file')) {
         images.push(folder + instruction.file);

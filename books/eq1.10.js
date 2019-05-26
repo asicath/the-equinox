@@ -226,5 +226,46 @@ exports.data = {
             prefix: 'x',
             pageInfo: 'ads'
         }
-    ]
+    ],
+    publish: {
+        instructions: [
+            {}, // not real, just used as placeholder so that 000 faces right because we can't print on the other side of the cover
+            {
+                start:2,
+                end:42,
+                prefix:'_'
+            },
+            {
+                start:1,
+                end:224,
+                insert: [
+                    {file:'001image.jpg', before:1, blank:'before'},
+                    {file:'095image.png', after:94, blank:'before'}
+                ],
+                replace: {
+                    2: 'copyright.png' // copyright replaces 2, need to incorporate the original publishing note
+                }
+            },
+            {
+                start:1,
+                end:16,
+                prefix:'s_'
+            },
+            {
+                start:1,
+                end:292,
+                prefix:'s'
+            },
+            {
+                start:225,
+                end:244
+            },
+            {
+                start:1,
+                end:23,
+                prefix:'x'
+            },
+            {} // not real, just used as placeholder to fill the last left page
+        ]
+    }
 };

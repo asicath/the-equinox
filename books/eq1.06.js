@@ -188,5 +188,46 @@ exports.data = {
             prefix: 'xad',
             pageInfo: 'ads'
         }
-    ]
+    ],
+    publish: {
+        instructions: [
+            {}, // not real, just used as placeholder so that 000 faces right because we can't print on the other side of the cover
+            {file:'_002.png'}, // actually the inside cover
+            {file:'_003.png'},
+            {file:'_004.png'},
+            {file:'_005.png'},
+            {file:'_006.png'},
+            {file:'_007.png'},
+            {file:'_008.png'},
+            {file:'_009.png'},
+            {file:'copyright.png'}, // need to incorporate the original publishing note #10
+            {file:'_011.png'},
+            {},
+            {
+                start:1,
+                end:170,
+                insert: []
+            },
+            {},
+            {},
+            {
+                start:1,
+                end:6,
+                prefix:'s_',
+                insert: []
+            },
+            {
+                start:1,
+                end:124,
+                prefix:'s',
+                insert: []
+            },
+            {
+                start:1,
+                end:11,
+                prefix:'xad'
+            },
+            {} // not real, just used as placeholder to fill the last left page
+        ]
+    }
 };

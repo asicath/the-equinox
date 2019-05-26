@@ -305,5 +305,58 @@ exports.data = {
             pageInfo: 'ads 1-7'
         }
 
-    ]
+    ],
+    publish: {
+        instructions: [
+
+            {}, // not real, just used as placeholder so that 000 faces right because we can't print on the other side of the cover
+            {file:'_002.png'}, // actually the inside cover
+            {file:'_003.png'},
+            {file:'_004.png'},
+            {file:'_005.png'},
+            {file:'_006.png'},
+            {file:'_007.png'},
+            {file:'_008.png'},
+            {file:'_009.png'},
+            {file:'_010.png'},
+            {file:'_011.png'},
+            {file:'copyright.png'},
+            {file:'_013.png'},
+            {file:'_014.png'},
+            {file:'_015.png'},
+            {file:'_016.png'},
+            {
+                start:1,
+                end:352,
+                insert: [
+                    {file:'011image.png', after:10, blank:'before'},
+                    {file:'090image.png', after:90, blank:'after'},
+                    {file:'108image.png', after:108, blank:'after'},
+                    {file:'114image.png', after:114, blank:'after'},
+                    {file:'199image.png', after:198, blank:'before'}
+                ]
+            },
+            {
+                start:1,
+                end:8,
+                prefix:'r',
+                insert: []
+            },
+            {
+                start:1,
+                end:113,
+                prefix:'s',
+                insert: []
+            },
+            {},
+            {
+                start:1,
+                end:7,
+                prefix:'xad'
+            },
+
+            {} // not real, just used as placeholder to fill the last left page
+
+        ]
+    }
 };

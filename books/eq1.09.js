@@ -224,5 +224,29 @@ exports.data = {
             prefix: 'x',
             pageInfo: 'ads'
         }
-    ]
+    ],
+    publish: {
+        instructions: [
+            {}, // not real, just used as placeholder so that 000 faces right because we can't print on the other side of the cover
+            {
+                start:2,
+                end:25,
+                prefix:'_',
+                replace: {
+                    20: 'copyright.png' // copyright replaces 20, need to incorporate the original publishing note
+                }
+            },
+            {},
+            {
+                start:1,
+                end:314
+            },
+            {
+                start:1,
+                end:21,
+                prefix:'x'
+            },
+            {} // not real, just used as placeholder to fill the last left page
+        ]
+    }
 };

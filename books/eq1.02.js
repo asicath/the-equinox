@@ -205,5 +205,44 @@ exports.data = {
             prefix: 'ad',
             pageInfo: 'ads 0-9'
         }
-    ]
+    ],
+    publish: {
+        instructions: [
+
+            {}, // not real, just used as placeholder so that 000 faces right
+            {file:'_000.png'}, // actually the inside cover
+
+            {},
+            {},
+
+            // for some reason I put these in backwards...
+            {file:'_002.png'},
+            {file:'_001.png'},
+
+            {file:'_003.png'},
+            {file:'copyright.png'},
+            {file:'_004.png'},
+            {},
+            {file:'_005.png'},
+            {},
+            {
+                start:1,
+                end:397,
+                insert: [
+                    {file:'012image.png', after:12, blank:'after'}
+                ]
+            },
+            {
+                start:1,
+                end:7,
+                prefix:'ad'
+            },
+
+            {},
+            {},
+
+            {file:'ad008.png'}, // actually the inside cover
+            {} // not real, just used as placeholder so that 008 faces left
+        ]
+    }
 };

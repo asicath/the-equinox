@@ -82,5 +82,52 @@ exports.data = {
             grade: 4,
             skip:[65]
         }
-    ]
+    ],
+    publish: {
+        extension: '.jpg',
+        instructions: [
+
+            // they all start with three blank pages (one gets added)
+            {},
+            {},
+
+            //{},
+            //{},
+
+            {},
+            {},
+
+            {
+                start:1,
+                end:64,
+                prefix:'1/'
+            },
+
+            {},
+            {},
+            {
+                start:1,
+                end:44,
+                prefix:'2/'
+            },
+
+            {},
+            {},
+            {
+                start:1,
+                end:66,
+                prefix:'3/'
+            },
+
+            // three blank pages at the end (one gets added)
+            {},
+            {},
+
+            //{},
+            //{},
+
+            {},
+            {},
+        ]
+    }
 };
