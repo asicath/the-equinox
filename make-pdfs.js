@@ -32,13 +32,13 @@ data.books.forEach(book => {
 
     book.contents.forEach(item => {
 
-        if (book.folder !== 'collectedworks/1') return;
+        if (book.folder !== 'book4/2') return;
 
         //else return;
 
         //if (!item.hasOwnProperty('filename')) return;
 
-        if (item.title !== 'EPILOGUE') return;
+        if (item.title !== 'COVER AND TITLE') return;
         //if (item.pageStart !== 211) return;
 
 

@@ -23,8 +23,11 @@ function filenameFromPageNumber(n) {
 
 
 
-let root = path.resolve(__dirname, `710/${dir}/`);
-let folder = 'img/';
+//let root = path.resolve(__dirname, `710/${dir}/`);
+let root = 'G:/thelema-working/gutter/';
+
+//let folder = 'img/';
+let folder = '';
 let blank = 'blank' + extension;
 
 let images = [];

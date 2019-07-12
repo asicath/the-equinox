@@ -42,6 +42,7 @@ const data = {
         require('./books/eq1.09').data,
         require('./books/eq1.10').data,
         require('./books/book4.1').data,
+        require('./books/book4.2').data,
         require('./books/eq3.01').data
     ]
 };

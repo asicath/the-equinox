@@ -37,7 +37,7 @@ var filterOptions = {
 
     '777': {folder:'777'},
     'thelema': {folder:'thelema'},
-    'book4': {folder:'book4'},
+    'book4': {folderRe:/^book4/},
     'works': {folderRe:/^collectedworks/},
     '1.1': {folder:'1.1'},
     '1.2': {folder:'1.2'},

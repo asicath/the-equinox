@@ -34,7 +34,7 @@ export class Description extends React.Component {
             '1644673568', // 7
             '1644673576', // 8
             '1644673584', // 9
-            '', // 10
+            '1644673592', // 10
         ];
 
         let retailers = [
@@ -51,7 +51,7 @@ export class Description extends React.Component {
                     '1129958292', // 7
                     '1130791429', // 8
                     '1130791440', // 9
-                    '', // 10
+                    '1131970593', // 10
                 ]
             },
             {
@@ -72,6 +72,7 @@ export class Description extends React.Component {
             {
                 title: 'Book Depository',
                 url: 'https://www.bookdepository.com/Equinox-Aleister-Crowley/###',
+                // https://www.bookdepository.com/publishers/Scott-Wilde
                 ids: [
                     '9781642556858', // 1
                     '9781643167800', // 2
@@ -82,7 +83,7 @@ export class Description extends React.Component {
                     '9781644673560', // 7
                     '9781644673577', // 8
                     '9781644673584', // 9
-                    '', // 10
+                    '9781644673591', // 10
                 ]
             },
         ];
@@ -93,7 +94,7 @@ export class Description extends React.Component {
                 if (id === '') return;
                 let url = retailer.url.replace('###', id);
                 let space = (index === 0) ? '' : ' | ';
-                return <span>{space}<a target="_blank" href={url}>No.{index+1}</a></span>
+                return <span>{space}<a target="_blank" href={url}>1.{index+1}</a></span>
             });
 
             return <div class="retailer">
@@ -117,11 +118,10 @@ export class Description extends React.Component {
             </div>
             <div className="description-item retail-section">
 
-                <div className="retail-desc-top">
-                    Print editions of Vol 1. No 1-9. now available at most major online book retailers!
-                </div>
+                <div className="retail-desc-top"></div>
 
                 <div className="inline retail-desc">
+                    Print editions for all of Vol 1. are now available at most major online book retailers!
                     Note that due to the print on demand nature process, sometimes these retailers indicate out of stock, but if you order they generally process the order quickly.
                     U.S. customers should never pay more than $30 including shipping, from amazon.com you might need to look in the list of new sellers to buy directly from amazon.com.
                 </div>

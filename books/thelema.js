@@ -84,7 +84,7 @@ exports.data = {
         }
     ],
     publish: {
-        extension: '.jpg',
+        extension: '.tif',
         instructions: [
 
             // they all start with three blank pages (one gets added)
