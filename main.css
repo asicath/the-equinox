@@ -238,6 +238,7 @@ table td {
     border-radius: 0.5em;
     cursor: pointer;
     height: 1.2em;
+    font-size: 0.98em;
 }
 .filter-right {
     float:right;

@@ -46,7 +46,11 @@ exports.data = {
             title: 'THE SWORD OF SONG',
             subtitle: 'CALLED BY CHRISTIANS THE BOOK OF THE BEAST',
             pageStart: 140,
-            pageEnd: 211
+            pageEnd: 211,
+            pub: 'aa',
+            pubClass: 'c',
+            number: 67,
+            grade: 3
         },
         {
             title: 'AMBROSII MAGI HORTUS ROSARUM',

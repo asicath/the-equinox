@@ -4,7 +4,7 @@ exports.data = {
     pubName: 'Wieland and Co.',
     pubLocation: 'South Kensington',
     pubYear: '1912',
-    folder: 'book4',
+    folder: 'book4/1',
     creditFilename: 'credits-bookiv.pdf',
     contents: [
 

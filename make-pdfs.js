@@ -1,6 +1,9 @@
 const fs = require('fs');
 const data = require('./data').data;
 
+const apr = require('./books/apr').data;
+data.books.push(apr);
+
 function filenameFromPageNumber(n) {
     let filename = n.toString();
     while (filename.length < 3) {
@@ -16,8 +19,8 @@ let googleFolder = 'D:/googledrive/The Equinox';
 let baseFolder = googleFolder;
 if (goToFolder) baseFolder = '.';
 
-function pathFromFilename(book, filename) {
-    return baseFolder + `/scans/${book.folder}/600dpi/${filename}`;
+function pathFromFilename(book, filename, imgFolder) {
+    return baseFolder + `/scans/${book.folder}${imgFolder}/${filename}`;
 }
 
 const lines = [], linesLow = [], merge = [];
@@ -32,15 +35,17 @@ data.books.forEach(book => {
 
     book.contents.forEach(item => {
 
-        if (book.folder !== 'book4/2') return;
+        if (book.folder !== 'apr') return;
 
         //else return;
 
         //if (!item.hasOwnProperty('filename')) return;
 
-        if (item.title !== 'COVER AND TITLE') return;
+        //if (item.title !== 'ERRATA') return;
         //if (item.pageStart !== 211) return;
 
+
+        let imgFolder = '/600dpi';
 
         // compile images
         let images = [];
@@ -49,7 +54,7 @@ data.books.forEach(book => {
         // add the images before hand
         if (item.hasOwnProperty('addPage')) {
             item.addPage.forEach(page => {
-                let path = pathFromFilename(book, page.filename);
+                let path = pathFromFilename(book, page.filename, imgFolder);
 
                 // if position specified
                 if (page.hasOwnProperty('after')) {
@@ -81,7 +86,7 @@ data.books.forEach(book => {
                 let filename = filenameFromPageNumber(i);
                 if (item.hasOwnProperty('prefix')) filename = item.prefix + filename;
 
-                let path = pathFromFilename(book, filename);
+                let path = pathFromFilename(book, filename, imgFolder);
                 images.push(path);
 
                 // find any images that must appear after this
@@ -124,7 +129,7 @@ data.books.forEach(book => {
         const cmd = `naps2.console -i "${imagesCmd}" -n 0 -o "${pdfName}" --enableocr --ocrlang "eng+lat+grc+heb" --pdftitle "${pdfTitle}" --force`;
         lines.push(cmd);
 
-        let cmdLow = cmd.replace(/600dpi/g, '150dpi').replace(/\.pdf/, '_low.pdf');
+        let cmdLow = cmd.replace(imgFolder, '150dpi').replace(/\.pdf/, '_low.pdf');
         linesLow.push(cmdLow);
 
         let creditFilename = 'credits.pdf';
@@ -139,7 +144,7 @@ data.books.forEach(book => {
         let cmdMerge = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfName}" "${creditPdf}" ${creditMerged}`;
         merge.push(cmdMerge);
 
-        let pdfNameLow = pdfName.replace(/600dpi/g, '150dpi').replace(/\.pdf/, '_low.pdf');
+        let pdfNameLow = pdfName.replace(imgFolder, '150dpi').replace(/\.pdf/, '_low.pdf');
         let cmdMergeLow = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfNameLow}" "${creditPdfLow}" ${creditMergedLow}`;
         merge.push(cmdMergeLow);
 

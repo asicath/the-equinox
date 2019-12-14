@@ -35,6 +35,7 @@ var filterOptions = {
     'oto': {pub: 'oto'},
     'other': {isOther:true},
 
+    '333': {folder:'333'},
     '777': {folder:'777'},
     'thelema': {folder:'thelema'},
     'book4': {folderRe:/^book4/},
@@ -312,6 +313,7 @@ class Index extends React.Component {
                             <FilterButton text="3.1" value="3.1" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                             <FilterButton text="ΘΕΛΗΜΑ" value="thelema" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                             <FilterButton text="777" value="777" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                            <FilterButton text="333" value="333" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                             <FilterButton text="BOOK 4" value="book4" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                             <FilterButton text="WORKS" value="works" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                         </div>

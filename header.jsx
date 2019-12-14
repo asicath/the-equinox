@@ -111,7 +111,7 @@ export class Description extends React.Component {
                 <a href="https://groups.google.com/forum/#!forum/keepsilence/join">Join our announcement only email list</a> or <a href="https://groups.google.com/forum/feed/keepsilence/msgs/rss.xml?num=15">subscribe to the rss feed</a> to be notified when new content is available or when new print versions are released.
             </div>
             <div className="description-item">
-                1.1-10, 3.1, 777, ΘΕΛΗΜΑ, and Book 4 Part I are complete. Collected Works, Book 4 Part II, and The Book of Lies are in the works and will be released as they are completed.
+                1.1-10, 3.1, 777, ΘΕΛΗΜΑ, and Book 4 Part I&2 are complete. Collected Works, The Goetia, Knox Om Pax, and The Book of Lies are in the works and will be released as they are completed.
             </div>
             <div className="description-item">
                 Please consider supporting this project by either <a href="donate.html">donating directly</a> or <a href="merch.html">buying merchandise created from the scans</a>.
@@ -127,6 +127,9 @@ export class Description extends React.Component {
                 </div>
                 <div className="buy-links">
                     {buyLinks}
+                </div>
+                <div style={{margin:'0.5em 0.5em 0 0.5em'}}>
+                    <a href="https://www.etsy.com/shop/HorizonLodge?ref=keepsilence&fbclid=IwAR3rar4Wh6j0ud7pNJaNmJyvJkY-eed48w-84NPKW-sUft-4od8M1t-geiM">Limited print edition of ΘΕΛΗΜΑ now available! Original print size or hardcover oversized edition.<br/>100% of net proceeds go to Horizon Lodge O.T.O. in Seattle, WA.</a>
                 </div>
             </div>
 

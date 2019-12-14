@@ -91,9 +91,6 @@ exports.data = {
             {},
             {},
 
-            //{},
-            //{},
-
             {},
             {},
 
@@ -122,9 +119,6 @@ exports.data = {
             // three blank pages at the end (one gets added)
             {},
             {},
-
-            //{},
-            //{},
 
             {},
             {},
