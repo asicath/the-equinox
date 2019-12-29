@@ -22,6 +22,7 @@
 
 const data = {
     books: [
+        require('./books/goetia').data,
         require('./books/collectedworks1').data,
         require('./books/collectedworks2').data,
         require('./books/777').data,
@@ -61,6 +62,7 @@ data.authors = [
     {last:'Kennedy', other:'Leon Engers'},
     {last:'Lévi', other:'Éliphas'},
     {last:'Ludlow', other:'Fitz Hugh'},
+    {last:'Mathers', other:'Macgregor'},
     {last:'Murchison', other:'Hector'},
     {last:'Neuburg', other:'Victor B.'},
     {last:'Perry', other:'S.H.'},
