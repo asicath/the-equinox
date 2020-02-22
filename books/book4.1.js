@@ -128,6 +128,27 @@ exports.data = {
         },
     ],
     publish: {
-        instructions:[]
+        instructions:[
+            {
+                start:1,
+                end:10,
+                expectedBlank: [8],
+                prefix:'_',
+                insert: [
+                    {file:'copyright.png', before:1, blank:'before'}
+                ],
+            },
+            {
+                start:1,
+                end:96,
+                expectedBlank: [2,22,28,30,40,44,46,52,54,62,78],
+                prefix:'',
+                insert: [
+                    {file:'001image.png', before:1, blank:'before'},
+                    {file:'025image.png', before:25, blank:'before'}
+                ],
+            }
+
+        ]
     }
 };
