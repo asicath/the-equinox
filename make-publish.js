@@ -3,7 +3,7 @@ const path = require('path');
 const data = require('./data').data;
 
 const book = data.books.find(book => {
-    if (book.folder === 'thelema') return true;
+    if (book.folder === 'book4/1') return true;
 });
 
 const instructions = book.publish.instructions;
@@ -23,11 +23,11 @@ function filenameFromPageNumber(n) {
 
 
 
-//let root = path.resolve(__dirname, `710/${dir}/`);
-let root = 'G:/thelema-working/gutter/';
+let root = path.resolve(__dirname, `710/${dir}`);
+//let root = 'G:/thelema-working/gutter/';
 
 //let folder = 'img/';
-let folder = '';
+let folder = 'img/';
 let blank = 'blank' + extension;
 
 let images = [];
@@ -43,11 +43,23 @@ instructions.forEach(instruction => {
         if (instruction.hasOwnProperty('insert')) {
             instruction.insert.forEach(o => {
 
+                if (o.hasOwnProperty('before')) {
+                    o.after = o.before - 1;
+                }
+
                 let index = o.after || 'BEFORE';
                 if (!insert.hasOwnProperty(index)) {
                     insert[index] = [];
                 }
                 insert[index].push(o);
+
+                // check to see if it exists
+                //let full = path.resolve(`${root}/${folder}${instruction.prefix}${o.file}`);
+                let full = path.resolve(`${root}/${folder}${o.file}`);
+                if (!fs.existsSync(full)) {
+                    // assume blank if not found
+                    throw new Error('insert image not found: ' + full);
+                }
             });
         }
 
@@ -74,8 +86,15 @@ instructions.forEach(instruction => {
             // check to see if file exists
             let full = path.resolve(root + '/' + folder + file);
             if (!fs.existsSync(full)) {
-                // assume blank if not found
-                console.log('blank at: ' + file);
+
+                if (instruction.expectedBlank.indexOf(i) !== -1) {
+                    // assume blank if not found
+                    console.log(`blank at: ${file} - OK`);
+                }
+                else {
+                    console.warn(`blank at: ${file} - UNEXPECTED`);
+                }
+
                 images.push(folder + blank);
             }
 
