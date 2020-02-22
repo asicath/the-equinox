@@ -1,6 +1,7 @@
 const fs = require('fs');
 const data = require('./data').data;
 
+// lets add APR just for making pdfs
 const apr = require('./books/apr').data;
 data.books.push(apr);
 
@@ -13,14 +14,14 @@ function filenameFromPageNumber(n) {
     return filename;
 }
 
-let goToFolder = false; // set to true if there are too many pages for command line, CMD must be copied to the google drive folder
+let goToFolder = false; // set to true if there are too many pages for command line, CMD must be copied to the "scans" folder of google drive
 
-let googleFolder = 'D:/googledrive/The Equinox';
+let googleFolder = 'D:/googledrive/The Equinox/scans';
 let baseFolder = googleFolder;
 if (goToFolder) baseFolder = '.';
 
 function pathFromFilename(book, filename, imgFolder) {
-    return baseFolder + `/scans/${book.folder}${imgFolder}/${filename}`;
+    return baseFolder + `/${book.folder}/${imgFolder}/${filename}`;
 }
 
 const lines = [], linesLow = [], merge = [];
@@ -33,19 +34,18 @@ if (goToFolder) {
 
 data.books.forEach(book => {
 
+    let imgFolder = book.imgFolder || '600dpi';
+    let imgFolderRe = new RegExp(imgFolder, 'g'); ///600dpi/g;
+
+    let makeLowRes = book.makeLowRes || true;
+
     book.contents.forEach(item => {
 
         if (book.folder !== 'apr') return;
 
-        //else return;
-
         //if (!item.hasOwnProperty('filename')) return;
-
         //if (item.title !== 'ERRATA') return;
         //if (item.pageStart !== 211) return;
-
-
-        let imgFolder = '/600dpi';
 
         // compile images
         let images = [];
@@ -99,22 +99,9 @@ data.books.forEach(book => {
 
         }
 
-
-        // finally add the credit
-        //images.push('../scans/credits/600dpi/_credits.png');
-
-        let imagesCmd = images.join(';');
-        //let pdfName = `./${book.folder}/${item.filename}.pdf`;
-
+        // --- TITLE ---
         let title = item.altTitle || item.title;
         title = title.replace(/—/g, "-");
-
-        if (!item.hasOwnProperty('filename')) {
-            item.filename = title.replace(/É/g, 'E').replace(/Ä/g, 'A').toLowerCase().replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE").replace(/—/g, "-").replace(/:/g, "");
-        }
-        let filename = item.filename.replace(/\s/g, '-').replace(/[.!?]/g, '');
-        let pdfName = baseFolder + `/scans/${book.folder}/pdf-600dpi/${filename}.pdf`;
-
 
         let pubTitle = 'The Equinox ' + book.folder;
         if (book.hasOwnProperty('pubTitle')) {
@@ -126,39 +113,45 @@ data.books.forEach(book => {
 
         pdfTitle = pdfTitle.replace(/∴/g, "").replace(/Æ/g, "AE").replace(/É/g, 'E').replace(/Ä/g, 'A');
 
+
+        // --- FILENAME ---
+        if (!item.hasOwnProperty('filename')) {
+            item.filename = title.replace(/É/g, 'E').replace(/Ä/g, 'A').toLowerCase().replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE").replace(/—/g, "-").replace(/:/g, "");
+        }
+        let filename = item.filename.replace(/\s/g, '-').replace(/[.!?]/g, '');
+        let pdfName = baseFolder + `/${book.folder}/pdf-${imgFolder}/${filename}.pdf`;
+
+        // --- compile the command ---
+        let imagesCmd = images.join(';');
         const cmd = `naps2.console -i "${imagesCmd}" -n 0 -o "${pdfName}" --enableocr --ocrlang "eng+lat+grc+heb" --pdftitle "${pdfTitle}" --force`;
         lines.push(cmd);
+        console.log(cmd);
 
-        let cmdLow = cmd.replace(imgFolder, '150dpi').replace(/\.pdf/, '_low.pdf');
-        linesLow.push(cmdLow);
-
+        // --- now add a credit joining line to the other .cmd ---
         let creditFilename = 'credits.pdf';
         if (book.hasOwnProperty('creditFilename')) creditFilename = book.creditFilename;
         if (item.hasOwnProperty('creditFilename')) creditFilename = item.creditFilename;
-
-        let creditPdf = baseFolder + '/scans/credits/pdf-600dpi/' + creditFilename;
-        let creditPdfLow = baseFolder + '/scans/credits/pdf-150dpi/' + creditFilename;
-        let creditMerged = `./${book.folder}/${filename}.pdf`;
-        let creditMergedLow = `./${book.folder}/${filename}_low.pdf`;
-
-        let cmdMerge = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfName}" "${creditPdf}" ${creditMerged}`;
+        const creditPdf = baseFolder + '/credits/pdf-600dpi/' + creditFilename;
+        const creditMerged = `./${book.folder}/${filename}.pdf`;
+        const cmdMerge = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfName}" "${creditPdf}" ${creditMerged}`;
         merge.push(cmdMerge);
 
-        let pdfNameLow = pdfName.replace(imgFolder, '150dpi').replace(/\.pdf/, '_low.pdf');
-        let cmdMergeLow = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfNameLow}" "${creditPdfLow}" ${creditMergedLow}`;
-        merge.push(cmdMergeLow);
+        if (makeLowRes) {
+            // --- now the LOW res version ---
+            const cmdLow = cmd.replace(imgFolderRe, '150dpi').replace(/\.pdf/, '_low.pdf');
+            linesLow.push(cmdLow);
 
-        console.log(cmd);
+            const pdfNameLow = pdfName.replace(imgFolderRe, '150dpi').replace(/\.pdf/, '_low.pdf');
+            const creditPdfLow = baseFolder + '/credits/pdf-150dpi/' + creditFilename;
+            const creditMergedLow = `./${book.folder}/${filename}_low.pdf`;
+            const cmdMergeLow = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfNameLow}" "${creditPdfLow}" ${creditMergedLow}`;
+            merge.push(cmdMergeLow);
+        }
+
     });
 
-    //fs.writeFileSync('pdfs/make-pdfs_high.cmd', lines.join('\n'));
-    //fs.writeFileSync('pdfs/make-pdfs_low.cmd', linesLow.join('\n'));
     fs.writeFileSync('pdfs/make-pdfs.cmd', lines.join('\n') + '\n' + linesLow.join('\n'));
-
     fs.writeFileSync('pdfs/join-pdfs.cmd', merge.join('\n'));
-
-    // java -jar pdfbox-app-x.y.z.jar PDFMerger <Source PDF files (2 ..n)> <Target PDF file>
-    //sejda-console merge -f ../scans/1.2/pdf-150dpi/advertisements_low.pdf ../scans/credits/pdf-150dpi/credits.pdf -o ./1.2/advertisements_low.pdf
 
 });
 
