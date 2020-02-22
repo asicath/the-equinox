@@ -102,32 +102,31 @@ exports.data = {
         }
     ],
     publish: {
-        extension: '.tif',
+        extension: '.png',
         instructions: [
 
-            // they all start with three blank pages (one gets added)
-            {},
-            {},
+            // one blank page both sides at beginning
+            //{},{},
 
-            {},
-            {},
+            // copyright page gets added on the left, so no extra page needed
 
             {
                 start:1,
                 end:131,
-                prefix:'1/',
+                expectedBlank: [4, 114],
+                prefix:'',
                 insert: [
-                    {file:'015image.tif', before:15, blank:'before'},
-                    {file:'094image.tif', after:94, blank:'after'}
+                    {file:'copyright.png', before:1, blank:'before'},
+                    {file:'015image.png', before:15, blank:'before'},
+                    {file:'094image.png', after:94, blank:'after'}
                 ],
             },
 
-            // three blank pages at the end (one gets added)
-            {},
-            {},
+            {}, // blank side of last page
 
-            {},
-            {},
+            // one blank page at the end
+            //{},{}
+
         ]
     }
 };
