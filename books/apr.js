@@ -5,18 +5,19 @@ exports.data = {
     pubYear: '1881',
     folder: 'apr',
     creditFilename: '',
-    imgFolder: 'png',
+    imgFolder: '300dpi',
+    makeLowRes: false,
     contents: [
 
         {
-            title: 'TITLE',
+            title: '_TITLE',
             pageStart: 1,
             pageEnd: 1,
             prefix: '0-'
         },
 
         {
-            title: 'CLASS II COLLEGE',
+            title: '04-07 CLASS II COLLEGE',
             pageStart: 1,
             pageEnd: 2,
             prefix: '1-'
@@ -49,7 +50,7 @@ exports.data = {
 
 
         {
-            title: 'CLASS III CHAPTER',
+            title: '08-11 CLASS III CHAPTER',
             pageStart: 1,
             pageEnd: 2,
             prefix: '2-'
@@ -81,7 +82,7 @@ exports.data = {
 
 
         {
-            title: 'CLASS IV SENATE',
+            title: '12-17 CLASS IV SENATE',
             pageStart: 1,
             pageEnd: 2,
             prefix: '3-'
@@ -125,7 +126,7 @@ exports.data = {
 
 
         {
-            title: 'CLASS V AREOPAGUS',
+            title: '18-20 CLASS V AREOPAGUS',
             pageStart: 1,
             pageEnd: 2,
             prefix: '4-'
@@ -151,7 +152,7 @@ exports.data = {
 
 
         {
-            title: 'CLASS VI CONSISTORY',
+            title: '21-26 CLASS VI CONSISTORY',
             pageStart: 1,
             pageEnd: 2,
             prefix: '5-'
@@ -195,7 +196,7 @@ exports.data = {
 
 
         {
-            title: 'CLASS VII COUNCIL',
+            title: '27-30 CLASS VII COUNCIL',
             pageStart: 1,
             pageEnd: 2,
             prefix: '6-'
@@ -227,7 +228,7 @@ exports.data = {
 
 
         {
-            title: 'CLASS VIII GRAND TRIBUNAL',
+            title: '31-31 CLASS VIII GRAND TRIBUNAL',
             pageStart: 1,
             pageEnd: 2,
             prefix: '7-'
@@ -241,7 +242,7 @@ exports.data = {
 
 
         {
-            title: 'CLASS IX MYSTIC TEMPLE',
+            title: '32-33 CLASS IX MYSTIC TEMPLE',
             pageStart: 21,
             pageEnd: 22,
             prefix: '7-'
