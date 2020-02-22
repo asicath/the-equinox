@@ -6,6 +6,12 @@ exports.data = {
     pubYear: '1909',
     folder: 'thelema',
     creditFilename: 'credits-thelema.pdf',
+    images: [
+        'cover-thelema.jpg'
+    ],
+    links: [
+        {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/holy_books_1_1909/holy_books_1_1909.htm'}
+    ],
     contents: [
         {
             title: 'LIBER LXI',

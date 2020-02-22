@@ -11,6 +11,7 @@ body
     font-family:  'Georgia', serif;
     font-size: 100%;
     margin: 0;
+    min-height: 100em;
 }
 .number {
     font-family:  'Georgia', serif;
@@ -223,9 +224,7 @@ table td {
 .filter {
 
 }
-.filter-section {
-    display: inline-block;
-}
+
 .filter-row {
     margin-bottom: 0.5em;
 }

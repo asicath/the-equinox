@@ -6,6 +6,12 @@ exports.data = {
     pubYear: '1909',
     folder: '777',
     creditFilename: 'credits-777.pdf',
+    images: [
+        'cover-777.jpg'
+    ],
+    links: [
+        {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/777_1909/777_1909.htm'}
+    ],
     contents: [
         {
             title: 'COVER AND TITLE',

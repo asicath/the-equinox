@@ -4,6 +4,9 @@ exports.data = {
     pubLocation: 'London',
     pubYear: '1909',
     folder: '1.2',
+    links: [
+        {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/equinox_1_2_1909/equinox_1_2_1909.htm'}
+    ],
     contents: [
         {
             title: 'COVER, TITLE, AND TABLE OF CONTENTS',

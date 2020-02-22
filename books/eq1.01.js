@@ -4,6 +4,9 @@ exports.data = {
     pubLocation: 'London',
     pubYear: '1909',
     folder: '1.1',
+    links: [
+        {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/equinox_1_1_1909/equinox_1_1_1909.htm'}
+    ],
     contents: [
         {
             title: 'COVER, TITLE, AND TABLE OF CONTENTS',
@@ -11,7 +14,10 @@ exports.data = {
             pageEnd: 5,
             addPage: [{filename: '_cover.jpg'}],
             prefix: '_',
-            filename: 'cover-title-and-contents'
+            filename: 'cover-title-and-contents',
+            images: [
+                'cover-eq1.jpg'
+            ]
         },
         {
             title: 'EDITORIAL',
@@ -31,7 +37,10 @@ exports.data = {
             pubClass: 'c',
             number: 33,
             grade: 0,
-            filename: 'an-account-of-aa'
+            filename: 'an-account-of-aa',
+            images: [
+                'the-silent-watcher.jpg'
+            ]
         },
         {
             title: 'LIBER LIBRÆ',
@@ -56,7 +65,10 @@ exports.data = {
             pubClass: 'b',
             number: 9,
             grade: [0, 1],
-            filename: 'liber-exercitiorum'
+            filename: 'liber-exercitiorum',
+            images: [
+                'the-four-positions.jpg'
+            ]
         },
         {
             title: 'THE WIZARD WAY',
@@ -86,7 +98,8 @@ exports.data = {
             pageEnd: 93,
             addPage: [{filename: '089image.jpg', after: "087.png"}],
             filename: 'the-chymical-jousting-of-brother-perardua',
-            skip: [88]
+            skip: [88],
+            images: ['the-regimen-of-the-seven.jpg']
         },
         {
             title: 'THE LONELY BRIDE',
@@ -137,7 +150,10 @@ exports.data = {
             pageStart: 139,
             pageEnd: 230,
             skip: [140, 166],
-            filename: 'the-temple-of-solomon-the-king-part-1'
+            filename: 'the-temple-of-solomon-the-king-part-1',
+            images: [
+                'tostk-1-hexagram.jpg'
+            ]
         },
         {
             title: 'THE HERB DANGEROUS',
@@ -162,7 +178,8 @@ exports.data = {
             skip: [2],
             addPage: [{filename: 's002image.jpg', after: "s001.png"}],
             prefix: 's',
-            pageInfo: 'supplement 1-139'
+            pageInfo: 'supplement 1-139',
+            images: ['blind-force.jpg']
         },
         {
             title: 'ADVERTISEMENTS',

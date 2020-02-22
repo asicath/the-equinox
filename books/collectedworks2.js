@@ -6,6 +6,9 @@ exports.data = {
     pubTitle: 'Collected Works 2',
     folder: 'collectedworks/2',
     creditFilename: 'credits-works.pdf',
+    links: [
+        {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/collected_works_traveler_1907/collected_works_traveler_1907.htm'}
+    ],
     contents: [
         {
             title: 'COVER, TITLE, PORTRAIT, AND TABLE OF CONTENTS',

@@ -6,6 +6,12 @@ exports.data = {
     pubYear: '1913',
     folder: '333',
     creditFilename: 'credits-333.pdf',
+    images: [
+        'cover-333.jpg'
+    ],
+    links: [
+        {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/book_of_lies_1913/book_of_lies_1913.htm'}
+    ],
     contents: [
         {
             title: 'COVER AND TITLE',

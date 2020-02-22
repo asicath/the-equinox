@@ -5,6 +5,12 @@ exports.data = {
     pubYear: '1904',
     folder: 'goetia',
     creditFilename: 'credits-goetia.pdf',
+    images: [
+        'cover-goetia.jpg'
+    ],
+    links: [
+        {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/goetia_1904/goetia_1904.htm'}
+    ],
     contents: [
 
         {

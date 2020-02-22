@@ -5,8 +5,13 @@ exports.data = {
     pubYear: '1913',
     folder: 'book4/2',
     creditFilename: 'credits-bookiv.pdf',
+    images: [
+        'cover-book4-2.jpg'
+    ],
+    links: [
+        {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/book_4_part_2_1913/book_4_part_2_1913.htm'}
+    ],
     contents: [
-
         {
             title: 'COVER AND TITLE',
             pageStart: 1,

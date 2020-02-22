@@ -152,7 +152,8 @@ class Index extends React.Component {
 
         this.state = {
             selected: filter || '',
-            person: person || ''
+            person: person || '',
+            textSearch: ''
         };
 
         //this.handleChange = this.handleChange.bind(this);
@@ -181,7 +182,10 @@ class Index extends React.Component {
             var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?filter=' + value;
             window.history.pushState({path:newurl},'',newurl);
         }
+    }
 
+    handleChange(e) {
+        this.setState({textSearch: e.target.value});
     }
 
     onPersonChange(event) {
@@ -190,21 +194,41 @@ class Index extends React.Component {
 
     render() {
 
-
-
         // determine the selected option
         var selectedOption = null;
         if (this.state.selected.length > 0 && filterOptions.hasOwnProperty(this.state.selected)) {
             selectedOption = filterOptions[this.state.selected];
         }
 
+        let textSearch = this.state.textSearch.toLowerCase();
+
         let groups = [];
+        let images = []; // collate the images from the selected items
         for (let i = 0; i < this.props.data.books.length; i++) {
             let book = this.props.data.books[i];
             let html = [];
+            let isBookActive = false;
+            let bookTitleFoundInSearch = false;
+
+            // simple book title search
+            if (textSearch.length !== 0) {
+                if (book.title.toLowerCase().indexOf(textSearch) !== -1) {
+                    bookTitleFoundInSearch = true;
+                }
+            }
 
             for (let j = 0; j < book.contents.length; j++) {
                 let item = book.contents[j];
+
+                // simple title search
+                if (textSearch.length !== 0 && !bookTitleFoundInSearch) {
+                    if (
+                        item.title.toLowerCase().indexOf(textSearch) === -1
+                        && (!item.subtitle || item.subtitle.toLowerCase().indexOf(textSearch) === -1)
+                    ) {
+                        continue;
+                    }
+                }
 
                 // filter
                 if (selectedOption !== null) {
@@ -230,7 +254,6 @@ class Index extends React.Component {
                         if (typeof item.grade === 'number' && item.grade !== selectedOption.grade) continue;
                         else if (Array.isArray(item.grade)&& item.grade.indexOf(selectedOption.grade) === -1) continue;
                     }
-
                 }
 
                 if (this.state.person !== '') {
@@ -251,9 +274,25 @@ class Index extends React.Component {
                     });
 
                     if (!has) continue;
-
                 }
 
+                // indicate that this book is active, ie at least some of its contents will be shown to the user
+                isBookActive = true;
+
+                // gather images of the content item
+                if (item.hasOwnProperty('images')) {
+                    item.images.forEach(o => {
+
+                        if (typeof o === 'string') {
+                            images.push({
+                                thumb: `images/${book.folder}/thumb/${o}`,
+                                url:`images/${book.folder}/${o}`,
+                                order: Math.random()
+                            });
+                        }
+
+                    });
+                }
 
                 // INSERT **************
                 let key = "item-" + i + "-" + j;
@@ -266,12 +305,35 @@ class Index extends React.Component {
             if (html.length > 0) {
                 let key = "group-" + i;
 
+                let links = '';
+                if (book.hasOwnProperty('links') ) {
+                    links = book.links.map((link, i) => {
+                        let prefix = i === 0 ? '' : ' | ';
+                        return <a href={link.url} target="_blank" style={{fontSize:'0.5em', marginLeft:'0.5em'}}>{link.text}</a>;
+                    });
+                }
+
                 groups.push(<div className="content-group" key={key}>
-                    <div className="groupTitle">{book.title}</div>
+                    <div className="groupTitle">{book.title} <span className="groupLinks">{links}</span></div>
                     {subtitle}
                     <div className="groupSubtitle">{publisher}</div>
                     <div className="content-items">{html}</div>
                 </div>);
+            }
+
+            // gather the images of the book
+            if (isBookActive && book.hasOwnProperty('images')) {
+                book.images.forEach(o => {
+
+                    if (typeof o === 'string') {
+                        images.push({
+                            thumb: `images/${book.folder}/thumb/${o}`,
+                            url:`images/${book.folder}/${o}`,
+                            order: Math.random()
+                        });
+                    }
+
+                });
             }
 
         }
@@ -280,18 +342,31 @@ class Index extends React.Component {
             return <option key={i} value={author.last.toLowerCase()}>{author.last}, {author.other}</option>;
         });
 
+        // compile image html
+        // first order
+        images = images.sort((a, b) => {
+            if (a.order < b.order) return -1;
+            if (b.order > a.order) return 1;
+            return 0;
+        });
+
+        // limit to just top 5
+        images.splice(Math.min(5, images.length));
+
+        let imagesHtml = images.map(img => {
+            return <a href={img.url} target="_blank"><img src={img.thumb}/></a>;
+        });
+
+        // <a href="donate.html"><img src="img/donate.png"/></a>
+
         return <div className="div_main">
 
             <Header />
             <Description />
 
             <div className="left-margin">
-                <div className="illustration-header">Illustrations</div>
-                <a href="https://imgur.com/Fi9qR1Y"><img src="img/_cover-3.1.jpg"/></a>
-                <a href="donate.html"><img src="img/donate.png"/></a>
-                <a href="https://imgur.com/mN4eUoF"><img src="img/_cover-1.jpg"/></a>
-                <a href="https://imgur.com/OgigrBI"><img src="img/therion2.jpg"/></a>
-                <a href="https://imgur.com/2GMQlla"><img src="img/baphomet2.jpg"/></a>
+                <div className="illustration-header">Covers & Illustrations</div>
+                {imagesHtml}
             </div>
             <div className="center">
 
@@ -351,6 +426,16 @@ class Index extends React.Component {
                             <FilterButton text="Major Adept" value="grade6" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                         </div>
 
+                        <div className="filter-row">
+                            <div style={{display:'inline-block'}}><span style={{fontSize:'0.8em'}}>Title Search: </span><input style={{width:'20em'}} value={this.state.textSearch} onChange={this.handleChange.bind(this)} /></div>
+
+                            <div className="filter-right" style={{marginTop:'-4px'}}>
+                                <div className="filter-item"><span style={{fontSize:'0.8em'}}>Author: </span><select style={{textAlignLast: 'center', 'height': '1.5em'}} onChange={this.onPersonChange}>
+                                    <option value=""></option>
+                                    {authorOptions}
+                                </select></div>
+                            </div>
+                        </div>
 
                     </div>
 

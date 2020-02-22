@@ -4,20 +4,29 @@ exports.data = {
     pubLocation: 'Detroit',
     pubYear: '1919',
     folder: '3.1',
+    links: [
+        {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/equinox_vol_3_No_1_1919/equinox_vol_3_no_1_1919.htm'}
+    ],
     contents: [
         {
             title: 'COVER, TITLE, AND TABLE OF CONTENTS',
             pageStart: 0,
             pageEnd: 2,
             addPage: [{filename: '_cover-3.1.jpg'}, {filename: '_title-color.png'}],
-            filename: 'cover-title-and-contents'
+            filename: 'cover-title-and-contents',
+            images: [
+                '_cover-3.1.jpg'
+            ],
         },
         {
             title: 'THE MASTER THERION',
             author: 'kennedy',
             addPage: [{filename: '000imagecover.png'}, {filename: '000image.png'}],
             filename: 'the-master-therion',
-            pageInfo: 'frontispiece'
+            pageInfo: 'frontispiece',
+            images: [
+                'therion2.jpg'
+            ],
         },
         {
             title: 'MAY MORN',
@@ -141,7 +150,8 @@ exports.data = {
             }],
             pub: 'oto',
             number: 52,
-            subtitle: 'Manifesto of the O.T.O.'
+            subtitle: 'Manifesto of the O.T.O.',
+            images:['baphomet2.jpg']
         },
         {
             title: 'LIBER CI',

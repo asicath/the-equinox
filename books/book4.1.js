@@ -6,6 +6,12 @@ exports.data = {
     pubYear: '1912',
     folder: 'book4/1',
     creditFilename: 'credits-bookiv.pdf',
+    images: [
+        'cover-book4-1.jpg'
+    ],
+    links: [
+        {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/book_4_part_1_1911/book_4_part_1_1911.htm'}
+    ],
     contents: [
 
         {
