@@ -22,7 +22,8 @@ exports.data = {
                 {filename: 'front.jpg'},
                 {filename: '__00.png'},
                 {filename: '067.png', after: '_004.png'},
-            ]
+            ],
+            skip:[1, 2]
         },
         {
             title: 'PREFACTORY NOTE',
@@ -47,6 +48,7 @@ exports.data = {
             title: 'LEMEGETON VEL CLAVICULA SALOMONIS REGIS',
             pageStart: 6,
             pageEnd: 50,
+            skip:[12],
             addPage: [
                 {filename: '_002image.png'},
                 {filename: '013image.png'},
@@ -61,6 +63,7 @@ exports.data = {
             title: 'Yse Conjurations of ye Booke Goetia Rendered into ye Magicall or Angelike Language',
             pageStart: 51,
             pageEnd: 65,
+            skip:[52],
             author: 'crowley'
         },
     ],
