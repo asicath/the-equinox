@@ -7,15 +7,6 @@
  LIBER XVII. LIBER I.A.O. (This book has not been published.)
  LIBER CLXXXV. LIBER COLLEGII SANCTI. Being the tasks of the Grades and their Oaths proper to Liber XIII.  This is the official Paper of the various grades.  It includes the Task and Oath of a Probationer.
 
-
-
- 5 COURSE VII Dominus Liminis
- LIBER XCV. THE WAKE WORLD (in Konx Om Pax).
-
- 6 COURSE VIII - Major Adept
- LIBER XLI. THIEN TAO. An Essay on Attainment by the Way of Equilibrium.  (in Konx Om Pax).
-
-
  TANNHÄUSER, by A. Crowley. An allegorical drama concerning the Progress of the Soul; the Tannhäuser story slightly remodelled.
 
  */
@@ -25,6 +16,7 @@ const data = {
         require('./books/goetia').data,
         require('./books/collectedworks1').data,
         require('./books/collectedworks2').data,
+        require('./books/konx-om-pax').data,
         require('./books/777').data,
         require('./books/thelema').data,
         require('./books/eq1.01').data,
@@ -40,7 +32,8 @@ const data = {
         require('./books/eq1.10').data,
         require('./books/book4.1').data,
         require('./books/book4.2').data,
-        require('./books/eq3.01').data
+        require('./books/eq3.01').data,
+        require('./books/thoth').data
     ]
 };
 

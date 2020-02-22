@@ -35,7 +35,9 @@ var filterOptions = {
     'oto': {pub: 'oto'},
     'other': {isOther:true},
 
+    'konx-om-pax': {folder:'konx-om-pax'},
     'goetia': {folder:'goetia'},
+    'thoth': {folder:'thoth'},
     '333': {folder:'333'},
     '777': {folder:'777'},
     'thelema': {folder:'thelema'},
@@ -407,13 +409,8 @@ class Index extends React.Component {
                             <FilterButton text="BOOK 4" value="book4" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                             <FilterButton text="GOETIA" value="goetia" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                             <FilterButton text="WORKS" value="works" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-
-                            <div className="filter-right">
-                                <div className="filter-item"><select style={{textAlignLast: 'center'}} onChange={this.onPersonChange}>
-                                    <option value="">--- Author ---</option>
-                                    {authorOptions}
-                                </select></div>
-                            </div>
+                            <FilterButton text="THOTH" value="thoth" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                            <FilterButton text="KONX OM PAX" value="konx-om-pax" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
                         </div>
 
                         <div className="filter-row">
