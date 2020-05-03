@@ -8,7 +8,8 @@ exports.data = {
     creditFilename: 'credits-works.pdf',
     thumbCover: 'collectedworks1.jpg',
     images: [
-        'cover-works.jpg'
+        'cover-works.jpg',
+        'portrait1.jpg'
     ],
     links: [
         {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/collected_works_traveler_1907/collected_works_traveler_1907.htm'}

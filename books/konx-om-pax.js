@@ -7,7 +7,8 @@ exports.data = {
     folder: 'konx-om-pax',
     creditFilename: 'credits-konxompax.pdf',
     images: [
-        'cover-konxompax.jpg'
+        'cover-konxompax.jpg',
+        'crowley.jpg'
     ],
     links: [
         {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/konx_om_pax2_1907/konx_om_pax2_1907.htm'}

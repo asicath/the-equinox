@@ -9,6 +9,9 @@ exports.data = {
     links: [
         {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/collected_works_traveler_1907/collected_works_traveler_1907.htm'}
     ],
+    images: [
+        'portrait2.jpg'
+    ],
     contents: [
         {
             title: 'COVER, TITLE, PORTRAIT, AND TABLE OF CONTENTS',

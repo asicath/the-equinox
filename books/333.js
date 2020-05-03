@@ -7,7 +7,9 @@ exports.data = {
     folder: '333',
     creditFilename: 'credits-333.pdf',
     images: [
-        'cover-333.jpg'
+        'cover-333.jpg',
+        'perdurabo.jpg',
+        'laylah.jpg'
     ],
     links: [
         {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/book_of_lies_1913/book_of_lies_1913.htm'}

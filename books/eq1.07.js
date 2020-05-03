@@ -28,7 +28,11 @@ exports.data = {
             pageEnd: 4,
             addPage: [{filename: '_e1image.jpg'}, {filename: '_e2image.jpg'}],
             prefix: '_',
-            filename: 'liber-e-supplement'
+            filename: 'liber-e-supplement',
+            pub: 'aa',
+            pubClass: 'b',
+            number: 9,
+            grade: [0, 1]
         },
         {
             title: 'ALEISTER CROWLEY',
