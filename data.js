@@ -16,6 +16,7 @@ const data = {
         require('./books/goetia').data,
         require('./books/collectedworks1').data,
         require('./books/collectedworks2').data,
+        require('./books/collectedworks3').data,
         require('./books/konx-om-pax').data,
         require('./books/777').data,
         require('./books/thelema').data,
@@ -33,6 +34,7 @@ const data = {
         require('./books/book4.1').data,
         require('./books/book4.2').data,
         require('./books/eq3.01').data,
+        require('./books/magick').data,
         require('./books/thoth').data
     ]
 };
@@ -52,6 +54,7 @@ data.authors = [
     {last:'Jenkins', other:'David Hamish'},
     {last:'John', other:'Augustus'},
     {last:'Jones', other:'Charles Stansfeld'},
+    {last:'Kelly', other:'Gerald'},
     {last:'Kennedy', other:'Leon Engers'},
     {last:'Lévi', other:'Éliphas'},
     {last:'Ludlow', other:'Fitz Hugh'},
@@ -68,5 +71,37 @@ data.authors = [
     {last:'Waddell', other:'Laylah'},
     {last:'Whineray', other:'Edward P.'}
 ];
+
+const replacementRegex = [
+    {re: /Æ/g, with: 'AE'},
+    {re: /É/g, with: 'E'},
+    {re: /Ä/g, with: 'A'}
+];
+
+data.parseItem = (book, item) => {
+    let title = item.altTitle || item.title;
+    title = title.replace(/—/g, "-");
+
+    let filename = null;
+    if (item.hasOwnProperty('filename')) {
+        filename = item.filename;
+    }
+    else {
+        filename = title;
+        replacementRegex.forEach(o => {
+            filename = filename.replace(o.re, o.with);
+        });
+        filename = filename.toLowerCase();
+    }
+    filename = filename.replace(/\s/g, '-').replace(/[:.!?∴,]/g, '');
+    const pdfName = `${book.folder}/${filename}.pdf`;
+    const pdfLowName = pdfName.replace(/\.pdf/, '_low.pdf');
+
+    return {
+        title,
+        pdfName,
+        pdfLowName
+    }
+};
 
 if (typeof exports !== 'undefined') exports.data = data;
