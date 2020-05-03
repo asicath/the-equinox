@@ -41,11 +41,11 @@ data.books.forEach(book => {
 
     book.contents.forEach(item => {
 
-        if (book.folder !== 'apr') return;
+        if (book.folder !== 'book4/3') return;
 
         //if (!item.hasOwnProperty('filename')) return;
         //if (item.title !== 'ERRATA') return;
-        //if (item.pageStart !== 211) return;
+        //if (item.pageStart !== 438) return;
 
         // compile images
         let images = [];
@@ -116,7 +116,7 @@ data.books.forEach(book => {
 
         // --- FILENAME ---
         if (!item.hasOwnProperty('filename')) {
-            item.filename = title.replace(/É/g, 'E').replace(/Ä/g, 'A').toLowerCase().replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE").replace(/—/g, "-").replace(/:/g, "");
+            item.filename = title.replace(/É/g, 'E').replace(/Ä/g, 'A').replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE").replace(/—/g, "-").replace(/:/g, "").toLowerCase();
         }
         let filename = item.filename.replace(/\s/g, '-').replace(/[.!?]/g, '');
         let pdfName = baseFolder + `/${book.folder}/pdf-${imgFolder}/${filename}.pdf`;
@@ -133,7 +133,7 @@ data.books.forEach(book => {
         if (item.hasOwnProperty('creditFilename')) creditFilename = item.creditFilename;
         const creditPdf = baseFolder + '/credits/pdf-600dpi/' + creditFilename;
         const creditMerged = `./${book.folder}/${filename}.pdf`;
-        const cmdMerge = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfName}" "${creditPdf}" ${creditMerged}`;
+        const cmdMerge = `java -Xmx1024m -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfName}" "${creditPdf}" ${creditMerged}`;
         merge.push(cmdMerge);
 
         if (makeLowRes) {

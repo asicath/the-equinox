@@ -57,11 +57,15 @@ var filterOptions = {
 };
 
 
+
+// I made this prime "auralization" by dynamically grouping primes based on what percent of the infinite natural set they are a prime factor for. I then assigned a note for each group, the silences represent new primes. What do you think?
+// https://www.youtube.com/watch?v=vD20B-Vv0CA
 class ContentItem extends React.Component {
     render() {
-        let book = this.props.book;
-        let item = this.props.item;
-        let authorLU = this.props.authors;
+        const book = this.props.book;
+        const item = this.props.item;
+        const parsedItem = data.parseItem(book, item);
+        const authorLU = this.props.authors;
 
         let pub = "";
         if (item.pub === 'aa') pub = 'A∴A∴';
@@ -71,22 +75,10 @@ class ContentItem extends React.Component {
         let sub = "";
         if (item.hasOwnProperty('subtitle')) sub = <div className="item-subtitle"><span>{item.subtitle}</span></div>;
 
-        let aTxt = "";
+        //let aTxt = (item.hasText) ? <a href=".">txt</a> : "";
 
-        let title = item.altTitle || item.title;
-        title = title.replace(/—/g, "-");
-
-        if (!item.hasOwnProperty('filename')) {
-            item.filename = title.replace(/É/g, 'E').replace(/Ä/g, 'A').toLowerCase().replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE").replace(/:/g, "");
-        }
-        let filename = item.filename.replace(/\s/g, '-').replace(/[.!?]/g, '');
-        let pdfName = `${book.folder}/${filename}.pdf`;
-        let pdfLowName = pdfName.replace(/\.pdf/, '_low.pdf');
-
-
-        let aHigh = <a target="_blank" href={pdfName}>high</a>;
-        let aLow = <a target="_blank" href={pdfLowName}>low</a>;
-        if (item.hasText) aTxt = <a href=".">txt</a>;
+        let aHigh = <a target="_blank" href={parsedItem.pdfName}>high</a>;
+        let aLow = <a target="_blank" href={parsedItem.pdfLowName}>low</a>;
 
         // turn into array
         let authors = "";
