@@ -15,6 +15,57 @@ exports.data = {
     contents: [
 
         {
+            title: 'HYMN TO PAN',
+            prefix:'_',
+            pageStart: 5,
+            pageEnd: 9,
+            skip: [6]
+        },
+        {
+            title: 'INTRODUCTION',
+            prefix:'_',
+            pageStart: 11,
+            pageEnd: 29,
+            skip: [12]
+        },
+        {
+            title: 'CONTENTS',
+            prefix:'_',
+            pageStart: 31,
+            pageEnd: 31
+        },
+        // TODO INSERT LAMEN HERE
+
+        // section 1
+        { pageStart:   1, pageEnd:  10, title: 'O The Magical Theory of the Universe.' },
+        { pageStart:  11, pageEnd:  15, title: 'I The Principles of Ritual.' },
+        { pageStart:  16, pageEnd:  21, title: 'II The Formulæ of the Elemental Weapons.' },
+        { pageStart:  22, pageEnd:  23, title: 'III The Formula of Tetragrammaton.' },
+        { pageStart:  24, pageEnd:  27, title: 'IV The Formula of Alhim: also that of Alim.' },
+        { pageStart:  28, pageEnd:  38, title: 'V The Formula of I. A. O.' },
+        { pageStart:  39, pageEnd:  40, title: 'VI The Formula of the Neophyte.' },
+        { pageStart:  41, pageEnd:  59, title: 'VII The Formula of the Holy Graal: of Abrahadabra: and of certain other Words. Also: The Magical Memory.' },
+        { pageStart:  60, pageEnd:  67, title: 'VIII Of Equilibrium, and of the General and Particular Method of Preparation of the Furniture of the Temple and of the Instruments of Art.' },
+        { pageStart:  68, pageEnd:  78, title: 'IX Of Silence and Secrecy : and of the Barbarous names of Evocation' },
+        { pageStart:  79, pageEnd:  87, title: 'X Of the Gestures.' },
+        { pageStart:  88, pageEnd:  91, title: 'XI Of Our Lady Babalon and of The Beast Whereon she Rideth. Also concerning Transformations.' },
+        { pageStart:  92, pageEnd: 100, title: 'XII Of the Bloody Sacrifice: and Matters Cognate.' },
+        { pageStart: 101, pageEnd: 105, title: 'XIII Of the Banishings: And of the Purifications.' },
+        { pageStart: 106, pageEnd: 122, title: 'XIV Of the Consecrations: With an account of the Nature and Nurture of the Magical Link.' },
+
+        // section 2
+        { pageStart: 123, pageEnd: 128, title: 'XVI (Part I) Of the Oath.' },
+        { pageStart: 129, pageEnd: 132, title: 'XV Of the Invocation.' },
+        { pageStart: 133, pageEnd: 138, title: 'XVI (Part II) Of the Charge to the Spirit: with some Account of the Constraints and Curses occasionally necessary.' },
+        { pageStart: 139, pageEnd: 142, title: 'XVII Of the License to Depart.' },
+        { pageStart: 143, pageEnd: 176, title: 'XVIII Of Clairvoyance and of the Body of Light, its Powers and its Development. Also concerning Divination.' },
+        { pageStart: 177, pageEnd: 178, title: 'XIX Of Dramatic Rituals.' },
+        { pageStart: 179, pageEnd: 189, title: 'XX Of the Eucharist and of the Art of Alchemy.' },
+        { pageStart: 190, pageEnd: 205, title: 'XXI Of Black Magick: of the Main Types of the Operations of Magick Art: and of the Powers of the Sphinx.' },
+
+
+        // section 4
+        {
             title: 'COVER - SECTION VI, PRINTER MARK',
             pageStart: 438,
             pageEnd: 438,
@@ -22,7 +73,6 @@ exports.data = {
                 {filename: '_cover.jpg'}
             ],
         },
-
         {
             title: 'A FEW OF THE PRINCIPAL CORRESPONDENCES OF THE QABALAH',
             subtitle: 'REPRINTED WITH ADDITIONS FROM 777',

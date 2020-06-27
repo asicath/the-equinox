@@ -35,6 +35,7 @@ const data = {
         require('./books/book4.2').data,
         require('./books/eq3.01').data,
         require('./books/magick').data,
+        require('./books/magick-insert').data,
         require('./books/thoth').data
     ]
 };
