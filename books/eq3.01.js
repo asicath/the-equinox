@@ -227,6 +227,65 @@ exports.data = {
         }
     ],
     publish: {
-        instructions:[]
+        instructions: [
+            // one blank page, front and back - added by ingram spark
+            {
+                start:1,
+                end:8,
+                expectedBlank: [1,2,4,5],
+                prefix:'_',
+                insert: [
+                    {file:'_006cover.png', after: 6, blank:'before'}
+                ],
+                replace: {
+                    8: 'copyright.png' // copyright replaces 20, need to incorporate the original publishing note
+                }
+            },
+            {
+                start:1,
+                end:307,
+                expectedBlank: [3,276],
+                insert: [
+                    {file:'004cover.png', after:4, blank:'before'},
+
+                    {file:'129image.png', before:129, blank:'before'},
+                    {file:'129imagecover.png', before:129, blank:'before'},
+
+                    {file:'170imagecover.png', after:168, blank:'after'},
+                    {file:'170image.png', after:168},
+                    {file:'169image.png', before:169},
+                    {file:'169imagecover.png', before:169, blank:'before'},
+
+                    {file:'197image.png', before:197, blank:'before'},
+                    {file:'197imagecover.png', before:197, blank:'before'}
+
+                ]
+            },
+
+            {},
+            {
+                start:1,
+                end:2,
+                prefix:'s_',
+                expectedBlank: [2]
+            },
+            {
+                start:1,
+                end:132,
+                expectedBlank: [1],
+                prefix:'s',
+                insert: [
+                    {file:'s002cover.png', after:2, blank:'before'}
+                    ]
+            },
+
+            {
+                start:1,
+                end:11,
+                prefix:'ad'
+            },
+            {}
+            // one blank page, front and back - added by ingram spark
+        ]
     }
 };
