@@ -124,9 +124,24 @@ class ContentItem extends React.Component {
             authors = <div className="item-subtitle"><span>{authors}</span></div>;
         }
 
-        return <div className="content-item">
-            <div className="number">{item.number}</div>
-            <div className="pub">{pub}</div>
+        let info = {
+            number: <div className="number">{item.number}</div>,
+            pub: <div className="pub">{pub}</div>
+        };
+
+        if (item.chapter) {
+            info = {
+                chapter: <div className="chapter">{item.chapter}</div>
+            }
+        }
+
+        let className = 'content-item';
+        if (item.newSection) className += ' new-section';
+
+        return <div className={className}>
+            {info.number}
+            {info.pub}
+            {info.chapter}
             <div className="item-title">{item.titleWeb || item.title}</div>
             <div className="download-links">{aLow} | {aHigh}</div>
             {sub}

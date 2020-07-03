@@ -44,8 +44,9 @@ data.books.forEach(book => {
         if (book.folder !== 'book4/3') return;
 
         //if (!item.hasOwnProperty('filename')) return;
-        //if (item.title !== 'ERRATA') return;
-        //if (item.pageStart !== 438) return;
+        //if (!(item.title.indexOf('Elemental Weapons') > -1 || item.title.indexOf('COVER AND TITLE PAGE') > -1)) return;
+        //if (item.pageStart > 200 || !item.hasOwnProperty('pageStart')) return;
+        if (item.prefix !== 'p') return;
 
         // compile images
         let images = [];
@@ -111,12 +112,12 @@ data.books.forEach(book => {
         //MLA: Crowley, Aleister. "LIBER O." The Equinox 1.2 (1909): 11-30.
         let pdfTitle = `""${title}."" ${pubTitle} (${book.pubYear}): ${pageInfo}.`;
 
-        pdfTitle = pdfTitle.replace(/∴/g, "").replace(/Æ/g, "AE").replace(/É/g, 'E').replace(/Ä/g, 'A');
+        pdfTitle = pdfTitle.replace(/∴/g, "").replace(/Æ/g, "AE").replace(/æ/g, "ae").replace(/É/g, 'E').replace(/Ä/g, 'A');
 
 
         // --- FILENAME ---
         if (!item.hasOwnProperty('filename')) {
-            item.filename = title.replace(/É/g, 'E').replace(/Ä/g, 'A').replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE").replace(/—/g, "-").replace(/:/g, "").toLowerCase();
+            item.filename = title.replace(/É/g, 'E').replace(/Ä/g, 'A').replace(/æ/g, "ae").replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE").replace(/—/g, "-").replace(/:/g, "").toLowerCase();
         }
         let filename = item.filename.replace(/\s/g, '-').replace(/[.!?]/g, '');
         let pdfName = baseFolder + `/${book.folder}/pdf-${imgFolder}/${filename}.pdf`;

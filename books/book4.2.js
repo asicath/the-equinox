@@ -1,5 +1,6 @@
 exports.data = {
     title: 'BOOK FOUR, PART II, MAGICK',
+    subtitle: 'PRELIMINARY REMARKS',
     pubName: 'Wieland and Co.',
     pubLocation: 'South Kensington',
     pubYear: '1913',

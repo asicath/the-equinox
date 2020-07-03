@@ -135,10 +135,8 @@ p {
 .content-item > div {
     display: inline-block;
 }
-.content-item .pub {
-    width:5em;
-    text-align: left;
-    font-size: 0.8em;
+.content-item.new-section {
+    border-top: 1px #ccc solid;
 }
 .content-item .number {
     width:2.5em;
@@ -146,6 +144,21 @@ p {
     font-size: 0.8em;
     margin-right: 1em;
 }
+.content-item .pub {
+    width:5em;
+    text-align: left;
+    font-size: 0.8em;
+}
+.content-item .chapter {
+    width:7.5em;
+    text-align: left;
+    font-size: 0.8em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    vertical-align: top;
+    padding-top: 0.2em;
+}
+
 .content-item .item-title {
     font-size: 1em;
     max-width: 28em;

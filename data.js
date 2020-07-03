@@ -75,6 +75,7 @@ data.authors = [
 
 const replacementRegex = [
     {re: /Æ/g, with: 'AE'},
+    {re: /æ/g, with: 'ae'},
     {re: /É/g, with: 'E'},
     {re: /Ä/g, with: 'A'}
 ];

@@ -3,7 +3,7 @@ const path = require('path');
 const data = require('./data').data;
 
 const book = data.books.find(book => {
-    if (book.folder === 'book4/1') return true;
+    if (book.folder === '3.1') return true;
 });
 
 const instructions = book.publish.instructions;
@@ -87,7 +87,7 @@ instructions.forEach(instruction => {
             let full = path.resolve(root + '/' + folder + file);
             if (!fs.existsSync(full)) {
 
-                if (instruction.expectedBlank.indexOf(i) !== -1) {
+                if (instruction.expectedBlank && instruction.expectedBlank.indexOf(i) !== -1) {
                     // assume blank if not found
                     console.log(`blank at: ${file} - OK`);
                 }
