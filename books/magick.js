@@ -51,7 +51,7 @@ exports.data = {
         },
         {
             title: 'Lamen of the Master Therion',
-            addPage: [{filename: '_lamen.png'}],
+            addPage: [{filename: '_lamen.jpg'}],
             pageInfo: 'Lamen of the Master Therion'
         },
         // section 1
@@ -138,7 +138,7 @@ exports.data = {
             grade: 6
         },
         {
-            title: 'LIBER V vel REGULAI',
+            title: 'LIBER V vel REGULI',
             pageStart: 331,
             pageEnd: 344,
             pub: 'aa',

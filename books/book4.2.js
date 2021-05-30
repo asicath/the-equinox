@@ -7,7 +7,8 @@ exports.data = {
     folder: 'book4/2',
     creditFilename: 'credits-bookiv.pdf',
     images: [
-        'cover-book4-2.jpg'
+        'cover-book4-2.jpg',
+        'crowley-magician.jpg'
     ],
     links: [
         {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/book_4_part_2_1913/book_4_part_2_1913.htm'}

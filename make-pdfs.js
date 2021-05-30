@@ -45,8 +45,8 @@ data.books.forEach(book => {
 
         //if (!item.hasOwnProperty('filename')) return;
         //if (!(item.title.indexOf('Elemental Weapons') > -1 || item.title.indexOf('COVER AND TITLE PAGE') > -1)) return;
-        //if (item.pageStart > 200 || !item.hasOwnProperty('pageStart')) return;
-        if (item.prefix !== 'p') return;
+        if (!(item.pageStart === 331 || item.title === 'Lamen of the Master Therion')) return;
+        //if (item.prefix !== 'p') return;
 
         // compile images
         let images = [];

@@ -159,7 +159,7 @@ exports.data = {
             pageStart: 207,
             pageEnd: 224,
             pub: 'oto',
-            number: 110,
+            number: 101,
             subtitle: 'An open Letter to those who may wish to join the Order'
         },
         {
