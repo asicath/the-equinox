@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "canvas": "^2.6.0",
+    "canvas": "^2.6.1",
     "decode-tiff": "^0.2.1",
     "pngjs": "^3.4.0"
   }
