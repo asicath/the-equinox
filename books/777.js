@@ -1,6 +1,7 @@
 exports.data = {
     title: '777',
     subtitle: 'PROLEGOMENA SYMBOLICA AD SYSTEMAM SCEPTICO-MYSTICAE VIAE EXPLICANDAE FUNDAMENTUM HIEROGLYPHICUM SANCTISSIMORUM SCIENTIAE SUMMAE',
+    pubTitle: '777',
     pubName: 'Walter Scott Publishing Co., Ltd.',
     pubLocation: 'London and Felling-on-Tyne',
     pubYear: '1909',

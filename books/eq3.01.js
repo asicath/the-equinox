@@ -230,23 +230,24 @@ exports.data = {
         instructions: [
             // one blank page, front and back - added by ingram spark
             {
-                start:1,
-                end:8,
-                expectedBlank: [1,2,4,5],
+                start:3,
+                end:10,
+                expectedBlank: [1,2,3,4,6,7],
                 prefix:'_',
                 insert: [
-                    {file:'_006cover.png', after: 6, blank:'before'}
+                    {file:'_008imagecover.png', after: 8, blank:'before'}
                 ],
                 replace: {
-                    8: 'copyright.png' // copyright replaces 20, need to incorporate the original publishing note
-                }
+                    10: 'copyright.png' // copyright replaces 20, need to incorporate the original publishing note
+                },
+                preventLeftRightCopy: true
             },
             {
                 start:1,
-                end:307,
-                expectedBlank: [3,276],
+                end:308,
+                expectedBlank: [3,276,308],
                 insert: [
-                    {file:'004cover.png', after:4, blank:'before'},
+                    {file:'004imagecover.png', after:4, blank:'before'},
 
                     {file:'129image.png', before:129, blank:'before'},
                     {file:'129imagecover.png', before:129, blank:'before'},
@@ -258,11 +259,9 @@ exports.data = {
 
                     {file:'197image.png', before:197, blank:'before'},
                     {file:'197imagecover.png', before:197, blank:'before'}
-
-                ]
+                ],
+                preventLeftRightCopy: true
             },
-
-            {},
             {
                 start:1,
                 end:2,

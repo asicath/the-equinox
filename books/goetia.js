@@ -1,5 +1,6 @@
 exports.data = {
     title: 'The Book of the Goetia of Solomon the King',
+    pubTitle: 'The Book of the Goetia of Solomon the King',
     pubName: 'Society for the Propagation of Religious Truth',
     pubLocation: 'Boleskine, Foyers, Inverness',
     pubYear: '1904',

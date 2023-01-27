@@ -37,7 +37,7 @@ var filterOptions = {
 
     'konx-om-pax': {folder:'konx-om-pax'},
     'goetia': {folder:'goetia'},
-    'thoth': {folder:'thoth'},
+    'thoth': {folderRe:/^thoth/},
     '333': {folder:'333'},
     '777': {folder:'777'},
     'thelema': {folder:'thelema'},

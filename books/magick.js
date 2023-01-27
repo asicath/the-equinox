@@ -1,6 +1,7 @@
 exports.data = {
     title: 'MAGICK',
     subtitle: 'IN THEORY AND PRACTICE',
+    pubTitle: 'MAGICK IN THEORY AND PRACTICE',
     pubName: 'Lecram Press',
     pubLocation: 'Paris',
     pubYear: '1929',
@@ -87,6 +88,26 @@ exports.data = {
         { pageStart: 179, pageEnd: 189, chapter: 'CHAPTER XX',            title: 'Of the Eucharist and of the Art of Alchemy.' },
         { pageStart: 190, pageEnd: 205, chapter: 'CHAPTER XXI',           title: 'Of Black Magick: of the Main Types of the Operations of Magick Art: and of the Powers of the Sphinx.' },
 
+        // section 3
+        {
+            title: 'COVER - SECTION III',
+            newSection:true,
+            addPage: [{filename: '_section3.jpg'}],
+            pageInfo: 'COVER - SECTION III'
+        },
+        { pageStart: 207, pageEnd: 208, chapter: 'APPENDIX I', title: 'Examples of rituals of Magick in The Equinox' },
+        { pageStart: 209, pageEnd: 228, title: 'CURRICULUM of A∴ A∴' },
+        { pageStart: 229, pageEnd: 244, chapter: 'APPENDIX II', title: 'ONE STAR IN SIGHT', subtitle: 'A glimpse of the structure and system of the Great White Brotherhood' },
+        { pageStart: 245, pageEnd: 264, chapter: 'APPENDIX III', title: 'Notes on the nature of the "Astral Plane"' },
+        { pageStart: 265, pageEnd: 301,
+            title: 'LIBER SAMEKH',
+            subtitle: 'Theurgia Goetia Summa (CONGRESSUS CUM DEAMONE) sub figura DCCC',
+            pub: 'aa',
+            pubClass: 'd',
+            number: 800,
+            grade: 6
+        },
+
 
         // section 4
         {
@@ -102,7 +123,8 @@ exports.data = {
             title: 'A FEW OF THE PRINCIPAL CORRESPONDENCES OF THE QABALAH',
             subtitle: 'REPRINTED WITH ADDITIONS FROM 777',
             pageStart: 303,
-            pageEnd: 324
+            pageEnd: 324,
+            chapter: 'APPENDIX V'
         },
         {
             title: 'Grimorium Sanctissimum',

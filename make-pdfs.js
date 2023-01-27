@@ -16,7 +16,7 @@ function filenameFromPageNumber(n) {
 
 let goToFolder = false; // set to true if there are too many pages for command line, CMD must be copied to the "scans" folder of google drive
 
-let googleFolder = 'D:/googledrive/The Equinox/scans';
+let googleFolder = 'K:/googledrive/The Equinox/scans';
 let baseFolder = googleFolder;
 if (goToFolder) baseFolder = '.';
 
@@ -28,7 +28,7 @@ const lines = [], linesLow = [], merge = [];
 
 if (goToFolder) {
     lines.push('cd ' + googleFolder);
-    lines.push('D:');
+    lines.push('K:');
 }
 
 
@@ -39,13 +39,14 @@ data.books.forEach(book => {
 
     let makeLowRes = book.makeLowRes || true;
 
-    book.contents.forEach(item => {
+    //if (!(book.folder.indexOf('book4') !== -1 || book.folder === '777' || book.folder === 'goetia' || book.folder.indexOf('collectedworks') !== -1)) return;
+    if (!(book.folder.indexOf('book4/3') !== -1)) return;
 
-        if (book.folder !== 'book4/3') return;
+    book.contents.forEach(item => {
 
         //if (!item.hasOwnProperty('filename')) return;
         //if (!(item.title.indexOf('Elemental Weapons') > -1 || item.title.indexOf('COVER AND TITLE PAGE') > -1)) return;
-        if (!(item.pageStart === 331 || item.title === 'Lamen of the Master Therion')) return;
+        if (!(item.pageStart === 245)) return;
         //if (item.prefix !== 'p') return;
 
         // compile images
@@ -100,14 +101,12 @@ data.books.forEach(book => {
 
         }
 
-        // --- TITLE ---
+        // --- title, not used directly
         let title = item.altTitle || item.title;
         title = title.replace(/—/g, "-");
 
-        let pubTitle = 'The Equinox ' + book.folder;
-        if (book.hasOwnProperty('pubTitle')) {
-            pubTitle = book.pubTitle;
-        }
+        // --- citation title
+        const pubTitle = book.hasOwnProperty('pubTitle') ? book.pubTitle : 'The Equinox ' + book.folder;
 
         //MLA: Crowley, Aleister. "LIBER O." The Equinox 1.2 (1909): 11-30.
         let pdfTitle = `""${title}."" ${pubTitle} (${book.pubYear}): ${pageInfo}.`;
@@ -117,7 +116,7 @@ data.books.forEach(book => {
 
         // --- FILENAME ---
         if (!item.hasOwnProperty('filename')) {
-            item.filename = title.replace(/É/g, 'E').replace(/Ä/g, 'A').replace(/æ/g, "ae").replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE").replace(/—/g, "-").replace(/:/g, "").toLowerCase();
+            item.filename = title.replace(/"/g, '').replace(/É/g, 'E').replace(/Ä/g, 'A').replace(/æ/g, "ae").replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE").replace(/—/g, "-").replace(/:/g, "").toLowerCase();
         }
         let filename = item.filename.replace(/\s/g, '-').replace(/[.!?]/g, '');
         let pdfName = baseFolder + `/${book.folder}/pdf-${imgFolder}/${filename}.pdf`;

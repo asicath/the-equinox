@@ -36,7 +36,8 @@ const data = {
         require('./books/eq3.01').data,
         require('./books/magick').data,
         require('./books/magick-insert').data,
-        require('./books/thoth').data
+        require('./books/thoth').data,
+        require('./books/thoth-design').data
     ]
 };
 
@@ -77,7 +78,8 @@ const replacementRegex = [
     {re: /Æ/g, with: 'AE'},
     {re: /æ/g, with: 'ae'},
     {re: /É/g, with: 'E'},
-    {re: /Ä/g, with: 'A'}
+    {re: /Ä/g, with: 'A'},
+    {re: /"/g, with: ''}
 ];
 
 data.parseItem = (book, item) => {
