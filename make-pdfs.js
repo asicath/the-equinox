@@ -1,22 +1,10 @@
 const fs = require('fs');
-const data = require('./data').data;
+const {books} = require('./data').data;
 
-// lets add APR just for making pdfs
-const apr = require('./books/apr').data;
-//data.books.push(apr);
+const googleFolder = 'K:/googledrive/The Equinox/scans';
 
-function filenameFromPageNumber(n, ext = '.png') {
-    let filename = n.toString();
-    while (filename.length < 3) {
-        filename = "0" + filename;
-    }
-    filename += ext;
-    return filename;
-}
-
-let goToFolder = false; // set to true if there are too many pages for command line, CMD must be copied to the "scans" folder of google drive
-
-let googleFolder = 'K:/googledrive/The Equinox/scans';
+// set to true if there are too many pages for command line, CMD must be copied to the "scans" folder of google drive
+const goToFolder = false;
 let baseFolder = googleFolder;
 if (goToFolder) baseFolder = '.';
 
@@ -31,115 +19,42 @@ if (goToFolder) {
     lines.push('K:');
 }
 
+// filter the books/items
+const filteredBooks = books.filter(book => {
+    //if (book.folder.indexOf('thoth-book') === -1) return false;
 
-data.books.forEach(book => {
-
-    let imgFolder = book.imgFolder || '600dpi';
-    let imgFolderRe = new RegExp(imgFolder, 'g'); ///600dpi/g;
-
-    let makeLowRes = book.makeLowRes || true;
-
-    //if (!(book.folder.indexOf('book4') !== -1 || book.folder === '777' || book.folder === 'goetia' || book.folder.indexOf('collectedworks') !== -1)) return;
-    if (!(book.folder.indexOf('thoth-book') !== -1)) return;
-
-    book.contents.forEach(item => {
-
+    // also filter the items
+    book.items = book.items.filter(item => {
         //if (!item.hasOwnProperty('filename')) return;
         //if (!(item.title.indexOf('Elemental Weapons') > -1 || item.title.indexOf('COVER AND TITLE PAGE') > -1)) return;
-        if (!(item.pageStart === 223)) return;
+        //if (item.data.pageStart !== 223) return false;
         //if (item.prefix !== '_') return;
+        return true;
+    });
 
-        // compile images
-        let images = [];
-        let after = {};
+    return true;
+})
 
-        // add the images before hand
-        if (item.hasOwnProperty('addPage')) {
-            item.addPage.forEach(page => {
-                let path = pathFromFilename(book, page.filename, imgFolder);
+filteredBooks.forEach(book => {
 
-                // if position specified
-                if (page.hasOwnProperty('after')) {
-                    if (!after.hasOwnProperty(page.after)) after[page.after] = [];
-                    after[page.after].push(path);
-                }
+    const imgFolder = book.imgFolder || '600dpi';
+    const imgFolderLow = '150dpi';
+    const imgFolderRe = new RegExp(imgFolder, 'g'); ///600dpi/g;
 
-                // otherwise push on the stack now
-                else images.push(path);
-            });
-        }
+    const makeLowRes = book.makeLowRes || true;
 
-        let pageInfo = item.pageInfo || "";
+    book.items.forEach(item => {
 
-        if (item.hasOwnProperty('pageStart')) {
+        const pdfFilepath = baseFolder + `/${book.folder}/pdf-${imgFolder}/${item.pdfName}`;
 
-            if (pageInfo.length === 0) {
-                if (item.pageStart === item.pageEnd) pageInfo = item.pageStart.toString();
-                else pageInfo = item.pageStart + "-" + item.pageEnd;
-            }
-
-            let skip = item['skip'] || null;
-
-            // add the default images
-            for (let i = item.pageStart; i <= item.pageEnd; i++) {
-
-                if (skip !== null && skip.indexOf(i) !== -1) continue;
-
-                let filename = filenameFromPageNumber(i, item.ext);
-                if (item.hasOwnProperty('prefix')) filename = item.prefix + filename;
-
-                let path = pathFromFilename(book, filename, imgFolder);
-                images.push(path);
-
-                // find any images that must appear after this
-                if (after.hasOwnProperty(filename)) {
-                    after[filename].forEach(p => {
-                        images.push(p);
-                    });
-                }
-            }
-
-        }
-
-        // --- title, not used directly
-        let title = item.altTitle || item.title;
-        title = title.replace(/—/g, "-");
-
-        // --- citation title
-        const pubTitle = book.hasOwnProperty('pubTitle') ? book.pubTitle : 'The Equinox ' + book.folder;
-
-        //MLA: Crowley, Aleister. "LIBER O." The Equinox 1.2 (1909): 11-30.
-        let pdfTitle = `""${title}."" ${pubTitle} (${book.pubYear}): ${pageInfo}.`;
-
-        pdfTitle = pdfTitle
-            .replace(/∴/g, "")
-            .replace(/Æ/g, "AE")
-            .replace(/æ/g, "ae")
-            .replace(/É/g, 'E')
-            .replace(/Ä/g, 'A');
-
-
-        // --- FILENAME ---
-        if (!item.hasOwnProperty('filename')) {
-            item.filename = title
-                .replace(/"/g, '')
-                .replace(/É/g, 'E')
-                .replace(/Ä/g, 'A')
-                .replace(/æ/g, "ae")
-                .replace(/,/g, '')
-                .replace(/∴/g, "")
-                .replace(/Æ/g, "AE")
-                .replace(/—/g, "-")
-                .replace(/&/g, "and")
-                .replace(/:/g, "")
-                .toLowerCase();
-        }
-        let filename = item.filename.replace(/\s/g, '-').replace(/[.!?]/g, '');
-        let pdfName = baseFolder + `/${book.folder}/pdf-${imgFolder}/${filename}.pdf`;
+        // apply path to the images
+        const images = item.images.map(filename => {
+            return pathFromFilename(book, filename, imgFolder);
+        });
 
         // --- compile the command ---
-        let imagesCmd = images.join(';');
-        const cmd = `naps2.console -i "${imagesCmd}" -n 0 -o "${pdfName}" --enableocr --ocrlang "eng+lat+grc+heb" --pdftitle "${pdfTitle}" --force`;
+        const imagesCmd = images.join(';');
+        const cmd = `naps2.console -i "${imagesCmd}" -n 0 -o "${pdfFilepath}" --enableocr --ocrlang "eng+lat+grc+heb" --pdftitle "${item.pdfTitle}" --force`;
         lines.push(cmd);
         console.log(cmd);
 
@@ -148,28 +63,25 @@ data.books.forEach(book => {
         if (book.hasOwnProperty('creditFilename')) creditFilename = book.creditFilename;
         if (item.hasOwnProperty('creditFilename')) creditFilename = item.creditFilename;
         const creditPdf = baseFolder + '/credits/pdf-600dpi/' + creditFilename;
-        const creditMerged = `./${book.folder}/${filename}.pdf`;
-        const cmdMerge = `java -Xmx1024m -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfName}" "${creditPdf}" ${creditMerged}`;
+        const creditMerged = `./${book.folder}/${item.pdfName}`;
+        const cmdMerge = `java -Xmx1024m -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfFilepath}" "${creditPdf}" ${creditMerged}`;
         merge.push(cmdMerge);
 
-        if (makeLowRes) {
-            // --- now the LOW res version ---
-            const cmdLow = cmd.replace(imgFolderRe, '150dpi').replace(/\.pdf/, '_low.pdf');
-            linesLow.push(cmdLow);
+        if (!makeLowRes) return;
 
-            const pdfNameLow = pdfName.replace(imgFolderRe, '150dpi').replace(/\.pdf/, '_low.pdf');
-            const creditPdfLow = baseFolder + '/credits/pdf-150dpi/' + creditFilename;
-            const creditMergedLow = `./${book.folder}/${filename}_low.pdf`;
-            const cmdMergeLow = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfNameLow}" "${creditPdfLow}" ${creditMergedLow}`;
-            merge.push(cmdMergeLow);
-        }
+        // --- now the LOW res version ---
+        const pdfFilepathLow = baseFolder + `/${book.folder}/pdf-${imgFolderLow}/${item.pdfLowName}`;
+
+        const cmdLow = cmd.replace(imgFolderRe, imgFolderLow).replace(/\.pdf/, '_low.pdf');
+        linesLow.push(cmdLow);
+
+        const creditPdfLow = baseFolder + '/credits/pdf-150dpi/' + creditFilename;
+        const creditMergedLow = `./${book.folder}/${item.pdfLowName}`;
+        const cmdMergeLow = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfFilepathLow}" "${creditPdfLow}" ${creditMergedLow}`;
+        merge.push(cmdMergeLow);
 
     });
 
     fs.writeFileSync('pdfs/make-pdfs.cmd', lines.join('\n') + '\n' + linesLow.join('\n'));
     fs.writeFileSync('pdfs/join-pdfs.cmd', merge.join('\n'));
-
 });
-
-
-//
