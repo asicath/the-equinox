@@ -36,7 +36,8 @@ const data = {
         require('./books/eq3.01').data,
         require('./books/magick').data,
         require('./books/magick-insert').data,
-        require('./books/thoth').data,
+        require('./books/thoth-book').data,
+        require('./books/thoth-exhibition').data,
         require('./books/thoth-design').data
     ]
 };

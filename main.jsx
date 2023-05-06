@@ -16,7 +16,7 @@ function showIndexPage() {
     );
 }
 
-var filterOptions = {
+const filterOptions = {
     'aa': {pub: 'aa'},
     'class-a': {pub: 'aa', pubClass: 'a'},
     'class-b': {pub: 'aa', pubClass: 'b'},
@@ -124,7 +124,7 @@ class ContentItem extends React.Component {
             authors = <div className="item-subtitle"><span>{authors}</span></div>;
         }
 
-        let info = {
+        const info = {
             number: <div className="number">{item.number}</div>,
             pub: <div className="pub">{pub}</div>
         };
@@ -347,7 +347,7 @@ class Index extends React.Component {
 
         }
 
-        let authorOptions = data.authors.map((author, i) => {
+        const authorOptions = data.authors.map((author, i) => {
             return <option key={i} value={author.last.toLowerCase()}>{author.last}, {author.other}</option>;
         });
 

@@ -3,14 +3,14 @@ const data = require('./data').data;
 
 // lets add APR just for making pdfs
 const apr = require('./books/apr').data;
-data.books.push(apr);
+//data.books.push(apr);
 
-function filenameFromPageNumber(n) {
+function filenameFromPageNumber(n, ext = '.png') {
     let filename = n.toString();
     while (filename.length < 3) {
         filename = "0" + filename;
     }
-    filename += '.png';
+    filename += ext;
     return filename;
 }
 
@@ -40,14 +40,14 @@ data.books.forEach(book => {
     let makeLowRes = book.makeLowRes || true;
 
     //if (!(book.folder.indexOf('book4') !== -1 || book.folder === '777' || book.folder === 'goetia' || book.folder.indexOf('collectedworks') !== -1)) return;
-    if (!(book.folder.indexOf('book4/3') !== -1)) return;
+    if (!(book.folder.indexOf('thoth-book') !== -1)) return;
 
     book.contents.forEach(item => {
 
         //if (!item.hasOwnProperty('filename')) return;
         //if (!(item.title.indexOf('Elemental Weapons') > -1 || item.title.indexOf('COVER AND TITLE PAGE') > -1)) return;
-        if (!(item.pageStart === 245)) return;
-        //if (item.prefix !== 'p') return;
+        if (!(item.pageStart === 223)) return;
+        //if (item.prefix !== '_') return;
 
         // compile images
         let images = [];
@@ -85,7 +85,7 @@ data.books.forEach(book => {
 
                 if (skip !== null && skip.indexOf(i) !== -1) continue;
 
-                let filename = filenameFromPageNumber(i);
+                let filename = filenameFromPageNumber(i, item.ext);
                 if (item.hasOwnProperty('prefix')) filename = item.prefix + filename;
 
                 let path = pathFromFilename(book, filename, imgFolder);
@@ -111,12 +111,28 @@ data.books.forEach(book => {
         //MLA: Crowley, Aleister. "LIBER O." The Equinox 1.2 (1909): 11-30.
         let pdfTitle = `""${title}."" ${pubTitle} (${book.pubYear}): ${pageInfo}.`;
 
-        pdfTitle = pdfTitle.replace(/∴/g, "").replace(/Æ/g, "AE").replace(/æ/g, "ae").replace(/É/g, 'E').replace(/Ä/g, 'A');
+        pdfTitle = pdfTitle
+            .replace(/∴/g, "")
+            .replace(/Æ/g, "AE")
+            .replace(/æ/g, "ae")
+            .replace(/É/g, 'E')
+            .replace(/Ä/g, 'A');
 
 
         // --- FILENAME ---
         if (!item.hasOwnProperty('filename')) {
-            item.filename = title.replace(/"/g, '').replace(/É/g, 'E').replace(/Ä/g, 'A').replace(/æ/g, "ae").replace(/,/g, '').replace(/∴/g, "").replace(/Æ/g, "AE").replace(/—/g, "-").replace(/:/g, "").toLowerCase();
+            item.filename = title
+                .replace(/"/g, '')
+                .replace(/É/g, 'E')
+                .replace(/Ä/g, 'A')
+                .replace(/æ/g, "ae")
+                .replace(/,/g, '')
+                .replace(/∴/g, "")
+                .replace(/Æ/g, "AE")
+                .replace(/—/g, "-")
+                .replace(/&/g, "and")
+                .replace(/:/g, "")
+                .toLowerCase();
         }
         let filename = item.filename.replace(/\s/g, '-').replace(/[.!?]/g, '');
         let pdfName = baseFolder + `/${book.folder}/pdf-${imgFolder}/${filename}.pdf`;
