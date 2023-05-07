@@ -11,7 +11,7 @@ function main() {
 
 function showIndexPage() {
     render(
-        <Index data={data} />,
+        <Index books={data.books} authors={data.authors} />,
         document.getElementById('root')
     );
 }
@@ -64,7 +64,6 @@ class ContentItem extends React.Component {
     render() {
         const book = this.props.book;
         const item = this.props.item;
-        const parsedItem = data.parseItem(book, item);
         const authorLU = this.props.authors;
 
         let pub = "";
@@ -77,8 +76,8 @@ class ContentItem extends React.Component {
 
         //let aTxt = (item.hasText) ? <a href=".">txt</a> : "";
 
-        let aHigh = <a target="_blank" href={parsedItem.pdfName}>high</a>;
-        let aLow = <a target="_blank" href={parsedItem.pdfLowName}>low</a>;
+        let aHigh = <a target="_blank" href={`${book.folder}/${item.pdfName}`}>high</a>;
+        let aLow = <a target="_blank" href={`${book.folder}/${item.pdfLowName}`}>low</a>;
 
         // turn into array
         let authors = "";
@@ -124,7 +123,7 @@ class ContentItem extends React.Component {
             authors = <div className="item-subtitle"><span>{authors}</span></div>;
         }
 
-        const info = {
+        let info = {
             number: <div className="number">{item.number}</div>,
             pub: <div className="pub">{pub}</div>
         };
@@ -171,7 +170,7 @@ class Index extends React.Component {
 
         // in the data
         this.authors = {};
-        this.props.data.authors.forEach(author => {
+        this.props.authors.forEach(author => {
             this.authors[author.last.toLowerCase()] = author;
         });
     }
@@ -204,7 +203,7 @@ class Index extends React.Component {
     render() {
 
         // determine the selected option
-        var selectedOption = null;
+        let selectedOption = null;
         if (this.state.selected.length > 0 && filterOptions.hasOwnProperty(this.state.selected)) {
             selectedOption = filterOptions[this.state.selected];
         }
@@ -213,9 +212,9 @@ class Index extends React.Component {
 
         let groups = [];
         let images = []; // collate the images from the selected items
-        for (let i = 0; i < this.props.data.books.length; i++) {
-            let book = this.props.data.books[i];
-            let html = [];
+        for (let i = 0; i < this.props.books.length; i++) {
+            const book = this.props.books[i];
+            const html = [];
             let isBookActive = false;
             let bookTitleFoundInSearch = false;
 
@@ -226,8 +225,8 @@ class Index extends React.Component {
                 }
             }
 
-            for (let j = 0; j < book.contents.length; j++) {
-                let item = book.contents[j];
+            for (let j = 0; j < book.items.length; j++) {
+                const item = book.items[j];
 
                 // simple title search
                 if (textSearch.length !== 0 && !bookTitleFoundInSearch) {

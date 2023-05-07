@@ -36,7 +36,12 @@ class Book {
     constructor(data) {
         this.data = data;
 
-        this.folder = this.data.folder;
+        // needed by jsx TODO: limit to just required fields and output to small json
+        for (let key of Object.keys(this.data)) {
+            this[key] = this.data[key];
+        }
+
+        //this.folder = this.data.folder;
 
         // --- citation title
         this.pubTitle = this.data.hasOwnProperty('pubTitle') ? this.data.pubTitle : 'The Equinox ' + this.folder;
@@ -45,6 +50,7 @@ class Book {
         this.items = this.data.contents.map(item => {
             return new BookItem(this, item);
         });
+
     }
 
 }
@@ -54,6 +60,12 @@ class BookItem {
     constructor(book, data) {
         this.book = book;
         this.data = data;
+
+        // needed by jsx TODO: limit to just required fields and output to small json
+        for (let key of Object.keys(this.data)) {
+            this[key] = this.data[key];
+        }
+
         this._initImages();
         this._initTitlesAndFilenames();
     }
@@ -110,7 +122,7 @@ class BookItem {
             }
         }
 
-        this.images = images;
+        this.pageImages = images;
         this.pageInfo = pageInfo;
     }
 
@@ -171,8 +183,8 @@ const books = [
     require('./books/eq3.01').data,
     require('./books/magick').data,
     require('./books/magick-insert').data,
-    require('./books/thoth-book').data,
     require('./books/thoth-exhibition').data,
+    require('./books/thoth-book').data,
     require('./books/thoth-design').data
 ].map(data => {
     return new Book(data);

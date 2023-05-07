@@ -129,30 +129,26 @@ exports.data = {
             subtitle: 'A FABLE',
             author: 'crowley',
             pageStart: 201,
-            pageEnd: 207,
-            filename: 'the daughter of the horseleech'
+            pageEnd: 207
         },
         {
             title: 'THE DREAMER',
             author: 'archer',
             pageStart: 208,
-            pageEnd: 208,
-            filename: 'the dreamer'
+            pageEnd: 208
         },
         {
             title: 'MR. TODD',
             subtitle: 'A MORALITY',
             author: 'crowley',
             pageStart: 209,
-            pageEnd: 235,
-            filename: 'mr todd'
+            pageEnd: 235
         },
         {
             title: 'THE GNOME',
             author: 'neuburg',
             pageStart: 236,
-            pageEnd: 238,
-            filename: 'the gnome'
+            pageEnd: 238
         },
         {
             title: 'THE HERB DANGEROUS',
@@ -167,37 +163,32 @@ exports.data = {
             title: 'THE BUDDHIST',
             author: 'crowley',
             pageStart: 272,
-            pageEnd: 273,
-            filename: 'the buddhist'
+            pageEnd: 273
         },
         {
             title: 'THE AGNOSTIC',
             author: 'neuburg',
             pageStart: 274,
-            pageEnd: 274,
-            filename: 'the agnostic'
+            pageEnd: 274
         },
         {
             title: 'THE MANTRA-YOGI',
             author: 'crowley',
             pageStart: 275,
-            pageEnd: 276,
-            filename: 'the mantra-yogi'
+            pageEnd: 276
         },
         {
             title: 'THE VIOLINIST',
             author: 'crowley',
             pageStart: 277,
-            pageEnd: 280,
-            filename: 'the violinist'
+            pageEnd: 280
         },
         {
             title: 'EHE!',
             subtitle: 'A DROP FROM THE SPONGE OF KNOWLEDGE',
             author: 'raffalovich',
             pageStart: 281,
-            pageEnd: 283,
-            filename: 'ehe'
+            pageEnd: 283
         },
         {
             title: 'HALF-HOURS WITH FAMOUS MAHATMAS',
@@ -205,14 +196,13 @@ exports.data = {
             author: 'fuller',
             pageStart: 284,
             pageEnd: 290,
-            filename: 'half-hours with famous mahatmas no 1'
+            filename: 'half-hours-with-famous-mahatmas-no-1'
         },
         {
             title: 'THE THIEF-TAKER',
             author: 'crowley',
             pageStart: 291,
-            pageEnd: 291,
-            filename: 'the thief-taker'
+            pageEnd: 291
         },
         {
             title: 'THE EYES OF ST. LJUBOV',
@@ -220,64 +210,56 @@ exports.data = {
             author: ['raffalovich', 'fuller'],
             pageStart: 293,
             pageEnd: 309,
-            skip: [294],
-            filename: 'the eyes of st ljubov'
+            skip: [294]
         },
         {
             title: 'MIDSUMMER EVE',
             author: 'archer',
             pageStart: 310,
-            pageEnd: 310,
-            filename: 'midsummer eve'
+            pageEnd: 310
         },
         {
             title: 'THE POETICAL MEMORY',
             subtitle: 'AN ESSAY',
             author: 'crowley',
             pageStart: 311,
-            pageEnd: 313,
-            filename: 'the poetical memory'
+            pageEnd: 313
         },
         {
             title: 'ADELA',
             author: 'crowley',
             pageStart: 314,
-            pageEnd: 316,
-            filename: 'adela'
+            pageEnd: 316
         },
         {
             title: 'THE THREE WORMS',
             author: 'storer',
             pageStart: 317,
-            pageEnd: 324,
-            filename: 'the three worms'
+            pageEnd: 324
         },
         {
             title: 'THE FELON FLOWER',
             author: 'archer',
             pageStart: 325,
-            pageEnd: 326,
-            filename: 'the felon flower'
+            pageEnd: 326
         },
         {
             title: 'THE BIG STICK',
             pageStart: 327,
-            pageEnd: 345,
-            filename: 'the big stick'
+            pageEnd: 345
         },
         {
             title: "THE GLAZIERS' HOUSES",
             subtitle: 'THE SHAVING OF SHAGPAT',
             pageStart: 346,
             pageEnd: 351,
-            filename: 'glaziers houses'
+            filename: 'glaziers-houses'
         },
         {
             title: 'IN THE TEMPLE',
             author: 'neuburg',
             pageStart: 352,
-            pageEnd: 352,
-            filename: 'in the temple'
+            pageEnd: 352
         },
         {
             title: 'THE HIGH HISTORY OF GOOD SIR PALAMEDES THE SARACEN KNIGHT',
@@ -291,8 +273,7 @@ exports.data = {
             pageEnd: 113,
             skip: [2],
             prefix: 's',
-            addPage: [{filename: 'r001.png'}, {filename: 'r003.png'}, {filename: 'r005.png'}, {filename: 'r006.png'}, {filename: 'r007.png'}, {filename: 'r008.png'}],
-            filename: 'the high history of good sir palamedes the saracen knight'
+            addPage: [{filename: 'r001.png'}, {filename: 'r003.png'}, {filename: 'r005.png'}, {filename: 'r006.png'}, {filename: 'r007.png'}, {filename: 'r008.png'}]
         },
 
         {

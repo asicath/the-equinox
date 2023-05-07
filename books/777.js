@@ -23,15 +23,13 @@ exports.data = {
                 {filename: '_000.jpg'},
                 {filename: '055.png', after: '_005.png'},
                 {filename: 'back.jpg', after: '_005.png'},
-            ],
-            filename: 'cover and title'
+            ]
         },
         {
             title: 'INTRODUCTION',
             pageStart: 6,
             pageEnd: 10,
-            prefix: '_',
-            filename: 'introduction'
+            prefix: '_'
         },
         {
             title: 'ERRATA',
@@ -41,8 +39,7 @@ exports.data = {
             pub: 'aa',
             pubClass: 'b',
             number: 777,
-            grade: 3,
-            filename: 'errata'
+            grade: 3
         },
         {
             title: 'TABLE OF CORRESPONDENCES',
@@ -51,8 +48,7 @@ exports.data = {
             pub: 'aa',
             pubClass: 'b',
             number: 777,
-            grade: 3,
-            filename: 'table of correspondences'
+            grade: 3
         },
         {
             title: 'NOTES TO TABLE OF CORRESPONDENCES',
@@ -61,8 +57,7 @@ exports.data = {
             pub: 'aa',
             pubClass: 'b',
             number: 777,
-            grade: 3,
-            filename: 'notes to table of correspondences'
+            grade: 3
         },
         {
             title: 'APPENDIX I: THE TRIGRAMS',
@@ -72,13 +67,13 @@ exports.data = {
             pubClass: 'b',
             number: 777,
             grade: 3,
-            filename: 'appendix 1 the trigrams'
+            filename: 'appendix-1-the-trigrams'
         },
         {
             title: 'THE EQUINOX: ADVERTISEMENT AND SUBSCRIPTION FORM',
             pageStart: 56,
             pageEnd: 57,
-            filename: 'equinox advertisement'
+            filename: 'equinox-advertisement'
         }
     ],
     publish: {

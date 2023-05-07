@@ -5,8 +5,8 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build prod": "node_modules/.bin/webpack -p",
-    "build dev": "node_modules/.bin/webpack -d",
+    "build-prod": ".\\node_modules\\.bin\\webpack -p",
+    "build-dev": ".\\node_modules\\.bin\\webpack -d",
     "watch": "node_modules/.bin/webpack --watch -d"
   },
   "author": "",
