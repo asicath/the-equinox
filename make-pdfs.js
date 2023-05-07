@@ -24,7 +24,7 @@ function main() {
 
     // filter the books/items
     const filteredBooks = books.filter(book => {
-        //if (book.folder.indexOf('thoth-book') === -1) return false;
+        if (book.folder.indexOf('thoth-design') === -1) return false;
 
         // also filter the items
         book.items = book.items.filter(item => {
@@ -38,7 +38,12 @@ function main() {
         return true;
     })
 
-    const startLines = lines.length + linesLow.length;
+    const count = {
+        makeHigh: 0,
+        makeLow: 0,
+        joinHigh: 0,
+        joinLow: 0
+    };
 
     filteredBooks.forEach(book => {
 
@@ -66,6 +71,7 @@ function main() {
             const imagesCmd = pageImages.join(';');
             const cmd = `naps2.console -i "${imagesCmd}" -n 0 -o "${pdfFilepath}" --enableocr --ocrlang "eng+lat+grc+heb" --pdftitle "${item.pdfTitle}" --force`;
             lines.push(cmd);
+            count.makeHigh += 1;
 
             // --- now add a credit joining line to the other .cmd ---
             let creditFilename = 'credits.pdf';
@@ -75,6 +81,7 @@ function main() {
             const creditMerged = `./${book.folder}/${item.pdfName}`;
             const cmdMerge = `java -Xmx1024m -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfFilepath}" "${creditPdf}" ${creditMerged}`;
             merge.push(cmdMerge);
+            count.joinHigh += 1;
             checkForFile(creditMerged);
 
             if (!makeLowRes) {
@@ -86,11 +93,13 @@ function main() {
 
             const cmdLow = cmd.replace(imgFolderRe, imgFolderLow).replace(/\.pdf/, '_low.pdf');
             linesLow.push(cmdLow);
+            count.makeLow += 1;
 
             const creditPdfLow = baseFolder + '/credits/pdf-150dpi/' + creditFilename;
             const creditMergedLow = `./${book.folder}/${item.pdfLowName}`;
             const cmdMergeLow = `java -jar pdfbox-app-2.0.8.jar PDFMerger "${pdfFilepathLow}" "${creditPdfLow}" ${creditMergedLow}`;
             merge.push(cmdMergeLow);
+            count.joinLow += 1;
             checkForFile(creditMergedLow);
         });
 
@@ -98,8 +107,8 @@ function main() {
         fs.writeFileSync('pdfs/join-pdfs.cmd', merge.join('\n'));
     });
 
-    console.log(`lines in make-pdfs.cmd: ${lines.length + linesLow.length - startLines}`);
-    console.log(`lines in join-pdfs.cmd: ${merge.length}`);
+    console.log(`lines in make-pdfs.cmd high: ${count.makeHigh} low: ${count.makeLow}`);
+    console.log(`lines in join-pdfs.cmd high: ${count.joinHigh} low: ${count.joinLow}`);
 }
 
 function checkForFile(filepath) {

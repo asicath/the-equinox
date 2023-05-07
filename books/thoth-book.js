@@ -5,7 +5,7 @@ exports.data = {
     pubLocation: '93 Jermyn Street, S.W.',
     pubYear: '1944',
     folder: 'thoth-book',
-    creditFilename: 'credits-thoth.pdf',
+    creditFilename: 'credits-thoth-book.pdf',
     images: [
         'front.jpg',
         '_004.jpg',

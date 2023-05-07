@@ -4,8 +4,8 @@ exports.data = {
     pubName: 'Unknown',
     pubLocation: 'London',
     pubYear: '1941',
-    folder: 'thoth',
-    creditFilename: 'credits-thoth.pdf',
+    folder: 'thoth-exhibition',
+    creditFilename: 'credits-thoth-exhibition.pdf',
     images: [
         'cover-thoth.jpg'
     ],

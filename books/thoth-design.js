@@ -5,7 +5,7 @@ exports.data = {
     pubLocation: 'London',
     pubYear: '2002',
     folder: 'thoth-design',
-    creditFilename: 'credits-thoth.pdf',
+    creditFilename: 'credits-thoth-exhibition.pdf',
     images: [],
     links: [],
     contents: [
