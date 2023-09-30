@@ -200,6 +200,66 @@ class Index extends React.Component {
         this.setState({person: event.target.value});
     }
 
+    isItemVisible({book, item, selectedOption, textSearch, bookTitleFoundInSearch}) {
+        // simple title search
+        if (textSearch.length !== 0 && !bookTitleFoundInSearch) {
+            if (
+                item.title.toLowerCase().indexOf(textSearch) === -1
+                && (!item.subtitle || item.subtitle.toLowerCase().indexOf(textSearch) === -1)
+            ) {
+                return false;
+            }
+        }
+
+        // filter
+        if (selectedOption !== null) {
+
+            if (selectedOption.hasOwnProperty('folderRe') && !book.folder.match(selectedOption.folderRe)) {
+                return false;
+            }
+            else if (selectedOption.hasOwnProperty('folder') && book.folder !== selectedOption.folder) {
+                return false;
+            }
+
+            if (selectedOption.hasOwnProperty('pub') && item.pub !== selectedOption.pub) return false;
+            if (selectedOption.hasOwnProperty('pubClass') && (!item.hasOwnProperty('pubClass') || item.pubClass.indexOf(selectedOption.pubClass) === -1)) return false;
+
+            if (selectedOption.isOther) {
+                if (item.hasOwnProperty('pub') || item.hasOwnProperty('pubClass')) return false;
+            }
+
+            if (selectedOption.hasOwnProperty('grade')) {
+
+                if (!item.hasOwnProperty('grade')) return null; // only graded items go through
+
+                if (typeof item.grade === 'number' && item.grade !== selectedOption.grade) return false;
+                else if (Array.isArray(item.grade)&& item.grade.indexOf(selectedOption.grade) === -1) return false;
+            }
+        }
+
+        if (this.state.person !== '') {
+            // don't show any without authors
+            if (!item.hasOwnProperty('author')) return false;
+
+            // turn into array
+            if (!Array.isArray(item.author)) item.author = [item.author];
+
+            let has = false;
+            item.author.forEach(o => {
+                if (typeof o === 'string') {
+                    if (o === this.state.person) has = true;
+                }
+                else {
+                    if (o.name === this.state.person) has = true;
+                }
+            });
+
+            if (!has) return false;
+        }
+
+        return true;
+    }
+
     render() {
 
         // determine the selected option
@@ -225,90 +285,57 @@ class Index extends React.Component {
                 }
             }
 
-            for (let j = 0; j < book.items.length; j++) {
-                const item = book.items[j];
-
-                // simple title search
-                if (textSearch.length !== 0 && !bookTitleFoundInSearch) {
-                    if (
-                        item.title.toLowerCase().indexOf(textSearch) === -1
-                        && (!item.subtitle || item.subtitle.toLowerCase().indexOf(textSearch) === -1)
-                    ) {
-                        continue;
-                    }
+            if (book.takedownNotice) {
+                let alt = null;
+                if (book.takedownAlt) {
+                    alt = <span>The text is still available on <a href={book.takedownAlt}>{book.takedownAltText}</a>.</span>;
                 }
 
-                // filter
-                if (selectedOption !== null) {
+                html.push(<div className={"takedown"}>{book.takedownNotice} {alt}</div>);
+            }
+            else {
+                for (let j = 0; j < book.items.length; j++) {
+                    const item = book.items[j];
 
-                    if (selectedOption.hasOwnProperty('folderRe') && !book.folder.match(selectedOption.folderRe)) {
-                        continue;
-                    }
-                    else if (selectedOption.hasOwnProperty('folder') && book.folder !== selectedOption.folder) {
-                        continue;
-                    }
-
-                    if (selectedOption.hasOwnProperty('pub') && item.pub !== selectedOption.pub) continue;
-                    if (selectedOption.hasOwnProperty('pubClass') && (!item.hasOwnProperty('pubClass') || item.pubClass.indexOf(selectedOption.pubClass) === -1)) continue;
-
-                    if (selectedOption.isOther) {
-                        if (item.hasOwnProperty('pub') || item.hasOwnProperty('pubClass')) continue;
-                    }
-
-                    if (selectedOption.hasOwnProperty('grade')) {
-
-                        if (!item.hasOwnProperty('grade')) continue; // only graded items go through
-
-                        if (typeof item.grade === 'number' && item.grade !== selectedOption.grade) continue;
-                        else if (Array.isArray(item.grade)&& item.grade.indexOf(selectedOption.grade) === -1) continue;
-                    }
-                }
-
-                if (this.state.person !== '') {
-                    // don't show any without authors
-                    if (!item.hasOwnProperty('author')) continue;
-
-                    // turn into array
-                    if (!Array.isArray(item.author)) item.author = [item.author];
-
-                    let has = false;
-                    item.author.forEach(o => {
-                        if (typeof o === 'string') {
-                            if (o === this.state.person) has = true;
-                        }
-                        else {
-                            if (o.name === this.state.person) has = true;
-                        }
+                    const isVisible = this.isItemVisible({
+                        book,
+                        item,
+                        selectedOption,
+                        textSearch,
+                        bookTitleFoundInSearch,
+                        images
                     });
 
-                    if (!has) continue;
+                    if (!isVisible) continue;
+
+                    // INSERT **************
+                    let key = "item-" + i + "-" + j;
+                    const result = <ContentItem key={key} book={book} item={item} authors={this.authors}/>;
+                    html.push(result);
+
+                    // indicate that this book is active, ie at least some of its contents will be shown to the user
+                    isBookActive = true;
+
+                    // gather images of the content item
+                    if (item.hasOwnProperty('images')) {
+                        item.images.forEach(o => {
+
+                            if (typeof o === 'string') {
+                                images.push({
+                                    thumb: `images/${book.folder}/thumb/${o}`,
+                                    url: `images/${book.folder}/${o}`,
+                                    order: Math.random()
+                                });
+                            }
+
+                        });
+                    }
+
                 }
-
-                // indicate that this book is active, ie at least some of its contents will be shown to the user
-                isBookActive = true;
-
-                // gather images of the content item
-                if (item.hasOwnProperty('images')) {
-                    item.images.forEach(o => {
-
-                        if (typeof o === 'string') {
-                            images.push({
-                                thumb: `images/${book.folder}/thumb/${o}`,
-                                url:`images/${book.folder}/${o}`,
-                                order: Math.random()
-                            });
-                        }
-
-                    });
-                }
-
-                // INSERT **************
-                let key = "item-" + i + "-" + j;
-                html.push(<ContentItem key={key} book={book} item={item} authors={this.authors}/>);
             }
 
-            let publisher = <span>({book.pubLocation}: {book.pubName}, <span className="number">{book.pubYear}</span>)</span>;
-            let subtitle = book.hasOwnProperty('subtitle') ? <div className="groupSubtitle">{book.subtitle}</div> : null;
+            const publisher = <span>({book.pubLocation}: {book.pubName}, <span className="number">{book.pubYear}</span>)</span>;
+            const subtitle = book.hasOwnProperty('subtitle') ? <div className="groupSubtitle">{book.subtitle}</div> : null;
 
             if (html.length > 0) {
                 let key = "group-" + i;

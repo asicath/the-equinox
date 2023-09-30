@@ -317,3 +317,10 @@ table td {
 .inline {
     display: inline-block;
 }
+.takedown {
+    font-weight: bold;
+    background-color: antiquewhite;
+    padding: 0.8em 1em;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+}

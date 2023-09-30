@@ -17,6 +17,9 @@ exports.data = {
         '262.jpg',
         '272.jpg'
     ],
+    takedownNotice: "This content has been removed at request of the U.S. copyright holder, Ordo Templi Orientis.",
+    takedownAlt: "https://hermetic.com/crowley/book-of-thoth/index",
+    takedownAltText: "hermetic.com",
     links: [
         {text: 'info', url: 'https://www.100thmonkeypress.com/biblio/acrowley/books/book_of_thoth_1944/book_of_thoth_1944.htm'}
     ],
