@@ -288,7 +288,7 @@ class Index extends React.Component {
             if (book.takedownNotice) {
                 let alt = null;
                 if (book.takedownAlt) {
-                    alt = <span>The text is still available on <a href={book.takedownAlt}>{book.takedownAltText}</a>.</span>;
+                    alt = <span>The text is still available on <a target="_blank" href={book.takedownAlt}>{book.takedownAltText}</a>.</span>;
                 }
 
                 html.push(<div className={"takedown"}>{book.takedownNotice} {alt}</div>);
