@@ -68,24 +68,7 @@ export class Description extends React.Component {
                 title: 'Amazon DE',
                 url: 'https://www.amazon.de/dp/###',
                 ids: amazonIds
-            },
-            {
-                title: 'Book Depository',
-                url: 'https://www.bookdepository.com/Equinox-Aleister-Crowley/###',
-                // https://www.bookdepository.com/publishers/Scott-Wilde
-                ids: [
-                    '9781642556858', // 1
-                    '9781643167800', // 2
-                    '9781643161563', // 3
-                    '9781643161570', // 4
-                    '9781643161587', // 5
-                    '9781643161594', // 6
-                    '9781644673560', // 7
-                    '9781644673577', // 8
-                    '9781644673584', // 9
-                    '9781644673591', // 10
-                ]
-            },
+            }
         ];
 
 
@@ -111,10 +94,6 @@ export class Description extends React.Component {
                 <a href="https://groups.google.com/forum/#!forum/keepsilence/join">Join our announcement only email list</a> or <a href="https://groups.google.com/forum/feed/keepsilence/msgs/rss.xml?num=15">subscribe to the rss feed</a> to be notified when new content is available or when new print versions are released.
             </div>
             <div className="description-item">
-                1.1-10, 3.1, 777, The Book of Lies, Konx Om Pax, ΘΕΛΗΜΑ, The Goetia, and Book 4 Parts I & II are complete.<br/>
-                Collected Works, The Heart of the Master, Little Essays Towards Truth, Eight Lectures on Yoga, The Equinox of the Gods, and Book 4 part III are in the works and will be released as they are completed.
-            </div>
-            <div className="description-item">
                 Please consider supporting this project by either <a href="donate.html">donating directly</a> or <a href="merch.html">buying merchandise created from the scans</a>.
             </div>
             <div className="description-item retail-section">
@@ -128,14 +107,12 @@ export class Description extends React.Component {
                             &nbsp;|&nbsp;Amazon <a target="_blank" href="https://www.amazon.com/dp/1646691830">US</a>
                             &nbsp;-&nbsp;<a target="_blank" href="https://www.amazon.co.uk/dp/1646691830">UK</a>
                             &nbsp;-&nbsp;<a target="_blank" href="https://www.amazon.de/dp/1646691830">DE</a>
-                            &nbsp;|&nbsp;<a target="_blank" href="https://www.bookdepository.com/Book-Lies-Aleister-Crowley/9781646691838">Book Depository</a>
                         </div>
                         <div>
                             <div style={{display:'inline-block', width:'12.5em', textAlign:'right', marginRight:'0.5em'}}>Oversized <span style={{fontSize:'0.7em'}}>(Hardcover, 7"x10")</span>:</div> <a target="_blank" href="https://www.barnesandnoble.com/w/1136418047">Barnes & Noble</a>
                             &nbsp;|&nbsp;Amazon <a target="_blank" href="https://www.amazon.com/dp/1646691849">US</a>
                             &nbsp;-&nbsp;<a target="_blank" href="https://www.amazon.co.uk/dp/1646691849">UK</a>
                             &nbsp;-&nbsp;<a target="_blank" href="https://www.amazon.de/dp/1646691849">DE</a>
-                            &nbsp;|&nbsp;<a target="_blank" href="https://www.bookdepository.com/Book-Lies-Aleister-Crowley/9781646691845">Book Depository</a>
                         </div>
                     </div>
                 </div>
@@ -143,7 +120,7 @@ export class Description extends React.Component {
                 <div className="inline retail-desc">
                     Print editions for all of Vol 1. are now available at most major online book retailers!
                     Note that due to the print on demand nature process, sometimes these retailers indicate out of stock, but if you order they generally process the order quickly.
-                    U.S. customers should never pay more than $30 including shipping, from amazon.com you might need to look in the list of new sellers to buy directly from amazon.com.
+                    U.S. customers should never pay more than $33 including shipping, from amazon.com you might need to look in the list of new sellers to buy directly from amazon.com.
                 </div>
                 <div className="buy-links">
                     {buyLinks}
@@ -152,14 +129,14 @@ export class Description extends React.Component {
                 <div style={{margin:'0.5em 0.5em 0 0.5em'}}>
                     <div style={{display:'inline-block', marginRight:'0.5em'}}>
                         <a href="https://www.etsy.com/listing/763207813/thelema-agape-enamel-pin-set-thelma-agap?ref=shop_home_feat_1">
-                            <img src="img/pins-icon.jpg" style={{height:'3em'}}/>
+                            <img src="img/thelema-book.jpg" style={{height:'3em'}}/>
                         </a>
                     </div>
                     <div style={{display:'inline-block'}}>
                         <a href="https://www.etsy.com/shop/HorizonLodge?ref=keepsilence&fbclid=IwAR3rar4Wh6j0ud7pNJaNmJyvJkY-eed48w-84NPKW-sUft-4od8M1t-geiM">
-                            Limited print edition of ΘΕΛΗΜΑ now available! Original print size or hardcover oversized edition.
+                            Limited print edition of ΘΕΛΗΜΑ now available!
+                            <br/>Original print size or hardcover oversized edition.
                             <br/>100% of net proceeds go to Horizon Lodge O.T.O. in Seattle, WA.
-                            <br/>&lt;-- We've also produced a second batch of pins based on the cover imprint!
                         </a>
                     </div>
 

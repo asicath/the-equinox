@@ -291,7 +291,7 @@ class Index extends React.Component {
                     alt = <span>The text is still available on <a target="_blank" href={book.takedownAlt}>{book.takedownAltText}</a>.</span>;
                 }
 
-                html.push(<div className={"takedown"}>{book.takedownNotice} {alt}</div>);
+                html.push(<div className={"takedown"}>{book.takedownNotice} {alt}<br/><a href={'copyright.html'}>Click here</a> to learn more about the status of Crowley's copyrights.</div>);
             }
             else {
                 for (let j = 0; j < book.items.length; j++) {

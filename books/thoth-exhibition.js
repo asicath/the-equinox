@@ -32,5 +32,6 @@ exports.data = {
         instructions: [
 
         ]
-    }
+    },
+    takedownNotice: "This content has been removed at request of the U.S. copyright holder, Ordo Templi Orientis."
 };

@@ -190,6 +190,26 @@ p {
     border: solid #808080 1px;
 }
 
+.copyrightInfo {
+    width:40em;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5em;
+    text-align: justify;
+}
+.copyrightInfo div {
+    margin-bottom: 1em;
+}
+.copyrightInfo div.quote {
+    padding: 0 5em;
+    font-family: sans-serif;
+}
+.copyrightInfo li {
+    margin-bottom: 1em;
+    text-align: left;
+    margin: 0 5em 1em 5em;
+}
+
 
 .donationInfo {
     width:40em;
