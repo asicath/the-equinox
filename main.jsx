@@ -414,7 +414,7 @@ class Index extends React.Component {
                 <div style={{display:'inline-block'}}><span style={{fontSize:'0.8em'}}>Title Search: </span><input style={{width:'20em'}} value={this.state.textSearch} onChange={this.handleSearchTextChange.bind(this)} /></div>
 
                 <div className="filter-right" style={{marginTop:'-4px'}}>
-                    <div className="filter-item"><span style={{fontSize:'0.8em'}}>Author: </span><select style={{textAlignLast: 'center', 'height': '1.5em'}} onChange={this.onPersonChange}>
+                    <div className="filter-item"><span style={{fontSize:'0.8em'}}>Author: </span><select style={{textAlignLast: 'center', 'height': '1.5em'}} onChange={this.onPersonChange} defaultValue={this.person}>
                         <option value=""></option>
                         {authorOptions}
                     </select></div>
@@ -504,8 +504,7 @@ class Index extends React.Component {
         // compile the author select dropdown
         const authorOptions = data.authors.map((author, i) => {
             const value = author.last.toLowerCase();
-            const selected = value === this.person;
-            return <option key={i} value={value} selected={selected}>{author.last}, {author.other}</option>;
+            return <option key={i} value={value}>{author.last}, {author.other}</option>;
         });
 
         // <a href="donate.html"><img src="img/donate.png"/></a>
