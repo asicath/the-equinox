@@ -450,9 +450,9 @@ class Index extends React.Component {
 
             let links = '';
             if (book.hasOwnProperty('links') ) {
-                links = book.links.map((link, i) => {
-                    let prefix = i === 0 ? '' : ' | ';
-                    return <a href={link.url} target="_blank" style={{fontSize:'0.5em', marginLeft:'0.5em'}}>{link.text}</a>;
+                links = book.links.map((link, j) => {
+                    let prefix = j === 0 ? '' : ' | ';
+                    return <a href={link.url} target="_blank" key={`link-${i}-${j}`} style={{fontSize:'0.5em', marginLeft:'0.5em'}}>{link.text}</a>;
                 });
             }
 
@@ -467,7 +467,7 @@ class Index extends React.Component {
                 }
 
                 // Take down notice
-                itemHtml.push(<div className={"takedown"}>{book.takedownNotice} {alt}<br/><a href={'copyright.html'}>Click here</a> to learn more about the status of Crowley's copyrights.</div>);
+                itemHtml.push(<div key={`item-${i}-takedown`} className={"takedown"}>{book.takedownNotice} {alt}<br/><a href={'copyright.html'}>Click here</a> to learn more about the status of Crowley's copyrights.</div>);
             }
             else {
                 for (let j = 0; j < visibleItems.length; j++) {
@@ -497,8 +497,8 @@ class Index extends React.Component {
 
         // limit to just top 5 images
         images.splice(Math.min(5, images.length));
-        const imagesHtml = images.map(img => {
-            return <a href={img.url} target="_blank"><img src={img.thumb}/></a>;
+        const imagesHtml = images.map((img, j) => {
+            return <a href={img.url} target="_blank" key={`image-${j}`}><img src={img.thumb}/></a>;
         });
 
         // compile the author select dropdown

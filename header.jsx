@@ -72,15 +72,15 @@ export class Description extends React.Component {
         ];
 
 
-        let buyLinks = retailers.map(retailer => {
+        let buyLinks = retailers.map((retailer, i) => {
             let links = retailer.ids.map((id, index) => {
                 if (id === '') return;
                 let url = retailer.url.replace('###', id);
                 let space = (index === 0) ? '' : ' | ';
-                return <span>{space}<a target="_blank" href={url}>1.{index+1}</a></span>
+                return <span key={`link-${i}-${index}`}>{space}<a target="_blank" href={url}>1.{index+1}</a></span>
             });
 
-            return <div class="retailer">
+            return <div className="retailer" key={`retailer-${i}`}>
                 <div className="buy-site">{retailer.title}:</div>
                 {links}
             </div>
