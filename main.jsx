@@ -162,7 +162,7 @@ class Index extends React.Component {
         };
 
         //this.handleChange = this.handleChange.bind(this);
-        this.onClick = this.onClick.bind(this);
+        this.onClickFilterButton = this.onClickFilterButton.bind(this);
         this.onPersonChange = this.onPersonChange.bind(this);
 
         // in the data
@@ -179,12 +179,12 @@ class Index extends React.Component {
         });
     }
 
-    onClick(value, e) {
+    onClickFilterButton(value, e) {
         if (this.state.selected === value) value = '';
         this.setState({selected:value});
 
         if (history.pushState) {
-            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?filter=' + value;
+            const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?filter=' + value;
             window.history.pushState({path:newurl},'',newurl);
         }
     }
@@ -345,49 +345,49 @@ class Index extends React.Component {
 
             <div className="filter-row">
 
-                <FilterButton text="1.1" value="1.1" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="1.2" value="1.2" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="1.3" value="1.3" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="1.4" value="1.4" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="1.5" value="1.5" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="1.6" value="1.6" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="1.7" value="1.7" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="1.8" value="1.8" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="1.9" value="1.9" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="1.10" value="1.10" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="3.1" value="3.1" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="1.1" value="1.1" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="1.2" value="1.2" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="1.3" value="1.3" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="1.4" value="1.4" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="1.5" value="1.5" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="1.6" value="1.6" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="1.7" value="1.7" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="1.8" value="1.8" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="1.9" value="1.9" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="1.10" value="1.10" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="3.1" value="3.1" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
 
                 <div className="filter-right">
-                    <div className={"filter-button noselect " + (this.state.selected==='oto' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'oto')}><span className="filter-text">O.T.O.</span></div>
-                    <div className={"filter-button noselect " + (this.state.selected==='aa' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'aa')}><span className="filter-text">A∴A∴</span></div>
+                    <div className={"filter-button noselect " + (this.state.selected==='oto' ? 'selected' : 'not-selected')} onClick={this.onClickFilterButton.bind(this, 'oto')}><span className="filter-text">O.T.O.</span></div>
+                    <div className={"filter-button noselect " + (this.state.selected==='aa' ? 'selected' : 'not-selected')} onClick={this.onClickFilterButton.bind(this, 'aa')}><span className="filter-text">A∴A∴</span></div>
 
 
-                    <FilterButton text="A" value="class-a" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                    <FilterButton text="B" value="class-b" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                    <FilterButton text="C" value="class-c" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                    <FilterButton text="D" value="class-d" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                    <FilterButton text="E" value="class-e" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                    <FilterButton text="A" value="class-a" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                    <FilterButton text="B" value="class-b" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                    <FilterButton text="C" value="class-c" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                    <FilterButton text="D" value="class-d" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                    <FilterButton text="E" value="class-e" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
                 </div>
             </div>
             <div className="filter-row">
-                <FilterButton text="ΘΕΛΗΜΑ" value="thelema" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="777" value="777" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="333" value="333" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="BOOK 4" value="book4" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="GOETIA" value="goetia" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="WORKS" value="works" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="THOTH" value="thoth" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="KONX OM PAX" value="konx-om-pax" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="ΘΕΛΗΜΑ" value="thelema" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="777" value="777" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="333" value="333" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="BOOK 4" value="book4" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="GOETIA" value="goetia" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="WORKS" value="works" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="THOTH" value="thoth" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="KONX OM PAX" value="konx-om-pax" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
             </div>
 
             <div className="filter-row">
-                <FilterButton text="Probationer" value="grade0" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="Neophyte" value="grade1" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="Zelator" value="grade2" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="Practicus" value="grade3" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="Philosophus" value="grade4" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="Dominus Liminis" value="grade5" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                <FilterButton text="Major Adept" value="grade6" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="Probationer" value="grade0" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="Neophyte" value="grade1" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="Zelator" value="grade2" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="Practicus" value="grade3" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="Philosophus" value="grade4" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="Dominus Liminis" value="grade5" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
+                <FilterButton text="Major Adept" value="grade6" selectedValue={this.state.selected} onClick={this.onClickFilterButton.bind(this)}/>
             </div>
 
             <div className="filter-row">
