@@ -120,7 +120,6 @@ export class Description extends React.Component {
                 <div className="inline retail-desc">
                     Print editions for all of Vol 1. are now available at most major online book retailers!
                     Note that due to the print on demand nature process, sometimes these retailers indicate out of stock, but if you order they generally process the order quickly.
-                    U.S. customers should never pay more than $33 including shipping, from amazon.com you might need to look in the list of new sellers to buy directly from amazon.com.
                 </div>
                 <div className="buy-links">
                     {buyLinks}
