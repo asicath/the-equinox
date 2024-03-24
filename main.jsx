@@ -57,9 +57,6 @@ const filterOptions = {
 };
 
 
-
-// I made this prime "auralization" by dynamically grouping primes based on what percent of the infinite natural set they are a prime factor for. I then assigned a note for each group, the silences represent new primes. What do you think?
-// https://www.youtube.com/watch?v=vD20B-Vv0CA
 class ContentItem extends React.Component {
     render() {
         const book = this.props.book;
@@ -260,22 +257,16 @@ class Index extends React.Component {
         return true;
     }
 
-    render() {
+    findVisibleItems({textSearch, selectedOption}) {
 
-        // determine the selected option
-        let selectedOption = null;
-        if (this.state.selected.length > 0 && filterOptions.hasOwnProperty(this.state.selected)) {
-            selectedOption = filterOptions[this.state.selected];
-        }
+        const value = {
+            books: [],
+            images: []
+        };
 
-        let textSearch = this.state.textSearch.toLowerCase();
-
-        let groups = [];
-        let images = []; // collate the images from the selected items
         for (let i = 0; i < this.props.books.length; i++) {
             const book = this.props.books[i];
-            const html = [];
-            let isBookActive = false;
+
             let bookTitleFoundInSearch = false;
 
             // simple book title search
@@ -285,111 +276,214 @@ class Index extends React.Component {
                 }
             }
 
-            if (book.takedownNotice) {
+            // now look at each item
+            const visibleItems = [];
+            const visibleImages = []; // collate the images from the selected items
+            for (let j = 0; j < book.items.length; j++) {
+                const item = book.items[j];
+
+                const isItemVisible = this.isItemVisible({
+                    book,
+                    item,
+                    selectedOption,
+                    textSearch,
+                    bookTitleFoundInSearch
+                });
+
+                if (!isItemVisible) continue;
+
+                visibleItems.push(item);
+
+                // gather images of the content item
+                if (item.hasOwnProperty('images')) {
+                    item.images.forEach(o => {
+
+                        if (typeof o === 'string') {
+                            visibleImages.push({
+                                thumb: `images/${book.folder}/thumb/${o}`,
+                                url: `images/${book.folder}/${o}`,
+                                order: Math.random()
+                            });
+                        }
+
+                    });
+                }
+
+            }
+
+            // now resolve the book
+
+            if (visibleItems.length === 0) {
+                // book is not visible
+            }
+            else if (book.takedownNotice) {
+                // TODO add book as took down - only add if one of the items would have been visible
+                value.books.push({
+                    bookInfo: book,
+                    showTakedown: true,
+                    visibleItems: []
+                });
+            }
+            else {
+                // indicate that this book is active, ie at least some of its contents will be shown to the user
+                // TODO add item to return list for this book
+                value.books.push({
+                    bookInfo: book,
+                    visibleItems
+                });
+
+                value.images.push(...visibleImages);
+            }
+
+        }
+
+        return value;
+    }
+
+    renderFilters(authorOptions) {
+        return <div className="filter-section">
+
+            <div className="filter-row">
+
+                <FilterButton text="1.1" value="1.1" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="1.2" value="1.2" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="1.3" value="1.3" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="1.4" value="1.4" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="1.5" value="1.5" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="1.6" value="1.6" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="1.7" value="1.7" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="1.8" value="1.8" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="1.9" value="1.9" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="1.10" value="1.10" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="3.1" value="3.1" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+
+                <div className="filter-right">
+                    <div className={"filter-button noselect " + (this.state.selected==='oto' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'oto')}><span className="filter-text">O.T.O.</span></div>
+                    <div className={"filter-button noselect " + (this.state.selected==='aa' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'aa')}><span className="filter-text">A∴A∴</span></div>
+
+
+                    <FilterButton text="A" value="class-a" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                    <FilterButton text="B" value="class-b" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                    <FilterButton text="C" value="class-c" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                    <FilterButton text="D" value="class-d" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                    <FilterButton text="E" value="class-e" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                </div>
+            </div>
+            <div className="filter-row">
+                <FilterButton text="ΘΕΛΗΜΑ" value="thelema" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="777" value="777" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="333" value="333" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="BOOK 4" value="book4" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="GOETIA" value="goetia" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="WORKS" value="works" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="THOTH" value="thoth" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="KONX OM PAX" value="konx-om-pax" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+            </div>
+
+            <div className="filter-row">
+                <FilterButton text="Probationer" value="grade0" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="Neophyte" value="grade1" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="Zelator" value="grade2" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="Practicus" value="grade3" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="Philosophus" value="grade4" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="Dominus Liminis" value="grade5" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+                <FilterButton text="Major Adept" value="grade6" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
+            </div>
+
+            <div className="filter-row">
+                <div style={{display:'inline-block'}}><span style={{fontSize:'0.8em'}}>Title Search: </span><input style={{width:'20em'}} value={this.state.textSearch} onChange={this.handleChange.bind(this)} /></div>
+
+                <div className="filter-right" style={{marginTop:'-4px'}}>
+                    <div className="filter-item"><span style={{fontSize:'0.8em'}}>Author: </span><select style={{textAlignLast: 'center', 'height': '1.5em'}} onChange={this.onPersonChange}>
+                        <option value=""></option>
+                        {authorOptions}
+                    </select></div>
+                </div>
+            </div>
+
+        </div>
+    }
+
+    render() {
+
+        // determine the selected option
+        let selectedOption = null;
+        if (this.state.selected.length > 0 && filterOptions.hasOwnProperty(this.state.selected)) {
+            selectedOption = filterOptions[this.state.selected];
+        }
+
+        // load the text search
+        const textSearch = this.state.textSearch.toLowerCase();
+
+        // execute the search
+        const result = this.findVisibleItems({textSearch, selectedOption});
+
+        // render the html for the result
+        const contentGroupHtml = [];
+        for (let i = 0; i < result.books.length; i++) {
+            const entry = result.books[i];
+            const book = entry.bookInfo;
+            const visibleItems = entry.visibleItems;
+
+            const publisher = <span>({book.pubLocation}: {book.pubName}, <span className="number">{book.pubYear}</span>)</span>;
+            const subtitle = book.hasOwnProperty('subtitle') ? <div className="groupSubtitle">{book.subtitle}</div> : null;
+
+            let links = '';
+            if (book.hasOwnProperty('links') ) {
+                links = book.links.map((link, i) => {
+                    let prefix = i === 0 ? '' : ' | ';
+                    return <a href={link.url} target="_blank" style={{fontSize:'0.5em', marginLeft:'0.5em'}}>{link.text}</a>;
+                });
+            }
+
+            // compile the item html
+            const itemHtml = [];
+
+            // this book is a takedown, exit early
+            if (entry.showTakedown) {
                 let alt = null;
                 if (book.takedownAlt) {
                     alt = <span>The text is still available on <a target="_blank" href={book.takedownAlt}>{book.takedownAltText}</a>.</span>;
                 }
 
-                html.push(<div className={"takedown"}>{book.takedownNotice} {alt}<br/><a href={'copyright.html'}>Click here</a> to learn more about the status of Crowley's copyrights.</div>);
+                // Take down notice
+                itemHtml.push(<div className={"takedown"}>{book.takedownNotice} {alt}<br/><a href={'copyright.html'}>Click here</a> to learn more about the status of Crowley's copyrights.</div>);
             }
             else {
-                for (let j = 0; j < book.items.length; j++) {
-                    const item = book.items[j];
-
-                    const isVisible = this.isItemVisible({
-                        book,
-                        item,
-                        selectedOption,
-                        textSearch,
-                        bookTitleFoundInSearch,
-                        images
-                    });
-
-                    if (!isVisible) continue;
-
-                    // INSERT **************
-                    let key = "item-" + i + "-" + j;
-                    const result = <ContentItem key={key} book={book} item={item} authors={this.authors}/>;
-                    html.push(result);
-
-                    // indicate that this book is active, ie at least some of its contents will be shown to the user
-                    isBookActive = true;
-
-                    // gather images of the content item
-                    if (item.hasOwnProperty('images')) {
-                        item.images.forEach(o => {
-
-                            if (typeof o === 'string') {
-                                images.push({
-                                    thumb: `images/${book.folder}/thumb/${o}`,
-                                    url: `images/${book.folder}/${o}`,
-                                    order: Math.random()
-                                });
-                            }
-
-                        });
-                    }
-
+                for (let j = 0; j < visibleItems.length; j++) {
+                    const item = visibleItems[j];
+                    const itemKey = "item-" + i + "-" + j;
+                    itemHtml.push(<ContentItem key={itemKey} book={book} item={item} authors={this.authors}/>);
                 }
             }
 
-            const publisher = <span>({book.pubLocation}: {book.pubName}, <span className="number">{book.pubYear}</span>)</span>;
-            const subtitle = book.hasOwnProperty('subtitle') ? <div className="groupSubtitle">{book.subtitle}</div> : null;
-
-            if (html.length > 0) {
-                let key = "group-" + i;
-
-                let links = '';
-                if (book.hasOwnProperty('links') ) {
-                    links = book.links.map((link, i) => {
-                        let prefix = i === 0 ? '' : ' | ';
-                        return <a href={link.url} target="_blank" style={{fontSize:'0.5em', marginLeft:'0.5em'}}>{link.text}</a>;
-                    });
-                }
-
-                groups.push(<div className="content-group" key={key}>
-                    <div className="groupTitle">{book.title} <span className="groupLinks">{links}</span></div>
-                    {subtitle}
-                    <div className="groupSubtitle">{publisher}</div>
-                    <div className="content-items">{html}</div>
-                </div>);
-            }
-
-            // gather the images of the book
-            if (isBookActive && book.hasOwnProperty('images')) {
-                book.images.forEach(o => {
-
-                    if (typeof o === 'string') {
-                        images.push({
-                            thumb: `images/${book.folder}/thumb/${o}`,
-                            url:`images/${book.folder}/${o}`,
-                            order: Math.random()
-                        });
-                    }
-
-                });
-            }
-
+            // finally, compile the content item
+            const groupKey = "group-" + i;
+            contentGroupHtml.push(<div className="content-group" key={groupKey}>
+                <div className="groupTitle">{book.title} <span className="groupLinks">{links}</span></div>
+                {subtitle}
+                <div className="groupSubtitle">{publisher}</div>
+                <div className="content-items">{itemHtml}</div>
+            </div>);
         }
-
-        const authorOptions = data.authors.map((author, i) => {
-            return <option key={i} value={author.last.toLowerCase()}>{author.last}, {author.other}</option>;
-        });
 
         // compile image html
         // first order
-        images = images.sort((a, b) => {
+        const images = result.images.sort((a, b) => {
             if (a.order < b.order) return -1;
             if (b.order > a.order) return 1;
             return 0;
         });
 
-        // limit to just top 5
+        // limit to just top 5 images
         images.splice(Math.min(5, images.length));
-
-        let imagesHtml = images.map(img => {
+        const imagesHtml = images.map(img => {
             return <a href={img.url} target="_blank"><img src={img.thumb}/></a>;
+        });
+
+        // compile the author select dropdown
+        const authorOptions = data.authors.map((author, i) => {
+            return <option key={i} value={author.last.toLowerCase()}>{author.last}, {author.other}</option>;
         });
 
         // <a href="donate.html"><img src="img/donate.png"/></a>
@@ -405,98 +499,20 @@ class Index extends React.Component {
             </div>
             <div className="center">
 
-                <div className="filter">
-                    <div className="filter-section">
+                <div className="filter">{this.renderFilters(authorOptions)}</div>
 
-
-                        <div className="filter-row">
-
-                            <FilterButton text="1.1" value="1.1" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="1.2" value="1.2" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="1.3" value="1.3" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="1.4" value="1.4" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="1.5" value="1.5" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="1.6" value="1.6" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="1.7" value="1.7" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="1.8" value="1.8" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="1.9" value="1.9" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="1.10" value="1.10" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="3.1" value="3.1" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-
-                            <div className="filter-right">
-                                <div className={"filter-button noselect " + (this.state.selected==='oto' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'oto')}><span className="filter-text">O.T.O.</span></div>
-                                <div className={"filter-button noselect " + (this.state.selected==='aa' ? 'selected' : 'not-selected')} onClick={this.onClick.bind(this, 'aa')}><span className="filter-text">A∴A∴</span></div>
-
-
-                                <FilterButton text="A" value="class-a" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                                <FilterButton text="B" value="class-b" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                                <FilterButton text="C" value="class-c" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                                <FilterButton text="D" value="class-d" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                                <FilterButton text="E" value="class-e" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            </div>
-                        </div>
-                        <div className="filter-row">
-                            <FilterButton text="ΘΕΛΗΜΑ" value="thelema" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="777" value="777" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="333" value="333" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="BOOK 4" value="book4" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="GOETIA" value="goetia" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="WORKS" value="works" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="THOTH" value="thoth" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="KONX OM PAX" value="konx-om-pax" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                        </div>
-
-                        <div className="filter-row">
-                            <FilterButton text="Probationer" value="grade0" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="Neophyte" value="grade1" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="Zelator" value="grade2" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="Practicus" value="grade3" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="Philosophus" value="grade4" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="Dominus Liminis" value="grade5" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                            <FilterButton text="Major Adept" value="grade6" selectedValue={this.state.selected} onClick={this.onClick.bind(this)}/>
-                        </div>
-
-                        <div className="filter-row">
-                            <div style={{display:'inline-block'}}><span style={{fontSize:'0.8em'}}>Title Search: </span><input style={{width:'20em'}} value={this.state.textSearch} onChange={this.handleChange.bind(this)} /></div>
-
-                            <div className="filter-right" style={{marginTop:'-4px'}}>
-                                <div className="filter-item"><span style={{fontSize:'0.8em'}}>Author: </span><select style={{textAlignLast: 'center', 'height': '1.5em'}} onChange={this.onPersonChange}>
-                                    <option value=""></option>
-                                    {authorOptions}
-                                </select></div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
                 <div className="resolution-note">
                     <span className="fake-link">low</span> = 150 dpi, suitable for reading, <span className="fake-link">high</span> = 600 dpi, suitable for printing.
                 </div>
 
-
-                <div className="groups">{groups}</div>
+                <div className="groups">{contentGroupHtml}</div>
             </div>
             <div className="right-margin">
 
             </div>
         </div>;
     }
-
-/*
-<select id='typeSelect'
-className='form-control'
-value={this.state.selected}
-onChange={this.handleChange}>
-<option key='all' value=''>- SHOW ALL -</option>
-{options}
-</select>
-
-    handleChange(e) {
-        if (e.target.value === '') this.setState({selected: ''});
-        else this.setState({selected: e.target.value});
-    }
-    */
+    
 }
 
 class FilterButton extends React.Component {
