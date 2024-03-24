@@ -152,16 +152,16 @@ class Index extends React.Component {
         super(props);
 
         const urlParams = new URLSearchParams(window.location.search);
-        const filter = urlParams.get('filter');
-        const person = urlParams.get('person');
+        this.filter = urlParams.get('filter') || '';
+        this.search = urlParams.get('search') || '';
+        this.person = urlParams.get('person') || '';
 
         this.state = {
-            selected: filter || '',
-            person: person || '',
-            textSearch: ''
+            selected: this.filter,
+            textSearch: this.search,
+            person: this.person
         };
 
-        //this.handleChange = this.handleChange.bind(this);
         this.onClickFilterButton = this.onClickFilterButton.bind(this);
         this.onPersonChange = this.onPersonChange.bind(this);
 
@@ -182,19 +182,40 @@ class Index extends React.Component {
     onClickFilterButton(value, e) {
         if (this.state.selected === value) value = '';
         this.setState({selected:value});
+        this.filter = value;
 
-        if (history.pushState) {
-            const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?filter=' + value;
-            window.history.pushState({path:newurl},'',newurl);
-        }
+        this.updateUrl();
     }
 
-    handleChange(e) {
-        this.setState({textSearch: e.target.value});
+    updateUrl() {
+        if (!history.pushState) return;
+
+        const qs = [];
+
+        if (this.filter.length > 0) {
+            qs.push(`filter=${this.filter}`);
+        }
+        if (this.search.length > 0) {
+            qs.push(`search=${this.search}`);
+        }
+        if (this.person.length > 0) {
+            qs.push(`person=${this.person}`);
+        }
+
+        const newurl = `${window.location.protocol}//${window.location.host}${window.location.pathname}${qs.length > 0 ? '?' : ''}${qs.join('&')}`;
+        window.history.pushState({path:newurl},'',newurl);
+    }
+
+    handleSearchTextChange(e) {
+        this.search = e.target.value;
+        this.setState({textSearch: this.search});
+        this.updateUrl();
     }
 
     onPersonChange(event) {
-        this.setState({person: event.target.value});
+        this.person = event.target.value;
+        this.setState({person: this.person});
+        this.updateUrl();
     }
 
     isItemVisible({book, item, selectedOption, textSearch, bookTitleFoundInSearch}) {
@@ -317,7 +338,7 @@ class Index extends React.Component {
                 // book is not visible
             }
             else if (book.takedownNotice) {
-                // TODO add book as took down - only add if one of the items would have been visible
+                // add book as took down
                 value.books.push({
                     bookInfo: book,
                     showTakedown: true,
@@ -325,8 +346,7 @@ class Index extends React.Component {
                 });
             }
             else {
-                // indicate that this book is active, ie at least some of its contents will be shown to the user
-                // TODO add item to return list for this book
+                // add item to return list for this book
                 value.books.push({
                     bookInfo: book,
                     visibleItems
@@ -391,7 +411,7 @@ class Index extends React.Component {
             </div>
 
             <div className="filter-row">
-                <div style={{display:'inline-block'}}><span style={{fontSize:'0.8em'}}>Title Search: </span><input style={{width:'20em'}} value={this.state.textSearch} onChange={this.handleChange.bind(this)} /></div>
+                <div style={{display:'inline-block'}}><span style={{fontSize:'0.8em'}}>Title Search: </span><input style={{width:'20em'}} value={this.state.textSearch} onChange={this.handleSearchTextChange.bind(this)} /></div>
 
                 <div className="filter-right" style={{marginTop:'-4px'}}>
                     <div className="filter-item"><span style={{fontSize:'0.8em'}}>Author: </span><select style={{textAlignLast: 'center', 'height': '1.5em'}} onChange={this.onPersonChange}>
@@ -483,7 +503,9 @@ class Index extends React.Component {
 
         // compile the author select dropdown
         const authorOptions = data.authors.map((author, i) => {
-            return <option key={i} value={author.last.toLowerCase()}>{author.last}, {author.other}</option>;
+            const value = author.last.toLowerCase();
+            const selected = value === this.person;
+            return <option key={i} value={value} selected={selected}>{author.last}, {author.other}</option>;
         });
 
         // <a href="donate.html"><img src="img/donate.png"/></a>
