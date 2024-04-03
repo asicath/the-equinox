@@ -156,6 +156,8 @@ class Index extends React.Component {
         this.search = urlParams.get('search') || '';
         this.person = urlParams.get('person') || '';
 
+        this.includeRemoved = (urlParams.get('include-removed') || '') === 'true';
+
         this.state = {
             selected: this.filter,
             textSearch: this.search,
@@ -200,6 +202,9 @@ class Index extends React.Component {
         }
         if (this.person.length > 0) {
             qs.push(`person=${this.person}`);
+        }
+        if (this.includeRemoved) {
+            qs.push(`include-removed=true`);
         }
 
         const newurl = `${window.location.protocol}//${window.location.host}${window.location.pathname}${qs.length > 0 ? '?' : ''}${qs.join('&')}`;
@@ -337,7 +342,7 @@ class Index extends React.Component {
             if (visibleItems.length === 0) {
                 // book is not visible
             }
-            else if (book.takedownNotice) {
+            else if (book.takedownNotice && !this.includeRemoved) {
                 // add book as took down
                 value.books.push({
                     bookInfo: book,
