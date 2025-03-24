@@ -16,6 +16,10 @@ function showIndexPage() {
     );
 }
 
+function trackLinkClick(info) {
+    gtag('event', 'pdf_link_click', info);
+}
+
 const filterOptions = {
     'aa': {pub: 'aa'},
     'class-a': {pub: 'aa', pubClass: 'a'},
@@ -73,8 +77,8 @@ class ContentItem extends React.Component {
 
         //let aTxt = (item.hasText) ? <a href=".">txt</a> : "";
 
-        let aHigh = <a target="_blank" href={`${book.folder}/${item.pdfName}`}>high</a>;
-        let aLow = <a target="_blank" href={`${book.folder}/${item.pdfLowName}`}>low</a>;
+        let aHigh = <a target="_blank" href={`${book.folder}/${item.pdfName}`} onClick={trackLinkClick.bind(this, {book: book.folder, filename: item.pdfName, resolution:'high'})}>high</a>;
+        let aLow = <a target="_blank" href={`${book.folder}/${item.pdfLowName}`} onClick={trackLinkClick.bind(this, {book: book.folder, filename: item.pdfName, resolution:'low'})}>low</a>;
 
         // turn into array
         let authors = "";
@@ -457,6 +461,7 @@ class Index extends React.Component {
             if (book.hasOwnProperty('links') ) {
                 links = book.links.map((link, j) => {
                     let prefix = j === 0 ? '' : ' | ';
+                    const filename = link.url.substr(link.url.lastIndexOf('/') + 1)
                     return <a href={link.url} target="_blank" key={`link-${i}-${j}`} style={{fontSize:'0.5em', marginLeft:'0.5em'}}>{link.text}</a>;
                 });
             }
