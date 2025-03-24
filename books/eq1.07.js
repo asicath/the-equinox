@@ -329,6 +329,61 @@ exports.data = {
             filename: 'the-temple-of-solomon-the-king-part-6'
         },
 
+        {
+            title: 'Invocation of Horus',
+            subtitle: 'According to the Divine Vision of W. the Seer',
+            author: 'crowley',
+            pageStart: 376,
+            pageEnd: 383,
+            pub: 'aa',
+            pubClass: 'b',
+            filename: 'invocation-or-horus',
+            recentlyAdded: true
+        },
+        {
+            title: 'The Stele of Revealing',
+            subtitle: 'Extract from THE TEMPLE OF SOLOMON THE KING PART VI',
+            author: 'crowley',
+            pageStart: 368,
+            pageEnd: 371,
+            addPage: [
+                {filename: '368image.jpg', before: '368.png'},
+                {filename: '369image.jpg', before: '368.png'},
+                {filename: '368image-back.png', before: '368.png'},
+                {filename: '369image-back.png', before: '368.png'}
+            ],
+            pub: 'aa',
+            pubClass: 'b',
+            filename: 'the-stele-of-revealing',
+            recentlyAdded: true
+        },
+        {
+            title: 'LIBER L',
+            subtitle: 'vel LEGIS svb figvra CCXX',
+            author: 'crowley',
+            pageStart: 386,
+            pageEnd: 386,
+            addPage: [
+                {filename: '386image.png', after: '386.png'}
+            ],
+            pub: 'aa',
+            pubClass: 'a',
+            filename: 'liber-l-vel-legis',
+            recentlyAdded: true
+        },
+        {
+            title: 'LIBER LEGIS: THE COMMENT',
+            author: 'crowley',
+            pageStart: 387,
+            pageEnd: 400,
+            addPage: [
+                {filename: '400a.png', after: '400.png'}
+            ],
+            pub: 'aa',
+            pubClass: 'b',
+            filename: 'liber-legis-the-comment',
+            recentlyAdded: true
+        },
 
         {
             title: 'MY CRAPULOUS CONTEMPORARIES NO. V',
